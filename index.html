@@ -224,6 +224,10 @@
   .contact h2 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; line-height: 1.05; }
   .contact .sub { font-size: 21px; color: var(--soft); margin: 14px auto 30px; max-width: 620px; }
   .email { font-size: clamp(24px, 3.4vw, 34px); font-weight: 600; user-select: all; color: var(--ink); }
+  .email a { color: inherit; text-decoration: none; }
+  .email a:hover { color: var(--link); text-decoration: underline; }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: center; align-items: center; margin-top: 22px; }
+  .contact-actions .copy { margin-top: 0; }
   .copy { margin-top: 16px; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 980px; padding: 8px 18px; font: inherit; font-size: 15px; cursor: pointer; }
   .copy-state { min-height: 1.4em; font-size: 14px; color: var(--soft); margin-top: 10px; }
 
@@ -405,7 +409,8 @@
         <h1>Your processes.<br><span>Digitalized, connected,<br>and smarter with AI.</span></h1>
         <p class="sub">We turn work that still runs on paper, spreadsheets and group chats into connected digital processes, then integrate AI where it makes them faster, more accurate and more reliable.</p>
         <div class="links hero-cta">
-          <a class="pill" href="/#contact">Talk to us</a>
+          <a class="pill" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A">Talk to us</a>
+          <a href="#contact">More ways to reach us</a>
           <a href="/#approach">See how we work</a>
         </div>
       </div>
@@ -638,22 +643,24 @@
     <div class="wrap">
       <h2>What still runs on spreadsheets?</h2>
       <p class="sub">Tell us about one slow process. We'll show you what it could look like.</p>
-      <p class="email" id="email">info@coformia.com</p>
+      <p class="email"><a id="email" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A">info@coformia.com</a></p>
       <ul class="send-list">
         <li>Which team does the work</li>
         <li>What the spreadsheet or chat is called</li>
         <li>What “done” looks like</li>
       </ul>
-      <button class="copy" id="copy-email" type="button">Copy email address</button>
+      <div class="contact-actions">
+        <a class="pill" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A">Email us</a>
+        <button class="copy" id="copy-email" type="button">Copy address</button>
+      </div>
       <p class="copy-state" id="copy-state" aria-live="polite"></p>
-      <div class="links" style="margin-top:8px"><a href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize">Email us</a></div>
     </div>
   </section>
 </main>
 
 <aside class="dock" id="dock" hidden aria-label="Quick contact">
   <span>One slow process. We’ll show the digital version.</span>
-  <a class="pill" href="/#contact">Talk to us</a>
+  <a class="pill" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A">Talk to us</a>
 </aside>
 
 <footer>
@@ -668,7 +675,8 @@
     var btn = document.getElementById('copy-email'), state = document.getElementById('copy-state'), el = document.getElementById('email');
     btn.addEventListener('click', function () {
       function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); state.textContent = 'Selected. Press Ctrl+C or Cmd+C to copy.'; }
-      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(el.textContent.trim()).then(function () { state.textContent = 'Email address copied.'; }, fallback); } else { fallback(); }
+      var addr = 'info@coformia.com';
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(addr).then(function () { state.textContent = 'Email address copied.'; }, fallback); } else { fallback(); }
     });
   })();
 </script>
