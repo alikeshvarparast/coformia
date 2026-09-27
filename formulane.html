@@ -5,15 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Formulane — Formula changes for food manufacturers</title>
 <meta name="description" content="Formulane keeps customer formulas, specifications, changes, and approvals in one place for food manufacturers, connected to the ERP. Change once. Right everywhere.">
-<link rel="canonical" href="https://keshvarco.com/formulane">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1C39BB">
+<link rel="canonical" href="https://coformia.com/formulane">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Keshvar Co.">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Coformia">
 <meta property="og:title" content="Formulane — Formula changes for food manufacturers">
-<meta property="og:description" content="Customer formulas, specifications, changes, and approvals in one place, connected to the ERP.">
-<meta property="og:url" content="https://keshvarco.com/formulane">
-<meta property="og:image" content="https://keshvarco.com/keshvarco-logo.png">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M26 6h12v14l14 32a6 6 0 0 1-5 8H17a6 6 0 0 1-5-8l14-32z' fill='%231D1D1F'/%3E%3Cpath d='M19 36h26l3 7H16z' fill='%23D9622B'/%3E%3Cpath d='M16 43h32l3 7H13z' fill='%232F6B52'/%3E%3C/svg%3E">
+<meta property="og:description" content="Formulane keeps customer formulas, specifications, changes, and approvals in one place for food manufacturers, connected to the ERP. Change once. Right everywhere.">
+<meta property="og:url" content="https://coformia.com/formulane">
+<meta property="og:image" content="https://coformia.com/images/og-formulane.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Formulane — change once, right everywhere">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Formulane — Formula changes for food manufacturers">
+<meta name="twitter:description" content="Formulane keeps customer formulas, specifications, changes, and approvals in one place for food manufacturers, connected to the ERP. Change once. Right everywhere.">
+<meta name="twitter:image" content="https://coformia.com/images/og-formulane.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Formulane","applicationCategory":"BusinessApplication","url":"https://coformia.com/formulane","provider":{"@type":"Organization","name":"Coformia","url":"https://coformia.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://coformia.com/"},{"@type":"ListItem","position":2,"name":"Formulane","item":"https://coformia.com/formulane"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does Formulane keep in one place?","acceptedAnswer":{"@type":"Answer","text":"Customer formulas, specifications, changes, and approvals, connected to the ERP."}},{"@type":"Question","name":"Does Formulane replace the ERP?","acceptedAnswer":{"@type":"Answer","text":"No. Formulane is designed to work with SAP and other ERPs. It reads materials, prices and stock, and releases approved BOMs after your team confirms them."}},{"@type":"Question","name":"Who approves a change?","acceptedAnswer":{"@type":"Answer","text":"People do. Nothing is released until people approve."}}]}]}
+</script>
+<link rel="icon" href="/favicon.svg">
 <style>
   :root {
     --bg: #FFFFFF; --bg2: #F5F5F7; --ink: #1D1D1F; --soft: #6E6E73; --line: #D2D2D7;
@@ -54,12 +66,28 @@
   .big { font-size: clamp(38px, 6vw, 64px); font-weight: 700; line-height: 1.06; }
   .sub { font-size: clamp(19px, 2.3vw, 24px); color: var(--soft); line-height: 1.35; max-width: 740px; margin: 18px auto 0; font-weight: 500; }
 
-  .gnav { background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
-  .gnav .wrap { height: 48px; display: flex; align-items: center; justify-content: space-between; }
-  .gnav img { height: 28px; width: auto; }
-  .gnav nav { display: flex; gap: 28px; }
+  .skip { position: absolute; left: 12px; top: 12px; z-index: 30; background: #fff; color: #1D1D1F; padding: 10px 14px; border-radius: 8px; transform: translateY(-160%); }
+  .skip:focus { transform: none; }
+  .gnav { position: sticky; top: 0; z-index: 21; background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+  .gnav .wrap { height: 48px; display: flex; align-items: center; justify-content: space-between; position: relative; }
+  .gnav .wordmark { color: var(--ink); font-weight: 700; font-size: 20px; letter-spacing: -.04em; text-decoration: none; }
+  .gnav .wordmark:hover { text-decoration: none; }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 980px; padding: 6px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+  .gnav nav { display: flex; gap: 18px; align-items: center; }
   .gnav nav a { color: var(--ink); font-size: 13px; opacity: .85; }
-  .pnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+  .gnav nav a.app { opacity: 1; font-weight: 650; }
+  .crumb { font-size: 13px; color: var(--soft); padding: 18px 0 0; }
+  .crumb a { color: var(--soft); }
+  .faq details { border-top: 1px solid var(--line); text-align: left; }
+  .faq summary { font-size: 21px; font-weight: 600; padding: 18px 0; cursor: pointer; }
+  .faq details p { color: var(--soft); max-width: 640px; padding-bottom: 18px; }
+  @media (max-width: 720px) {
+    .nav-toggle { display: inline-flex; }
+    .gnav .wrap { height: auto; min-height: 48px; }
+    #site-nav { display: none; }
+    .gnav.is-open #site-nav { display: flex; position: absolute; left: 0; right: 0; top: 100%; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 22px 18px; flex-direction: column; gap: 14px; align-items: flex-start; }
+  }
+  .pnav { position: sticky; top: 48px; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
   .pnav .wrap { height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .pnav .name { font-size: 21px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 8px; }
   .pnav .name svg { width: 18px; height: 22px; }
@@ -271,15 +299,19 @@
 </style>
 </head>
 <body>
-
-
+<a class="skip" href="#main">Skip to content</a>
 <header class="gnav">
   <div class="wrap">
-    <a href="index.html" aria-label="Keshvar Co. home">
-      <img class="logo-light" src="keshvarco-logo.png" alt="Keshvar Co.">
-      <img class="logo-dark" src="keshvarco-logo-white.png" alt="Keshvar Co.">
-    </a>
-    <nav aria-label="Keshvar Co."><a href="index.html#products">Products</a><a href="index.html#contact">Contact</a></nav>
+    <a class="wordmark" href="/" aria-label="Coformia home">Coformia</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Main">
+      <a class="app" href="/formulane">Formulane</a>
+      <a class="app" href="/countin">CountIn</a>
+      <a class="opt" href="/#products">Products</a>
+      <a class="opt" href="/#approach">Approach</a>
+      <a class="opt" href="/#faq">FAQ</a>
+      <a href="/#contact">Contact</a>
+    </nav>
   </div>
 </header>
 <div class="pnav">
@@ -293,7 +325,8 @@
   </div>
 </div>
 
-<main>
+<main id="main">
+  <div class="wrap"><p class="crumb"><a href="/">Coformia</a> / Formulane</p></div>
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
@@ -554,22 +587,40 @@
     </div>
   </section>
 
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2 class="big">Questions</h2>
+      <details open>
+        <summary>What does Formulane keep in one place?</summary>
+        <p>Customer formulas, specifications, changes, and approvals, connected to the ERP.</p>
+      </details>
+      <details>
+        <summary>Does Formulane replace the ERP?</summary>
+        <p>No. Formulane is designed to work with SAP and other ERPs. It reads materials, prices and stock, and releases approved BOMs after your team confirms them.</p>
+      </details>
+      <details>
+        <summary>Who approves a change?</summary>
+        <p>People do. Nothing is released until people approve.</p>
+      </details>
+    </div>
+  </section>
+
   <section class="center" id="contact">
     <div class="wrap">
       <h2 class="big">See it with<br>your own formula.</h2>
       <p class="sub">Send us one anonymised formula and a recent change request. We'll show you how it runs in Formulane.</p>
-      <p class="email" id="email">info@keshvarco.com</p>
+      <p class="email" id="email">info@coformia.com</p>
       <button class="copy" id="copy-email" type="button">Copy email address</button>
       <p class="copy-state" id="copy-state" aria-live="polite"></p>
-      <div class="links" style="margin-top:6px"><a href="mailto:info@keshvarco.com?subject=Formulane%20demo">Email us</a></div>
+      <div class="links" style="margin-top:6px"><a href="mailto:info@coformia.com?subject=Formulane%20demo">Email us</a></div>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Copyright © 2026 Keshvar Co. Formulane is a product of Keshvar Co.</span>
-    <a href="index.html">keshvarco.com</a>
+    <span>Copyright © 2026 Coformia</span>
+    <a href="/">coformia.com</a>
   </div>
 </footer>
 
@@ -582,7 +633,23 @@
     });
   })();
 </script>
-
+<script>
+  (function () {
+    var header = document.querySelector('.gnav');
+    var btn = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('site-nav');
+    if (!btn || !nav || !header) return;
+    function setOpen(open) {
+      header.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) { var first = nav.querySelector('a'); if (first) first.focus(); }
+      else btn.focus();
+    }
+    btn.addEventListener('click', function () { setOpen(!header.classList.contains('is-open')); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && header.classList.contains('is-open')) setOpen(false); });
+  })();
+</script>
 <script>
   (function () {
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

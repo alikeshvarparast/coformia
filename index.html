@@ -3,20 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Keshvar Co. — Digital processes, connected and smarter with AI</title>
-<meta name="description" content="Keshvar Co. turns paper, spreadsheets, and group chats into connected digital processes, then adds AI where it makes the work faster and more reliable. Makers of Formulane and CountIn.">
-<link rel="canonical" href="https://keshvarco.com/">
+<title>Coformia — Connected processes, smarter with AI</title>
+<meta name="description" content="Coformia turns paper, spreadsheets, and group chats into one connected process. AI prepares the work. People approve. Makers of Formulane and CountIn.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1C39BB">
+<link rel="canonical" href="https://coformia.com/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Keshvar Co.">
-<meta property="og:title" content="Keshvar Co. — Digital processes, connected and smarter with AI">
-<meta property="og:description" content="Keshvar Co. turns paper, spreadsheets, and group chats into connected digital processes. Makers of Formulane and CountIn.">
-<meta property="og:url" content="https://keshvarco.com/">
-<meta property="og:image" content="https://keshvarco.com/keshvarco-logo.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Coformia">
+<meta property="og:title" content="Coformia — Connected processes, smarter with AI">
+<meta property="og:description" content="Coformia turns paper, spreadsheets, and group chats into one connected process. AI prepares the work. People approve. Makers of Formulane and CountIn.">
+<meta property="og:url" content="https://coformia.com/">
+<meta property="og:image" content="https://coformia.com/images/og-home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Coformia — connected digital processes, smarter with AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coformia — Connected processes, smarter with AI">
+<meta name="twitter:description" content="Coformia turns paper, spreadsheets, and group chats into one connected process. AI prepares the work. People approve. Makers of Formulane and CountIn.">
+<meta name="twitter:image" content="https://coformia.com/images/og-home.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Keshvar Co.","url":"https://keshvarco.com/","email":"info@keshvarco.com","logo":"https://keshvarco.com/keshvarco-logo.png","founder":{"@type":"Person","name":"Ali Keshvarparast"},"sameAs":["https://shiftiai.com"]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://coformia.com/#org","name":"Coformia","url":"https://coformia.com/","email":"info@coformia.com","logo":"https://coformia.com/favicon.svg","founder":{"@type":"Person","name":"Ali Keshvarparast"},"sameAs":["https://shiftiai.com","https://countin.sspi.trade/"]},{"@type":"WebSite","name":"Coformia","url":"https://coformia.com/","publisher":{"@id":"https://coformia.com/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does Coformia actually build?","acceptedAnswer":{"@type":"Answer","text":"Connected software for work that still lives in spreadsheets, inboxes, and chats. AI prepares the work. A person approves it."}},{"@type":"Question","name":"Do we have to replace our ERP?","acceptedAnswer":{"@type":"Answer","text":"No. The goal is one live record that stays in sync with the systems you already run, including ERP."}},{"@type":"Question","name":"What is Formulane?","acceptedAnswer":{"@type":"Answer","text":"Formula, specification, change, and approval software for food manufacturers. Change once, and the connected record stays right everywhere."}},{"@type":"Question","name":"What is CountIn?","acceptedAnswer":{"@type":"Answer","text":"Community and group activity management: who is coming, who is waiting, and who owes what. CountIn does not take the payment."}},{"@type":"Question","name":"How does a project start?","acceptedAnswer":{"@type":"Answer","text":"Understand how the work moves, prototype with your data, pilot with one team, then scale only if the pilot holds."}},{"@type":"Question","name":"How do we reach you?","acceptedAnswer":{"@type":"Answer","text":"Email info@coformia.com and describe one slow process. We reply by email."}}]}]}
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C39BB'/%3E%3Cpath d='M18 14h8v14l12-14h10L34 30l15 20H38L26 34v16h-8z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg">
 <style>
   :root {
     --bg: #FFFFFF; --bg2: #F5F5F7; --ink: #1D1D1F; --soft: #6E6E73; --line: #D2D2D7;
@@ -55,21 +64,36 @@
   .center { text-align: center; }
 
   /* global nav */
+  .skip { position: absolute; left: 12px; top: 12px; z-index: 30; background: #fff; color: #1D1D1F; padding: 10px 14px; border-radius: 8px; transform: translateY(-160%); }
+  .skip:focus { transform: none; }
   .gnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
-  .gnav .wrap { height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
-  .gnav img { height: 30px; width: auto; }
-  .gnav nav { display: flex; gap: 30px; }
+  .gnav .wrap { height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 18px; position: relative; }
+  .gnav .wordmark { color: var(--ink); font-weight: 700; font-size: 20px; letter-spacing: -.04em; text-decoration: none; }
+  .gnav .wordmark:hover { text-decoration: none; }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 980px; padding: 6px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+  .gnav nav { display: flex; gap: 30px; align-items: center; }
   .gnav nav a { color: var(--ink); font-size: 13px; opacity: .85; }
   .gnav nav a:hover { opacity: 1; text-decoration: none; }
   .gnav nav a.app { opacity: 1; font-weight: 650; padding: 5px 12px; border-radius: 980px; background: color-mix(in srgb, var(--blue) 10%, transparent); box-shadow: 0 1px 0 rgba(255,255,255,.75) inset, 0 8px 16px rgba(28,57,187,.28); text-shadow: 0 1px 0 rgba(255,255,255,.4); }
   .gnav nav a.app:hover { background: color-mix(in srgb, var(--blue) 16%, transparent); box-shadow: 0 1px 0 rgba(255,255,255,.75) inset, 0 10px 20px rgba(28,57,187,.36); }
-  @media (max-width: 720px) { .gnav nav .opt { display: none; } }
+  @media (max-width: 720px) {
+    .nav-toggle { display: inline-flex; }
+    .gnav .wrap { height: auto; min-height: 52px; }
+    #site-nav { display: none; }
+    .gnav.is-open #site-nav { display: flex; position: absolute; left: 0; right: 0; top: 100%; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 22px 18px; flex-direction: column; gap: 14px; align-items: flex-start; }
+  }
 
   .links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; font-size: 19px; }
   .links a::after { content: " ›"; }
   .pill { display: inline-block; background: var(--blue); color: #fff; padding: 11px 22px; border-radius: 980px; font-size: 17px; }
   .pill:hover { text-decoration: none; background: #152C93; }
   .links .pill::after { content: ""; }
+  .replay { background: transparent; border: 1px solid var(--line); color: var(--ink); border-radius: 980px; padding: 11px 18px; font: inherit; font-size: 17px; cursor: pointer; }
+  .replay:hover { border-color: var(--ink); }
+  .shift.is-playing .mess div { opacity: 0; transform: translateX(40px) scale(.92); }
+  .shift.is-playing .clean { transform: scale(1); }
+  .shift .clean { transform: scale(.96); transition: transform .6s ease; }
+  .shift .mess div { transition: opacity .6s ease, transform .6s ease; }
 
   /* hero */
   .hero { padding: 96px 0 40px; }
@@ -140,7 +164,9 @@
   .steps { padding: 110px 0; }
   .steps h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.07; }
   .steps .sub { color: var(--soft); font-size: 21px; margin-top: 12px; }
-  .steplist { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+  .steplist { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 0; position: relative; }
+  .step-rail { grid-column: 1 / -1; height: 2px; background: var(--line); margin-bottom: 0; }
+  .step-rail span { display: block; height: 2px; width: 0; background: #1C39BB; }
   .steplist li { padding: 24px 20px 0 0; }
   .steplist .n { font-size: 14px; color: var(--link); font-weight: 600; }
   .steplist h3 { font-size: 24px; margin: 6px 0 6px; }
@@ -196,6 +222,8 @@
   .node text { fill: var(--ink); font-size: 17px; font-weight: 600; font-family: var(--font); }
   .node.erp rect { fill: var(--ink); stroke: var(--ink); }
   .node.erp text { fill: var(--bg); }
+  .hub-art svg path.is-hot { stroke: #1C39BB; stroke-width: 3; }
+  .node.is-hot rect { stroke: #1C39BB; stroke-width: 2; }
 
   .tile { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
   .tile-art { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
@@ -207,7 +235,18 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
+    .shift.is-playing .mess div { opacity: 1; transform: none; }
+    .step-rail span { width: 100%; }
   }
+  .dock { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 15; display: flex; gap: 16px; align-items: center; background: var(--ink); color: var(--bg); border-radius: 980px; padding: 10px 10px 10px 18px; font-size: 14px; box-shadow: 0 12px 40px rgba(0,0,0,.25); max-width: calc(100% - 24px); }
+  .dock .pill { font-size: 14px; padding: 8px 14px; white-space: nowrap; }
+  .faq { padding: 110px 0; }
+  .faq h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.07; }
+  .faq details { border-top: 1px solid var(--line); }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary { font-size: 21px; font-weight: 600; padding: 18px 0; cursor: pointer; }
+  .faq details p { color: var(--soft); max-width: 640px; padding-bottom: 18px; }
+  .send-list { text-align: left; max-width: 420px; margin: 22px auto 0; color: var(--soft); font-size: 16px; padding-left: 1.2em; }
 
   /* ---- domains ---- */
   .domains { padding: 110px 0 20px; }
@@ -281,33 +320,33 @@
 </style>
 </head>
 <body>
-
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="gnav">
   <div class="wrap">
-    <a href="index.html" aria-label="Keshvar Co. home">
-      <img class="logo-light" src="keshvarco-logo.png" alt="Keshvar Co.">
-      <img class="logo-dark" src="keshvarco-logo-white.png" alt="Keshvar Co.">
-    </a>
-    <nav aria-label="Main">
-      <a class="app" href="formulane.html">Formulane</a>
-      <a class="app" href="countin.html">CountIn</a>
-      <a class="opt" href="#products">Products</a>
-      <a class="opt" href="#approach">Approach</a>
-      <a href="#contact">Contact</a>
+    <a class="wordmark" href="/" aria-label="Coformia home">Coformia</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Main">
+      <a class="app" href="/formulane">Formulane</a>
+      <a class="app" href="/countin">CountIn</a>
+      <a class="opt" href="/#products">Products</a>
+      <a class="opt" href="/#approach">Approach</a>
+      <a class="opt" href="/#faq">FAQ</a>
+      <a href="/#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="hero center">
     <div class="wrap">
-      <p class="eyebrow">Keshvar Co.</p>
+      <p class="eyebrow">Coformia</p>
       <h1>Your processes.<br><span>Digitalized, connected,<br>and smarter with AI.</span></h1>
       <p class="sub">We turn work that still runs on paper, spreadsheets and group chats into connected digital processes, then integrate AI where it makes them faster, more accurate and more reliable.</p>
       <div class="links">
-        <a class="pill" href="#contact">Talk to us</a>
-        <a href="#approach">See how we work</a>
+        <a class="pill" href="/#contact">Talk to us</a>
+        <a href="/#approach">See how we work</a>
+        <button class="replay" id="shift-replay" type="button">Watch the shift</button>
       </div>
       <div class="shift" aria-label="Illustration: scattered spreadsheets, emails and notes become one clean, connected process">
         <div class="mess" aria-hidden="true">
@@ -322,9 +361,13 @@
           <ul><li>Digital and connected</li><li>AI prepares the work</li><li>People approve</li><li>Systems stay in sync</li></ul>
         </div>
       </div>
-      <p class="caption">Illustration</p>
     </div>
   </section>
+
+  <aside class="dock" id="dock" hidden>
+    <span>One slow process. We’ll show the digital version.</span>
+    <a class="pill" href="/#contact">Talk to us</a>
+  </aside>
 
   <section class="promise center">
     <div class="wrap">
@@ -345,26 +388,26 @@
       <h2 class="hub-title">One system.<br><span>Every team in sync.</span></h2>
       <p class="hub-sub">Customers, departments and your existing systems share one live record. When something changes, everyone sees it.</p>
       <div class="hub-art">
-        <svg viewBox="0 0 900 460" role="img" aria-label="Diagram: a central Keshvar Co. system connected to customers, teams, operations, planning, suppliers, finance and the ERP, with data flowing along the lines">
+        <svg viewBox="0 0 900 460" role="img" aria-label="Diagram: one live record connected to customers, teams, operations, planning, suppliers, finance and the ERP, with data flowing along the lines">
           <g class="links-g">
-            <path d="M450 230 L450 60"/><path d="M450 230 L720 110"/><path d="M450 230 L800 270"/><path d="M450 230 L640 400"/>
-            <path d="M450 230 L260 400"/><path d="M450 230 L100 270"/><path d="M450 230 L180 110"/>
+            <path class="path-customers" d="M450 230 L450 60"/><path class="path-teams" d="M450 230 L720 110"/><path class="path-operations" d="M450 230 L800 270"/><path class="path-planning" d="M450 230 L640 400"/>
+            <path class="path-suppliers" d="M450 230 L260 400"/><path class="path-finance" d="M450 230 L100 270"/><path class="path-erp" d="M450 230 L180 110"/>
           </g>
           <g class="pulse-g">
-            <path d="M450 230 L450 60"/><path d="M450 230 L720 110"/><path d="M450 230 L800 270"/><path d="M450 230 L640 400"/>
-            <path d="M450 230 L260 400"/><path d="M450 230 L100 270"/><path d="M450 230 L180 110"/>
+            <path class="path-customers" d="M450 230 L450 60"/><path class="path-teams" d="M450 230 L720 110"/><path class="path-operations" d="M450 230 L800 270"/><path class="path-planning" d="M450 230 L640 400"/>
+            <path class="path-suppliers" d="M450 230 L260 400"/><path class="path-finance" d="M450 230 L100 270"/><path class="path-erp" d="M450 230 L180 110"/>
           </g>
           <circle class="ring" cx="450" cy="230" r="92"/>
           <circle class="core" cx="450" cy="230" r="74"/>
           <text class="core-t" x="450" y="224" text-anchor="middle">One live</text>
           <text class="core-t" x="450" y="250" text-anchor="middle">record</text>
-          <g class="node"><rect x="380" y="36" width="140" height="48" rx="24"/><text x="450" y="66" text-anchor="middle">Customers</text></g>
-          <g class="node"><rect x="650" y="86" width="140" height="48" rx="24"/><text x="720" y="116" text-anchor="middle">Teams</text></g>
-          <g class="node"><rect x="730" y="246" width="140" height="48" rx="24"/><text x="800" y="276" text-anchor="middle">Operations</text></g>
-          <g class="node"><rect x="570" y="376" width="140" height="48" rx="24"/><text x="640" y="406" text-anchor="middle">Planning</text></g>
-          <g class="node"><rect x="190" y="376" width="140" height="48" rx="24"/><text x="260" y="406" text-anchor="middle">Suppliers</text></g>
-          <g class="node"><rect x="30" y="246" width="140" height="48" rx="24"/><text x="100" y="276" text-anchor="middle">Finance</text></g>
-          <g class="node erp"><rect x="110" y="86" width="140" height="48" rx="24"/><text x="180" y="116" text-anchor="middle">ERP · SAP</text></g>
+          <g class="node node-customers"><rect x="380" y="36" width="140" height="48" rx="24"/><text x="450" y="66" text-anchor="middle">Customers</text></g>
+          <g class="node node-teams"><rect x="650" y="86" width="140" height="48" rx="24"/><text x="720" y="116" text-anchor="middle">Teams</text></g>
+          <g class="node node-operations"><rect x="730" y="246" width="140" height="48" rx="24"/><text x="800" y="276" text-anchor="middle">Operations</text></g>
+          <g class="node node-planning"><rect x="570" y="376" width="140" height="48" rx="24"/><text x="640" y="406" text-anchor="middle">Planning</text></g>
+          <g class="node node-suppliers"><rect x="190" y="376" width="140" height="48" rx="24"/><text x="260" y="406" text-anchor="middle">Suppliers</text></g>
+          <g class="node node-finance"><rect x="30" y="246" width="140" height="48" rx="24"/><text x="100" y="276" text-anchor="middle">Finance</text></g>
+          <g class="node erp node-erp"><rect x="110" y="86" width="140" height="48" rx="24"/><text x="180" y="116" text-anchor="middle">ERP · SAP</text></g>
         </svg>
       </div>
     </div>
@@ -376,7 +419,7 @@
       <p class="status">New · For food manufacturers</p>
       <h2>Formulane</h2>
       <p class="tag">Change once. Right everywhere.</p>
-      <div class="links"><a href="formulane.html">Learn more</a><a href="formulane.html#contact">Book a demo</a></div>
+      <div class="links"><a href="/formulane">Learn more</a><a href="/formulane#contact">Book a demo</a></div>
       <div class="tile-art app-art">
         <div class="app" aria-label="Overview of the Formulane app: dashboard with formulas, requests, approvals and the AI assistant">
           <div class="app-top"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="app-title">Formulane</span><span class="app-search">Search formulas, customers, batches…</span></div>
@@ -403,7 +446,7 @@
                 <div class="panel-b">
                   <p class="ph">Assistant</p>
                   <div class="ab you">Plan 2 batches of Thai Green Curry, 2,000 kg each.</div>
-                  <div class="ab bot">4,000 kg in total. Coconut milk is short by 120 kg. Draft purchase request ready.</div>
+                  <div class="ab bot" id="assist-line">4,000 kg in total. Coconut milk is short by 120 kg. Draft purchase request ready.</div>
                   <p class="ph" style="margin-top:10px">Approvals</p>
                   <div class="fr sm"><span>QA · allergen check</span><span class="st rev">Pending</span></div>
                   <div class="fr sm"><span>Customer M · spec v4</span><span class="st ok">Signed</span></div>
@@ -422,7 +465,7 @@
         <h2>CountIn</h2>
         <p class="tag">Community and group activity management.</p>
         <p style="color:var(--soft); max-width:380px; margin-top:10px">Who is coming, who is waiting, and who owes what.</p>
-        <div class="links"><a href="countin.html">Learn more</a><a href="https://countin.sspi.trade/" target="_blank" rel="noopener">Visit CountIn</a></div>
+        <div class="links"><a href="/countin">Learn more</a><a href="https://countin.sspi.trade/" target="_blank" rel="noopener">Visit CountIn</a></div>
         <div class="mock-ci" aria-label="Example CountIn session card">
           <div class="ci-head"><b>Thursday meetup · 8:00 pm</b><span class="ci-full">Full</span></div>
           <div class="ci-avs" aria-hidden="true"><i>AK</i><i>MR</i><i>SJ</i><i>LB</i><i>OT</i><i>NP</i><i>RD</i><i>EV</i><i>KM</i><i class="new">JS</i></div>
@@ -458,6 +501,7 @@
       <h2>Small steps.<br>Proven results.</h2>
       <p class="sub">We don't ask you to change everything at once.</p>
       <ol class="steplist">
+        <div class="step-rail" aria-hidden="true"><span id="step-rail-fill"></span></div>
         <li><span class="n">Step 1</span><h3>Understand</h3><p>We map how the work really moves between your teams.</p></li>
         <li><span class="n">Step 2</span><h3>Prototype</h3><p>You see it working with your own data before you commit.</p></li>
         <li><span class="n">Step 3</span><h3>Pilot</h3><p>A small team goes live, with clear success criteria.</p></li>
@@ -469,7 +513,37 @@
   <section class="founder center">
     <div class="wrap">
       <blockquote>“AI should do the repetitive work. People should make the decisions. We build software that keeps it that way.”</blockquote>
-      <cite>Ali Keshvarparast, founder of Keshvar Co., creator of CountIn and co-founder of ShiftiAI</cite>
+      <cite>Ali Keshvarparast, founder of Coformia, creator of CountIn and co-founder of ShiftiAI</cite>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2>Questions we hear first.</h2>
+      <details open>
+        <summary>What does Coformia actually build?</summary>
+        <p>Connected software for work that still lives in spreadsheets, inboxes, and chats. AI prepares the work. A person approves it.</p>
+      </details>
+      <details>
+        <summary>Do we have to replace our ERP?</summary>
+        <p>No. The goal is one live record that stays in sync with the systems you already run, including ERP.</p>
+      </details>
+      <details>
+        <summary>What is Formulane?</summary>
+        <p>Formula, specification, change, and approval software for food manufacturers. Change once, and the connected record stays right everywhere.</p>
+      </details>
+      <details>
+        <summary>What is CountIn?</summary>
+        <p>Community and group activity management: who is coming, who is waiting, and who owes what. CountIn does not take the payment.</p>
+      </details>
+      <details>
+        <summary>How does a project start?</summary>
+        <p>Understand how the work moves, prototype with your data, pilot with one team, then scale only if the pilot holds.</p>
+      </details>
+      <details>
+        <summary>How do we reach you?</summary>
+        <p>Email info@coformia.com and describe one slow process. We reply by email.</p>
+      </details>
     </div>
   </section>
 
@@ -477,18 +551,23 @@
     <div class="wrap">
       <h2>What still runs on spreadsheets?</h2>
       <p class="sub">Tell us about one slow process. We'll show you what it could look like.</p>
-      <p class="email" id="email">info@keshvarco.com</p>
+      <p class="email" id="email">info@coformia.com</p>
+      <ul class="send-list">
+        <li>Which team does the work</li>
+        <li>What the spreadsheet or chat is called</li>
+        <li>What “done” looks like</li>
+      </ul>
       <button class="copy" id="copy-email" type="button">Copy email address</button>
       <p class="copy-state" id="copy-state" aria-live="polite"></p>
-      <div class="links" style="margin-top:8px"><a href="mailto:info@keshvarco.com">Email us</a></div>
+      <div class="links" style="margin-top:8px"><a href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize">Email us</a></div>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Copyright © 2026 Keshvar Co. We help you.</span>
-    <span><a href="formulane.html">Formulane</a> · <a href="countin.html">CountIn</a> · <a href="https://shiftiai.com" target="_blank" rel="noopener">ShiftiAI</a></span>
+    <span>Copyright © 2026 Coformia</span>
+    <span><a href="/formulane">Formulane</a> · <a href="/countin">CountIn</a> · <a href="https://shiftiai.com" target="_blank" rel="noopener">ShiftiAI</a></span>
   </div>
 </footer>
 
@@ -511,6 +590,115 @@
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
     els.forEach(function (el) { if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add('reveal'); io.observe(el); } });
+  })();
+</script>
+<script>
+  (function () {
+    var header = document.querySelector('.gnav');
+    var btn = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('site-nav');
+    if (!btn || !nav || !header) return;
+    function setOpen(open) {
+      header.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) { var first = nav.querySelector('a'); if (first) first.focus(); }
+      else btn.focus();
+    }
+    btn.addEventListener('click', function () { setOpen(!header.classList.contains('is-open')); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && header.classList.contains('is-open')) setOpen(false); });
+  })();
+</script>
+<script>
+  (function () {
+    var shift = document.querySelector('.shift');
+    var replay = document.getElementById('shift-replay');
+    if (!shift || !replay) return;
+    var timer = null;
+    function play() {
+      shift.classList.remove('is-playing');
+      void shift.offsetWidth;
+      shift.classList.add('is-playing');
+      clearTimeout(timer);
+      timer = setTimeout(function () { shift.classList.remove('is-playing'); }, 2400);
+    }
+    replay.addEventListener('click', play);
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce && shift.getBoundingClientRect().top < window.innerHeight) {
+      setTimeout(play, 600);
+    }
+  })();
+</script>
+<script>
+  (function () {
+    var dock = document.getElementById('dock');
+    var hero = document.querySelector('.hero');
+    if (!dock || !hero || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { dock.hidden = e.isIntersecting; });
+    });
+    io.observe(hero);
+  })();
+</script>
+<script>
+  (function () {
+    var nodes = document.querySelectorAll('.hub-art .node');
+    nodes.forEach(function (node) {
+      var key = '';
+      node.classList.forEach(function (c) { if (c.indexOf('node-') === 0) key = c.slice(5); });
+      if (!key) return;
+      node.addEventListener('mouseenter', function () {
+        node.classList.add('is-hot');
+        document.querySelectorAll('.path-' + key).forEach(function (p) { p.classList.add('is-hot'); });
+      });
+      node.addEventListener('mouseleave', function () {
+        node.classList.remove('is-hot');
+        document.querySelectorAll('.path-' + key).forEach(function (p) { p.classList.remove('is-hot'); });
+      });
+    });
+  })();
+</script>
+<script>
+  (function () {
+    var el = document.getElementById('assist-line');
+    if (!el) return;
+    var lines = [
+      '4,000 kg in total. Coconut milk is short by 120 kg. Draft purchase request ready.',
+      'Allergen check still open. QA is the next approver.',
+      'Spec v4 is signed. Batch sheet matches the approved formula.'
+    ];
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { el.textContent = lines[0]; return; }
+    var i = 0;
+    setInterval(function () {
+      i = (i + 1) % lines.length;
+      el.textContent = lines[i];
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = '';
+    }, 4500);
+  })();
+</script>
+<script>
+  (function () {
+    var section = document.querySelector('.steps');
+    var fill = document.getElementById('step-rail-fill');
+    if (!section || !fill) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { fill.style.width = '100%'; return; }
+    function tick() {
+      var rect = section.getBoundingClientRect();
+      var vh = window.innerHeight || 1;
+      var start = vh * 0.8;
+      var end = vh * 0.2;
+      var p = (start - rect.top) / (start - end);
+      if (p < 0) p = 0;
+      if (p > 1) p = 1;
+      fill.style.width = (p * 100) + '%';
+    }
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
+    tick();
   })();
 </script>
 
