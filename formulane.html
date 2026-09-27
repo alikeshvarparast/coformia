@@ -68,6 +68,8 @@
 
   .skip { position: absolute; left: 12px; top: 12px; z-index: 30; background: #fff; color: #1D1D1F; padding: 10px 14px; border-radius: 8px; transform: translateY(-160%); }
   .skip:focus { transform: none; }
+  .scroll-progress { position: absolute; left: 0; top: 0; right: 0; height: 2px; z-index: 22; pointer-events: none; }
+  .scroll-progress span { display: block; height: 100%; width: 0; background: var(--blue); }
   .gnav { position: sticky; top: 0; z-index: 21; background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
   .gnav .wrap { height: 48px; display: flex; align-items: center; justify-content: space-between; position: relative; }
   .gnav .wordmark { color: var(--ink); font-weight: 700; font-size: 20px; letter-spacing: -.04em; text-decoration: none; }
@@ -301,6 +303,7 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="gnav">
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"><span></span></div>
   <div class="wrap">
     <a class="wordmark" href="/" aria-label="Coformia home">Coformia</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -648,6 +651,19 @@
     btn.addEventListener('click', function () { setOpen(!header.classList.contains('is-open')); });
     nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && header.classList.contains('is-open')) setOpen(false); });
+  })();
+</script>
+<script>
+  (function () {
+    var bar = document.querySelector('#scroll-progress span');
+    if (!bar) return;
+    function tick() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
+    tick();
   })();
 </script>
 <script>
