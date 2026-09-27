@@ -68,7 +68,7 @@
   .skip:focus { transform: none; }
   .scroll-progress { position: absolute; left: 0; top: 0; right: 0; height: 2px; background: transparent; z-index: 22; pointer-events: none; }
   .scroll-progress span { display: block; height: 100%; width: 0; background: var(--blue); }
-  .gnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+  .gnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; overflow: visible; background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
   .gnav .wrap { height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 18px; position: relative; }
   .gnav .wordmark { color: var(--ink); font-weight: 700; font-size: 20px; letter-spacing: -.04em; text-decoration: none; }
   .gnav .wordmark:hover { text-decoration: none; }
@@ -108,26 +108,37 @@
   .hero h1 { font-size: clamp(40px, 5.5vw, 72px); line-height: 1.05; font-weight: 700; text-align: left; }
   .hero h1 span { background: linear-gradient(120deg, var(--ink) 0%, var(--soft) 40%, #7C93F2 70%, var(--ink) 100%); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 8s linear infinite; }
   .hero .sub { font-size: clamp(18px, 2.2vw, 22px); line-height: 1.35; color: var(--soft); max-width: 540px; margin: 20px 0 0; font-weight: 500; text-align: left; }
-  .hero-frame { aspect-ratio: 16 / 10; border-radius: 24px; border: 1px solid var(--line); box-shadow: 0 28px 70px rgba(28,57,187,.18); background: var(--bg2); padding: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .hero-frame .shift { width: 100%; max-width: none; gap: 12px; }
-  .hero-frame .mess { height: 200px; }
-  .hero-frame .mess div { width: 150px; font-size: 12px; padding: 10px 12px; }
-  .hero-frame .clean { padding: 18px; }
-  .hero-frame .clean h3 { font-size: 18px; }
+  .hero-frame { aspect-ratio: 16 / 10; border-radius: 24px; border: 1px solid var(--line); box-shadow: 0 28px 70px rgba(28,57,187,.18); background: var(--bg2); padding: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-frame .shift { width: 100%; max-width: none; gap: 6px; grid-template-columns: 1fr 20px 0.95fr; }
+  .hero-frame .mess { height: 150px; }
+  .hero-frame .mess div { width: 108px; font-size: 10px; padding: 8px 10px; }
+  .hero-frame .mess div:nth-child(1) { left: 0; top: 4px; }
+  .hero-frame .mess div:nth-child(2) { left: 62px; top: 36px; }
+  .hero-frame .mess div:nth-child(3) { left: 4px; top: 82px; }
+  .hero-frame .mess div:nth-child(4) { left: 68px; top: 108px; }
+  .hero-frame .arrow { font-size: 20px; animation: none; }
+  .hero-frame .clean { padding: 14px; min-width: 0; }
+  .hero-frame .clean h3 { font-size: 15px; }
+  .hero-frame .clean ul { font-size: 11px; gap: 4px; }
   @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero-frame { max-width: 520px; margin: 0 auto; } }
 
   /* pinned story */
   .story { min-height: 280vh; position: relative; }
-  .story-pin { position: sticky; top: 72px; height: calc(100vh - 96px); max-height: 720px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+  .story-pin { position: sticky; top: 72px; height: calc(100vh - 96px); max-height: 720px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
   .story-chapters { position: relative; min-height: 240px; }
-  .story-chapter { position: absolute; inset: 0; opacity: 0; transition: opacity .4s ease; pointer-events: none; }
-  .story-chapter.is-on { opacity: 1; pointer-events: auto; }
+  .story-chapter { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s ease; pointer-events: none; }
+  .story-chapter.is-on { opacity: 1; visibility: visible; pointer-events: auto; }
+  .story-chapters .story-chapter.reveal { opacity: 0; transform: none; }
+  .story-chapters .story-chapter.reveal.in { opacity: 0; transform: none; }
+  .story-chapters .story-chapter.is-on.reveal,
+  .story-chapters .story-chapter.is-on.reveal.in { opacity: 1; }
   .story-chapter .ch-num { font-size: clamp(48px, 8vw, 72px); font-weight: 700; color: color-mix(in srgb, var(--blue) 25%, var(--line)); line-height: 1; letter-spacing: -.04em; }
   .story-chapter.is-on .ch-num { color: var(--blue); }
   .story-chapter h3 { font-size: clamp(28px, 3.5vw, 40px); margin-top: 12px; line-height: 1.1; }
   .story-chapter p { color: var(--soft); font-size: 18px; margin-top: 14px; max-width: 420px; }
-  .story-mock-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.25); }
+  .story-mock-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.25); min-width: 0; }
   .story-mock .app { border-radius: 18px 18px 0 0; box-shadow: none; }
+  .story-mock .panel-a, .story-mock .panel-b .fr { transition: opacity .35s ease, background .35s ease; }
   .story-mock[data-scene="scene-1"] .panel-a { opacity: .45; }
   .story-mock[data-scene="scene-2"] #assist-line { box-shadow: 0 0 0 2px #7C93F2; }
   .story-mock[data-scene="scene-3"] .panel-b .fr { background: rgba(125,211,168,.12); }
@@ -136,7 +147,7 @@
     .story { min-height: auto; padding: 80px 0; }
     .story-pin { position: static; height: auto; max-height: none; grid-template-columns: 1fr; gap: 32px; }
     .story-chapters { min-height: 0; }
-    .story-chapter { position: static; opacity: 1; pointer-events: auto; margin-bottom: 40px; }
+    .story-chapter { position: static; opacity: 1 !important; visibility: visible !important; pointer-events: auto; margin-bottom: 40px; }
   }
 
   /* transform visual */
@@ -154,7 +165,10 @@
   .clean ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 16px; }
   .clean li::before { content: "✓  "; font-weight: 700; }
   .caption { font-size: 13px; color: var(--soft); margin-top: 18px; text-align: center; }
-  @media (max-width: 760px) { .shift { grid-template-columns: 1fr; } .arrow { transform: rotate(90deg); justify-self: center; } .mess { height: 250px; max-width: 360px; margin: 0 auto; width: 100%; } }
+  @media (max-width: 760px) {
+    .hero-frame .shift { grid-template-columns: 1fr 14px 0.92fr; }
+    .hero-frame .mess { height: 130px; }
+  }
 
   /* promise */
   .promise { background: var(--bg2); padding: 110px 0; }
@@ -485,11 +499,6 @@
     </div>
   </section>
 
-  <aside class="dock" id="dock" hidden aria-label="Quick contact">
-    <span>One slow process. We’ll show the digital version.</span>
-    <a class="pill" href="/#contact">Talk to us</a>
-  </aside>
-
   <section class="promise">
     <div class="wrap">
       <h2>Less typing. Fewer mistakes.<br><span class="b">More time for the work that matters.</span></h2>
@@ -653,6 +662,11 @@
   </section>
 </main>
 
+<aside class="dock" id="dock" hidden aria-label="Quick contact">
+  <span>One slow process. We’ll show the digital version.</span>
+  <a class="pill" href="/#contact">Talk to us</a>
+</aside>
+
 <footer>
   <div class="wrap">
     <span>Copyright © 2026 Coformia</span>
@@ -674,7 +688,7 @@
   (function () {
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce || !('IntersectionObserver' in window)) return;
-    var els = document.querySelectorAll('.promise h2, .triple > div, .hub-title, .hub-sub, .hub-art, .tile, .steps h2, .approach-steps li, .story-chapter, .founder blockquote, .contact h2');
+    var els = document.querySelectorAll('.promise h2, .triple > div, .hub-title, .hub-sub, .hub-art, .tile, .steps h2, .approach-steps li, .founder blockquote, .contact h2');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
@@ -731,17 +745,24 @@
     if (!story || !mock || !chapters.length) return;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) {
-      chapters.forEach(function (c) { c.classList.add('is-on'); });
+      chapters.forEach(function (c, i) { c.classList.toggle('is-on', i === 0); });
       mock.setAttribute('data-scene', 'scene-1');
+      if (window.innerWidth < 901) chapters.forEach(function (c) { c.classList.add('is-on'); });
       return;
     }
     function tick() {
+      if (window.innerWidth < 901) {
+        chapters.forEach(function (c) { c.classList.add('is-on'); });
+        mock.setAttribute('data-scene', 'scene-1');
+        return;
+      }
       var rect = story.getBoundingClientRect();
       var total = story.offsetHeight - window.innerHeight;
+      if (total < 80) total = 80;
       var scrolled = -rect.top;
       if (scrolled < 0) scrolled = 0;
       if (scrolled > total) scrolled = total;
-      var p = total > 0 ? scrolled / total : 0;
+      var p = scrolled / total;
       var idx = p < 0.33 ? 0 : p < 0.66 ? 1 : 2;
       chapters.forEach(function (c, i) { c.classList.toggle('is-on', i === idx); });
       mock.setAttribute('data-scene', 'scene-' + (idx + 1));
@@ -755,15 +776,22 @@
   (function () {
     var dock = document.getElementById('dock');
     var hero = document.querySelector('.hero');
-    if (!dock || !hero || !('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        var show = !e.isIntersecting;
-        dock.hidden = !show;
-        dock.classList.toggle('is-visible', show);
-      });
-    }, { threshold: 0.05 });
-    io.observe(hero);
+    var story = document.getElementById('story');
+    if (!dock || !hero) return;
+    function updateDock() {
+      var heroRect = hero.getBoundingClientRect();
+      var show = heroRect.bottom < window.innerHeight * 0.72;
+      if (story) {
+        var sr = story.getBoundingClientRect();
+        var inStory = sr.top < window.innerHeight * 0.9 && sr.bottom > window.innerHeight * 0.2;
+        if (inStory) show = false;
+      }
+      dock.hidden = !show;
+      dock.classList.toggle('is-visible', show);
+    }
+    window.addEventListener('scroll', updateDock, { passive: true });
+    window.addEventListener('resize', updateDock);
+    updateDock();
   })();
 </script>
 <script>
