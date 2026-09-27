@@ -1,0 +1,516 @@
+/* Coformia — Stone + Persian */
+:root {
+  color-scheme: light;
+  --bg: #FFFFF0;
+  --bg2: #F4EFE8;
+  --ink: #3F3A34;
+  --soft: #6B6560;
+  --line: #E6DFD6;
+  --blue: #1C39BB;
+  --link: #1C39BB;
+  --blue-hover: #152E96;
+  --tile-dark: #15204A;
+  --on-dark: #FFFFF0;
+  --on-dark-soft: #C9C4B8;
+  --dark: var(--tile-dark);
+  --radius: 12px;
+  --radius-lg: 12px;
+  --font: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --glass-fill: color-mix(in srgb, var(--blue) 38%, transparent);
+  --glass-fill-hover: color-mix(in srgb, var(--blue) 55%, transparent);
+  --glass-stroke: color-mix(in srgb, #ffffff 48%, var(--blue) 52%);
+  --glass-highlight: color-mix(in srgb, #ffffff 72%, transparent);
+  --glass-shadow: color-mix(in srgb, var(--blue) 22%, transparent);
+  --glass-nav-fill: color-mix(in srgb, var(--blue) 14%, var(--bg) 86%);
+  --glass-nav-stroke: color-mix(in srgb, var(--blue) 28%, var(--line));
+  --glass-panel: color-mix(in srgb, var(--bg) 68%, transparent);
+  --glass-panel-muted: color-mix(in srgb, var(--bg2) 62%, transparent);
+  --glass-panel-stroke: color-mix(in srgb, var(--line) 70%, #ffffff 30%);
+  --glass-dark-panel: color-mix(in srgb, var(--tile-dark) 82%, transparent);
+  --glass-dark-stroke: color-mix(in srgb, #ffffff 14%, var(--tile-dark));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0C0B0A;
+    --bg2: #1A1816;
+    --ink: #F6F1EA;
+    --soft: #B8AFA4;
+    --line: #3A342E;
+    --link: #8A9AE8;
+    --blue: #6B82E0;
+    --blue-hover: #8A9AE8;
+    --tile-dark: #10183A;
+    --on-dark: #FFFFF0;
+    --on-dark-soft: #9A9488;
+    --glass-fill: color-mix(in srgb, var(--blue) 34%, transparent);
+    --glass-fill-hover: color-mix(in srgb, var(--blue) 50%, transparent);
+    --glass-stroke: color-mix(in srgb, #ffffff 22%, var(--blue) 78%);
+    --glass-highlight: color-mix(in srgb, #ffffff 28%, transparent);
+    --glass-shadow: color-mix(in srgb, var(--blue) 35%, transparent);
+    --glass-nav-fill: color-mix(in srgb, var(--blue) 22%, var(--bg2) 78%);
+    --glass-nav-stroke: color-mix(in srgb, var(--blue) 40%, var(--line));
+    --glass-panel: color-mix(in srgb, var(--bg2) 55%, transparent);
+    --glass-panel-muted: color-mix(in srgb, var(--bg) 45%, transparent);
+    --glass-panel-stroke: color-mix(in srgb, var(--line) 55%, #ffffff 12%);
+    --glass-dark-panel: color-mix(in srgb, var(--tile-dark) 75%, transparent);
+    --glass-dark-stroke: color-mix(in srgb, #ffffff 10%, var(--tile-dark));
+  }
+  :root:not([data-theme="light"]) .logo-light { display: none; }
+  :root:not([data-theme="light"]) .logo-dark { display: block; }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0C0B0A;
+  --bg2: #1A1816;
+  --ink: #F6F1EA;
+  --soft: #B8AFA4;
+  --line: #3A342E;
+  --link: #8A9AE8;
+  --blue: #6B82E0;
+  --blue-hover: #8A9AE8;
+  --tile-dark: #10183A;
+  --on-dark: #FFFFF0;
+  --on-dark-soft: #9A9488;
+  --glass-fill: color-mix(in srgb, var(--blue) 34%, transparent);
+  --glass-fill-hover: color-mix(in srgb, var(--blue) 50%, transparent);
+  --glass-stroke: color-mix(in srgb, #ffffff 22%, var(--blue) 78%);
+  --glass-highlight: color-mix(in srgb, #ffffff 28%, transparent);
+  --glass-shadow: color-mix(in srgb, var(--blue) 35%, transparent);
+  --glass-nav-fill: color-mix(in srgb, var(--blue) 22%, var(--bg2) 78%);
+  --glass-nav-stroke: color-mix(in srgb, var(--blue) 40%, var(--line));
+  --glass-panel: color-mix(in srgb, var(--bg2) 55%, transparent);
+  --glass-panel-muted: color-mix(in srgb, var(--bg) 45%, transparent);
+  --glass-panel-stroke: color-mix(in srgb, var(--line) 55%, #ffffff 12%);
+  --glass-dark-panel: color-mix(in srgb, var(--tile-dark) 75%, transparent);
+  --glass-dark-stroke: color-mix(in srgb, #ffffff 10%, var(--tile-dark));
+}
+:root[data-theme="dark"] .logo-light { display: none; }
+:root[data-theme="dark"] .logo-dark { display: block; }
+.logo-dark { display: none; }
+
+/* Glass buttons */
+.pill,
+button.replay,
+.gnav nav a.app {
+  display: inline-block;
+  color: #fff;
+  isolation: isolate;
+  overflow: hidden;
+  background-clip: padding-box;
+  background: var(--glass-fill);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid color-mix(in srgb, #fff 55%, var(--blue) 45%);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fff 70%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--blue) 35%, transparent);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.pill {
+  padding: 11px 22px;
+  border-radius: var(--radius);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+button.replay {
+  margin-top: 28px;
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius);
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.gnav nav a.app {
+  opacity: 1;
+  font-weight: 650;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  background: var(--glass-nav-fill);
+  border-color: var(--glass-nav-stroke);
+  color: var(--link);
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 6px 18px var(--glass-shadow);
+  text-shadow: none;
+}
+
+.pill:hover,
+button.replay:hover,
+.gnav nav a.app:hover {
+  text-decoration: none;
+  background: var(--glass-fill-hover);
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 14px 32px color-mix(in srgb, var(--blue) 30%, transparent);
+}
+
+.gnav nav a.app:hover {
+  background: color-mix(in srgb, var(--blue) 20%, var(--bg) 80%);
+  color: var(--ink);
+}
+
+.pnav nav a.pill {
+  opacity: 1;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.links .pill {
+  font-size: 17px;
+  padding: 11px 22px;
+}
+
+.links .pill::after {
+  content: "";
+}
+
+.pnav nav a.pill,
+.links .pill {
+  font-weight: 600;
+}
+
+.hero .replay {
+  margin-top: 0;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  color: var(--link);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 0 var(--glass-highlight) inset;
+  font-weight: 500;
+}
+
+.hero .replay:hover {
+  background: var(--bg2);
+  transform: none;
+  box-shadow: 0 1px 0 var(--glass-highlight) inset;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill,
+  button.replay,
+  .gnav nav a.app {
+    transition: none;
+  }
+  .pill:hover,
+  button.replay:hover,
+  .gnav nav a.app:hover {
+    transform: none;
+  }
+}
+
+/* Glass surfaces */
+.gnav,
+.pnav {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+.gnav::before,
+.pnav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--bg) 62%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--glass-panel-stroke);
+}
+.gnav .wrap,
+.pnav .wrap,
+.gnav .scroll-progress {
+  position: relative;
+  z-index: 1;
+}
+.pnav { position: sticky; }
+
+.gnav.is-open #site-nav {
+  background: color-mix(in srgb, var(--bg) 28%, transparent);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-bottom: 1px solid var(--glass-panel-stroke);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+.gnav .wordmark img {
+  height: 36px;
+  width: auto;
+  max-width: min(46vw, 200px);
+  padding: 2px 8px;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+@media (max-width: 720px) {
+  .gnav .wrap { min-height: 52px; align-items: center; }
+  .gnav .wordmark img { height: 28px; max-width: 52vw; padding: 2px 6px; }
+  .gnav.is-open #site-nav { gap: 12px; }
+  .gnav.is-open #site-nav a.app { width: 100%; text-align: center; box-sizing: border-box; }
+  .hero { padding: 32px 0 28px; }
+  .hero h1 { font-size: clamp(32px, 9.2vw, 44px); }
+  .hero-frame { aspect-ratio: auto; max-width: none; padding: 10px; }
+  .hero-frame .shift { grid-template-columns: 1fr; gap: 10px; }
+  .hero-frame .arrow { display: none; }
+  .hero-frame .mess { min-height: 0; }
+  .hero-frame .clean { transform: none; }
+  .pnav .wrap { height: auto; min-height: 48px; flex-wrap: wrap; padding-block: 8px; }
+  .contact > .wrap,
+  .faq .wrap { padding: 22px 16px; }
+  .dock {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+    transform: translateY(120%);
+    border-radius: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .dock.is-visible { transform: translateY(0); }
+  .triple > div { padding: 16px 14px; }
+}
+
+.nav-toggle,
+button.copy {
+  background: var(--glass-panel);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow: 0 1px 0 var(--glass-highlight) inset;
+}
+
+button.copy:hover,
+.nav-toggle:hover {
+  background: color-mix(in srgb, var(--bg2) 75%, transparent);
+}
+
+.hero-frame,
+.card,
+.panel,
+.dom,
+.offer,
+.sheet,
+.screen,
+.mock-ci,
+.mock-roster {
+  background: var(--glass-panel);
+  backdrop-filter: saturate(165%) blur(18px);
+  -webkit-backdrop-filter: saturate(165%) blur(18px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 16px 40px color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.hero-frame {
+  border-radius: var(--radius-lg);
+}
+
+.card,
+.panel,
+.dom,
+.offer,
+.sheet {
+  border-radius: var(--radius-lg);
+}
+
+.screen {
+  border-radius: 22px 22px 0 0;
+}
+
+.panel .row,
+.alt .panel .row,
+.alt .row {
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
+}
+
+.mess div {
+  background: var(--glass-panel-muted);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow: 0 1px 0 var(--glass-highlight) inset;
+}
+
+.shift .clean,
+.hero-frame .clean {
+  background: var(--glass-fill);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  overflow: hidden;
+  background-clip: padding-box;
+  border: 1px solid var(--glass-stroke);
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 12px 32px var(--glass-shadow);
+}
+
+.tile.light {
+  background: var(--glass-panel-muted);
+  backdrop-filter: saturate(170%) blur(20px);
+  -webkit-backdrop-filter: saturate(170%) blur(20px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 20px 48px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.tile.dark {
+  background: var(--glass-dark-panel);
+  backdrop-filter: saturate(140%) blur(22px);
+  -webkit-backdrop-filter: saturate(140%) blur(22px);
+  border: 1px solid var(--glass-dark-stroke);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, #ffffff 12%, transparent) inset,
+    0 24px 56px color-mix(in srgb, #000000 35%, transparent);
+}
+
+.triple > div {
+  padding: 22px 20px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow: 0 1px 0 var(--glass-highlight) inset;
+}
+
+.faq .wrap {
+  padding: 36px 32px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-panel);
+  backdrop-filter: saturate(160%) blur(18px);
+  -webkit-backdrop-filter: saturate(160%) blur(18px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow: 0 1px 0 var(--glass-highlight) inset;
+}
+
+.contact > .wrap {
+  padding: 44px 36px 48px;
+  border-radius: calc(var(--radius-lg) + 4px);
+  background: var(--glass-panel);
+  backdrop-filter: saturate(170%) blur(20px);
+  -webkit-backdrop-filter: saturate(170%) blur(20px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 24px 56px color-mix(in srgb, var(--blue) 10%, transparent);
+}
+
+footer {
+  background: color-mix(in srgb, var(--bg2) 72%, transparent);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  border-top: 1px solid var(--glass-panel-stroke);
+}
+
+.dock {
+  background: color-mix(in srgb, var(--tile-dark) 78%, transparent);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  border: 1px solid var(--glass-dark-stroke);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, #ffffff 10%, transparent) inset,
+    0 16px 48px color-mix(in srgb, #000000 40%, transparent);
+  color: var(--on-dark);
+}
+
+.chip {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+}
+
+.chip.ok,
+.chip.wait {
+  box-shadow: 0 1px 0 color-mix(in srgb, #ffffff 40%, transparent) inset;
+}
+
+.chip.full,
+.ci-full {
+  background: var(--glass-fill);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: 0 1px 0 var(--glass-highlight) inset;
+}
+
+.msg.myou,
+.chat-input .send {
+  background: var(--glass-fill);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border: 1px solid var(--glass-stroke);
+}
+
+.dom .ic {
+  background: var(--glass-fill);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: 0 1px 0 var(--glass-highlight) inset;
+}
+
+.skip {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pill,
+button,
+.nav-toggle,
+.gnav nav a.app,
+.gnav .wordmark img,
+.hero-frame,
+.card,
+.panel,
+.dom,
+.tile,
+.offer,
+.sheet,
+.dock,
+.faq .wrap,
+.contact > .wrap,
+.triple > div,
+.mock-ci,
+.mock-roster,
+.story-mock-wrap,
+button.copy {
+  border-radius: var(--radius);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-frame,
+  .card,
+  .panel,
+  .dom,
+  .tile.light,
+  .tile.dark,
+  .dock,
+  .faq .wrap,
+  .contact > .wrap {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
