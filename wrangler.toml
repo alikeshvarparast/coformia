@@ -1,0 +1,15 @@
+name = "keshvarco"
+compatibility_date = "2026-09-21"
+
+[assets]
+directory = "."
+html_handling = "auto-trailing-slash"
+not_found_handling = "none"
+
+[[routes]]
+pattern = "keshvarco.com"
+custom_domain = true
+
+[[routes]]
+pattern = "www.keshvarco.com"
+custom_domain = true
