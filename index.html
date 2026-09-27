@@ -83,27 +83,35 @@
     .gnav.is-open #site-nav { display: flex; position: absolute; left: 0; right: 0; top: 100%; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 22px 18px; flex-direction: column; gap: 14px; align-items: flex-start; }
   }
 
-  .links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; font-size: 19px; }
+  .links { display: flex; justify-content: center; align-items: center; gap: 16px 24px; flex-wrap: wrap; font-size: 19px; }
   .links a::after { content: " ›"; }
-  .pill { display: inline-block; background: var(--blue); color: #fff; padding: 11px 22px; border-radius: 980px; font-size: 17px; }
-  .pill:hover { text-decoration: none; background: #152C93; }
+  .hero-cta { margin-top: 4px; }
+  .pill { display: inline-block; background: var(--blue); color: #fff; padding: 11px 22px; border-radius: 980px; font-size: 17px; box-shadow: 0 10px 28px rgba(28,57,187,.35); transition: transform .2s ease, box-shadow .2s ease; }
+  .pill:hover { text-decoration: none; background: #152C93; transform: translateY(-2px); box-shadow: 0 14px 32px rgba(28,57,187,.42); }
   .links .pill::after { content: ""; }
-  .replay { background: transparent; border: 1px solid var(--line); color: var(--ink); border-radius: 980px; padding: 11px 18px; font: inherit; font-size: 17px; cursor: pointer; }
-  .replay:hover { border-color: var(--ink); }
-  .shift.is-playing .mess div { opacity: 0; transform: translateX(40px) scale(.92); }
-  .shift.is-playing .clean { transform: scale(1); }
-  .shift .clean { transform: scale(.96); transition: transform .6s ease; }
-  .shift .mess div { transition: opacity .6s ease, transform .6s ease; }
+  .replay { background: transparent; border: 1px solid var(--line); color: var(--ink); border-radius: 980px; padding: 11px 18px; font: inherit; font-size: 17px; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
+  .replay:hover { border-color: var(--blue); background: color-mix(in srgb, var(--blue) 8%, transparent); }
+  .shift-stage { margin: 48px auto 0; max-width: 920px; padding: 28px 24px 32px; border-radius: 28px; background: color-mix(in srgb, var(--bg2) 70%, transparent); border: 1px solid color-mix(in srgb, var(--line) 80%, transparent); box-shadow: 0 24px 60px rgba(28,57,187,.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .shift.is-playing .mess { opacity: 0; transform: scale(.92); pointer-events: none; }
+  .shift.is-playing .arrow { opacity: 0; transform: translateX(20px); }
+  .shift.is-playing .clean { transform: scale(1); box-shadow: 0 28px 70px rgba(28,57,187,.45); }
+  .shift .mess { transition: opacity .55s ease, transform .55s ease; }
+  .shift .arrow { transition: opacity .4s ease, transform .4s ease; }
+  .shift .clean { transform: scale(.94); transition: transform .65s cubic-bezier(.2,.8,.2,1), box-shadow .65s ease; }
+  .shift.is-playing .mess div { animation: none !important; }
 
   /* hero */
   .hero { padding: 96px 0 40px; }
   .eyebrow { font-size: 21px; font-weight: 600; color: var(--link); margin-bottom: 10px; }
   .hero h1 { font-size: clamp(44px, 8vw, 88px); line-height: 1.04; font-weight: 700; }
-  .hero h1 span { color: var(--soft); }
+  .hero h1 span { background: linear-gradient(120deg, var(--ink) 0%, var(--soft) 40%, #7C93F2 70%, var(--ink) 100%); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 8s linear infinite; }
+  .flow-strip { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 28px auto 0; max-width: 720px; }
+  .flow-strip span { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 8px 14px; border-radius: 980px; border: 1px solid var(--line); background: var(--bg); color: var(--soft); }
+  .flow-strip span strong { color: var(--ink); font-weight: 700; }
   .hero .sub { font-size: clamp(19px, 2.4vw, 26px); line-height: 1.3; color: var(--soft); max-width: 720px; margin: 22px auto 30px; font-weight: 500; }
 
   /* transform visual */
-  .shift { max-width: 900px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px; }
+  .shift { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px; }
   .mess { position: relative; height: 260px; }
   .mess div { position: absolute; background: var(--bg2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 14px; color: var(--soft); width: 200px; box-shadow: 0 6px 18px rgba(0,0,0,.06); }
   .mess div b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 4px; }
@@ -123,14 +131,17 @@
   .promise { background: var(--bg2); padding: 110px 0; margin-top: 90px; }
   .promise h2 { font-size: clamp(36px, 6vw, 64px); line-height: 1.06; font-weight: 700; }
   .promise h2 .b { color: var(--link); }
-  .triple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 64px; }
+  .triple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 64px; }
+  .triple > div { text-align: left; padding: 28px 24px; border-radius: 22px; background: var(--bg); border: 1px solid var(--line); box-shadow: 0 12px 32px rgba(0,0,0,.04); transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+  .triple > div:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(28,57,187,.12); border-color: color-mix(in srgb, var(--blue) 35%, var(--line)); }
+  .triple .ic { width: 44px; height: 44px; border-radius: 12px; background: color-mix(in srgb, var(--blue) 12%, transparent); color: var(--blue); display: grid; place-items: center; font-size: 22px; margin-bottom: 14px; }
   .triple h3 { font-size: 28px; margin-bottom: 8px; }
   .triple p { color: var(--soft); font-size: 17px; }
   @media (max-width: 760px) { .triple { grid-template-columns: 1fr; gap: 28px; } }
 
   /* tiles */
-  .tiles { padding: 12px; display: grid; gap: 12px; }
-  .tile { border-radius: 0; text-align: center; padding: 64px 22px 0; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
+  .tiles { padding: 12px; display: grid; gap: 16px; }
+  .tile { border-radius: 28px; text-align: center; padding: 64px 22px 0; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
   .tile h2 { font-size: clamp(40px, 6vw, 56px); font-weight: 700; line-height: 1.07; text-shadow: 0 0 28px rgba(0,0,0,.28), 0 12px 26px rgba(0,0,0,.22); }
   .tile.dark h2 { text-shadow: 0 0 26px rgba(255,255,255,.35), 0 12px 28px rgba(0,0,0,.55); }
   .tile .logo { width: 64px; height: 64px; object-fit: contain; margin-bottom: 18px; }
@@ -164,10 +175,11 @@
   .steps { padding: 110px 0; }
   .steps h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.07; }
   .steps .sub { color: var(--soft); font-size: 21px; margin-top: 12px; }
-  .steplist { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 0; position: relative; }
-  .step-rail { grid-column: 1 / -1; height: 2px; background: var(--line); margin-bottom: 0; }
-  .step-rail span { display: block; height: 2px; width: 0; background: #1C39BB; }
-  .steplist li { padding: 24px 20px 0 0; }
+  .step-track { margin-top: 56px; height: 3px; background: var(--line); border-radius: 999px; overflow: hidden; }
+  .step-track span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #1C39BB, #7C93F2); border-radius: 999px; transition: width .12s linear; }
+  .steplist { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .steplist li { padding: 16px 20px 0 0; border-radius: 16px; transition: background .3s ease, transform .3s ease; }
+  .steplist li.is-active { background: color-mix(in srgb, var(--blue) 6%, transparent); transform: translateY(-2px); }
   .steplist .n { font-size: 14px; color: var(--link); font-weight: 600; }
   .steplist h3 { font-size: 24px; margin: 6px 0 6px; }
   .steplist p { color: var(--soft); font-size: 16px; }
@@ -218,6 +230,8 @@
   @keyframes ring { from { transform: scale(.8); opacity: .7; } to { transform: scale(1.35); opacity: 0; } }
   .core { fill: #1C39BB; }
   .core-t { fill: #fff; font-size: 20px; font-weight: 600; font-family: var(--font); }
+  .hub-art .node { cursor: pointer; }
+  .hub-art .node rect { transition: stroke .2s ease, filter .2s ease; }
   .node rect { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
   .node text { fill: var(--ink); font-size: 17px; font-weight: 600; font-family: var(--font); }
   .node.erp rect { fill: var(--ink); stroke: var(--ink); }
@@ -238,10 +252,12 @@
     .shift.is-playing .mess div { opacity: 1; transform: none; }
     .step-rail span { width: 100%; }
   }
-  .dock { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 15; display: flex; gap: 16px; align-items: center; background: var(--ink); color: var(--bg); border-radius: 980px; padding: 10px 10px 10px 18px; font-size: 14px; box-shadow: 0 12px 40px rgba(0,0,0,.25); max-width: calc(100% - 24px); }
+  .dock { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(120%); z-index: 15; display: flex; gap: 16px; align-items: center; background: var(--ink); color: var(--bg); border-radius: 980px; padding: 10px 10px 10px 18px; font-size: 14px; box-shadow: 0 12px 40px rgba(0,0,0,.25); max-width: calc(100% - 24px); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+  .dock.is-visible { transform: translateX(-50%) translateY(0); }
   .dock .pill { font-size: 14px; padding: 8px 14px; white-space: nowrap; }
   .faq { padding: 110px 0; }
-  .faq h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.07; }
+  .faq .wrap { max-width: 720px; }
+  .faq h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.07; text-align: center; margin-bottom: 12px; }
   .faq details { border-top: 1px solid var(--line); }
   .faq details:last-child { border-bottom: 1px solid var(--line); }
   .faq summary { font-size: 21px; font-weight: 600; padding: 18px 0; cursor: pointer; }
@@ -314,8 +330,8 @@
   .ab { padding: 8px 10px; border-radius: 12px; font-size: 12px; line-height: 1.35; }
   .ab.you { background: #1C39BB; color: #fff; align-self: flex-end; max-width: 90%; }
   .ab.bot { background: #3A3A3C; color: #E5E5EA; max-width: 95%; }
-  .panel-b .ab.bot { animation: pop 4s ease infinite; }
-  @keyframes pop { 0%, 15% { opacity: 0; transform: translateY(6px); } 25%, 100% { opacity: 1; transform: none; } }
+  #assist-line.assist-pop { animation: assistIn .55s ease; }
+  @keyframes assistIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @media (max-width: 760px) { .app-body { grid-template-columns: 1fr; } .app-side { display: none; } .kpis { grid-template-columns: 1fr 1fr; } .app-cols { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -343,28 +359,35 @@
       <p class="eyebrow">Coformia</p>
       <h1>Your processes.<br><span>Digitalized, connected,<br>and smarter with AI.</span></h1>
       <p class="sub">We turn work that still runs on paper, spreadsheets and group chats into connected digital processes, then integrate AI where it makes them faster, more accurate and more reliable.</p>
-      <div class="links">
+      <div class="links hero-cta">
         <a class="pill" href="/#contact">Talk to us</a>
         <a href="/#approach">See how we work</a>
         <button class="replay" id="shift-replay" type="button">Watch the shift</button>
       </div>
-      <div class="shift" aria-label="Illustration: scattered spreadsheets, emails and notes become one clean, connected process">
-        <div class="mess" aria-hidden="true">
-          <div><b>roster_week32_v4.xlsx</b>Last edited by someone</div>
-          <div><b>RE: RE: FW: formula change</b>14 replies, no decision</div>
-          <div><b>Group chat</b>“Who's coming Thursday?”</div>
-          <div><b>Retype into ERP</b>By Friday, hopefully</div>
-        </div>
-        <div class="arrow" aria-hidden="true">→</div>
-        <div class="clean">
-          <h3>One connected process</h3>
-          <ul><li>Digital and connected</li><li>AI prepares the work</li><li>People approve</li><li>Systems stay in sync</li></ul>
+      <div class="flow-strip" aria-hidden="true">
+        <span><strong>Spreadsheets</strong> → one record</span>
+        <span><strong>AI</strong> prepares</span>
+        <span><strong>People</strong> approve</span>
+      </div>
+      <div class="shift-stage">
+        <div class="shift" aria-label="Illustration: scattered spreadsheets, emails and notes become one clean, connected process">
+          <div class="mess" aria-hidden="true">
+            <div><b>roster_week32_v4.xlsx</b>Last edited by someone</div>
+            <div><b>RE: RE: FW: formula change</b>14 replies, no decision</div>
+            <div><b>Group chat</b>“Who's coming Thursday?”</div>
+            <div><b>Retype into ERP</b>By Friday, hopefully</div>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="clean">
+            <h3>One connected process</h3>
+            <ul><li>Digital and connected</li><li>AI prepares the work</li><li>People approve</li><li>Systems stay in sync</li></ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <aside class="dock" id="dock" hidden>
+  <aside class="dock" id="dock" hidden aria-label="Quick contact">
     <span>One slow process. We’ll show the digital version.</span>
     <a class="pill" href="/#contact">Talk to us</a>
   </aside>
@@ -373,9 +396,9 @@
     <div class="wrap">
       <h2>Less typing. Fewer mistakes.<br><span class="b">More time for the work that matters.</span></h2>
       <div class="triple">
-        <div><h3>Faster</h3><p>AI reads the files, fills the forms and runs the calculations your team does by hand today.</p></div>
-        <div><h3>Accurate</h3><p>Every number comes from one tested source, checked before anyone signs off.</p></div>
-        <div><h3>Reliable</h3><p>Nothing lives in one person's inbox. Every step is tracked, and every decision is on record.</p></div>
+        <div><div class="ic" aria-hidden="true">⚡</div><h3>Faster</h3><p>AI reads the files, fills the forms and runs the calculations your team does by hand today.</p></div>
+        <div><div class="ic" aria-hidden="true">◎</div><h3>Accurate</h3><p>Every number comes from one tested source, checked before anyone signs off.</p></div>
+        <div><div class="ic" aria-hidden="true">⟡</div><h3>Reliable</h3><p>Nothing lives in one person's inbox. Every step is tracked, and every decision is on record.</p></div>
       </div>
     </div>
   </section>
@@ -500,12 +523,12 @@
     <div class="wrap">
       <h2>Small steps.<br>Proven results.</h2>
       <p class="sub">We don't ask you to change everything at once.</p>
+      <div class="step-track" aria-hidden="true"><span id="step-rail-fill"></span></div>
       <ol class="steplist">
-        <div class="step-rail" aria-hidden="true"><span id="step-rail-fill"></span></div>
-        <li><span class="n">Step 1</span><h3>Understand</h3><p>We map how the work really moves between your teams.</p></li>
-        <li><span class="n">Step 2</span><h3>Prototype</h3><p>You see it working with your own data before you commit.</p></li>
-        <li><span class="n">Step 3</span><h3>Pilot</h3><p>A small team goes live, with clear success criteria.</p></li>
-        <li><span class="n">Step 4</span><h3>Scale</h3><p>We roll out only when the pilot proves its value.</p></li>
+        <li data-step="1"><span class="n">Step 1</span><h3>Understand</h3><p>We map how the work really moves between your teams.</p></li>
+        <li data-step="2"><span class="n">Step 2</span><h3>Prototype</h3><p>You see it working with your own data before you commit.</p></li>
+        <li data-step="3"><span class="n">Step 3</span><h3>Pilot</h3><p>A small team goes live, with clear success criteria.</p></li>
+        <li data-step="4"><span class="n">Step 4</span><h3>Scale</h3><p>We roll out only when the pilot proves its value.</p></li>
       </ol>
     </div>
   </section>
@@ -635,8 +658,12 @@
     var hero = document.querySelector('.hero');
     if (!dock || !hero || !('IntersectionObserver' in window)) return;
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { dock.hidden = e.isIntersecting; });
-    });
+      entries.forEach(function (e) {
+        var show = !e.isIntersecting;
+        dock.hidden = !show;
+        dock.classList.toggle('is-visible', show);
+      });
+    }, { threshold: 0.05 });
     io.observe(hero);
   })();
 </script>
@@ -647,14 +674,13 @@
       var key = '';
       node.classList.forEach(function (c) { if (c.indexOf('node-') === 0) key = c.slice(5); });
       if (!key) return;
-      node.addEventListener('mouseenter', function () {
-        node.classList.add('is-hot');
-        document.querySelectorAll('.path-' + key).forEach(function (p) { p.classList.add('is-hot'); });
-      });
-      node.addEventListener('mouseleave', function () {
-        node.classList.remove('is-hot');
-        document.querySelectorAll('.path-' + key).forEach(function (p) { p.classList.remove('is-hot'); });
-      });
+      function hot(on) {
+        node.classList.toggle('is-hot', on);
+        document.querySelectorAll('.path-' + key).forEach(function (p) { p.classList.toggle('is-hot', on); });
+      }
+      node.addEventListener('mouseenter', function () { hot(true); });
+      node.addEventListener('mouseleave', function () { hot(false); });
+      node.addEventListener('click', function () { hot(true); setTimeout(function () { hot(false); }, 1200); });
     });
   })();
 </script>
@@ -673,9 +699,9 @@
     setInterval(function () {
       i = (i + 1) % lines.length;
       el.textContent = lines[i];
-      el.style.animation = 'none';
+      el.classList.remove('assist-pop');
       void el.offsetWidth;
-      el.style.animation = '';
+      el.classList.add('assist-pop');
     }, 4500);
   })();
 </script>
@@ -686,6 +712,7 @@
     if (!section || !fill) return;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) { fill.style.width = '100%'; return; }
+    var steps = section.querySelectorAll('.steplist li');
     function tick() {
       var rect = section.getBoundingClientRect();
       var vh = window.innerHeight || 1;
@@ -695,6 +722,8 @@
       if (p < 0) p = 0;
       if (p > 1) p = 1;
       fill.style.width = (p * 100) + '%';
+      var active = Math.min(steps.length - 1, Math.floor(p * steps.length));
+      steps.forEach(function (li, idx) { li.classList.toggle('is-active', idx === active); });
     }
     window.addEventListener('scroll', tick, { passive: true });
     window.addEventListener('resize', tick);
