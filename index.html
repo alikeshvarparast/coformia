@@ -105,7 +105,7 @@
   .story-rail { position: fixed; right: 10px; top: 18vh; height: 64vh; width: 10px; border-radius: 12px; background: color-mix(in srgb, var(--bg) 70%, transparent); border: 1px solid var(--line); z-index: 30; opacity: 0; pointer-events: none; backdrop-filter: blur(8px); }
   .story.is-locked .story-rail { opacity: 1; }
   .story-rail span { display: block; width: 100%; height: var(--story-p, 0%); background: var(--blue); border-radius: 99px; box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent); }
-  .story-pin { position: sticky; top: 72px; height: calc(100vh - 96px); max-height: 720px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+  .story-pin { position: sticky; top: 72px; height: calc(100vh - 96px); max-height: 720px; display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.38fr); gap: 40px; align-items: start; }
   .story-chapters { position: relative; min-height: 240px; }
   .story-chapter { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s ease; pointer-events: none; }
   .story-chapter.is-on { opacity: 1; visibility: visible; pointer-events: auto; }
@@ -120,16 +120,19 @@
   .story-chapter.is-on .ch-num { color: var(--blue); }
   .story-chapter h3 { font-size: clamp(28px, 3.5vw, 40px); margin-top: 12px; line-height: 1.1; }
   .story-chapter p { color: var(--soft); font-size: 18px; margin-top: 14px; max-width: 420px; }
-  .story-mock-wrap { min-width: 0; margin-left: auto; width: 100%; max-width: min(900px, 100%); display: flex; justify-content: flex-end; overflow: visible; padding: 14px 22px 32px 6px; box-sizing: border-box; }
+  .story-mock-wrap { min-width: 0; margin-left: auto; width: 100%; max-width: min(1120px, 100%); display: flex; justify-content: flex-end; overflow: visible; padding: 14px 12px 32px 0; box-sizing: border-box; }
   .story-mock-fit { min-width: 0; max-width: 100%; width: 100%; flex-shrink: 1; overflow: visible; filter: drop-shadow(0 24px 48px rgba(0,0,0,.22)); }
-  .story-mock .app { border-radius: 18px; border-bottom: 1px solid #2C2C2E; box-shadow: none; overflow: hidden; max-width: 100%; }
-  .story-mock .app-body { grid-template-columns: minmax(0, 130px) minmax(0, 1fr); min-width: 0; }
-  .story-mock .app-main { min-width: 0; }
+  .story-mock .app { border-radius: 18px; border-bottom: 1px solid #2C2C2E; box-shadow: none; overflow: hidden; max-width: 100%; min-width: 0; }
+  .story-mock .app-body { grid-template-columns: minmax(0, 138px) minmax(0, 1fr); min-width: 0; }
+  .story-mock .app-main { min-width: 0; overflow: visible; }
   .story-mock .app-cols { min-width: 0; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
-  .story-mock .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .story-mock .kpis { grid-template-columns: repeat(4, minmax(88px, 1fr)); gap: 8px; }
+  .story-mock .kpis div { min-width: 0; padding: 9px 10px; }
+  .story-mock .kpis small { line-height: 1.25; white-space: normal; overflow-wrap: break-word; font-size: 10px; }
+  .story-mock .kpis b { font-size: 20px; line-height: 1.15; }
   .story-mock .app-search { flex: 1 1 auto; min-width: 0; max-width: 52%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
   .story-mock .fr span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .story-mock.app-art { width: 100%; max-width: 100%; min-width: 0; transform-origin: top left; will-change: transform; }
+  .story-mock.app-art { width: 100%; max-width: 880px; min-width: 0; transform-origin: top left; will-change: transform; }
   @media (min-width: 901px) {
     .story-pin { overflow: visible; }
   }
@@ -822,7 +825,7 @@
       mock.style.width = '';
       if (mockFit) { mockFit.style.width = ''; mockFit.style.height = ''; }
       if (window.innerWidth < 901 || !app || !pin || !mockFit) return;
-      var maxW = (mockWrap ? mockWrap.clientWidth : pin.clientWidth) - 28;
+      var maxW = (mockWrap ? mockWrap.clientWidth : pin.clientWidth) - 4;
       var maxH = pin.clientHeight - 46;
       mock.style.width = '100%';
       var w = mock.offsetWidth;
