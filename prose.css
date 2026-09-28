@@ -1,0 +1,24 @@
+.prose-page { padding: 48px 0 90px; }
+.prose-page .crumb { font-size: 13px; color: var(--soft); padding: 18px 0 0; }
+.prose-page .crumb a { color: var(--soft); }
+.prose-page h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.08; letter-spacing: -.03em; margin-top: 12px; }
+.prose-page .lede { font-size: 20px; color: var(--soft); margin-top: 16px; max-width: 720px; line-height: 1.4; }
+.prose-page .content { max-width: 720px; margin-top: 40px; }
+.prose-page .content h2 { font-size: 26px; margin: 36px 0 12px; letter-spacing: -.02em; }
+.prose-page .content p { color: var(--soft); margin: 0 0 16px; line-height: 1.55; }
+.prose-page .content ul { margin: 0 0 16px; padding-left: 1.25rem; color: var(--soft); line-height: 1.55; }
+.prose-page .content li { margin-bottom: 8px; }
+.prose-page .cta { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; }
+.prose-page .cta a.pill { font-size: 17px; }
+.prose-page .related { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); }
+.prose-page .related h2 { font-size: 20px; margin-bottom: 12px; }
+.prose-page .related ul { list-style: none; padding: 0; margin: 0; }
+.prose-page .related li { margin-bottom: 10px; }
+.prose-page .related a { font-weight: 500; }
+.insights-list { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-direction: column; gap: 20px; }
+.insights-list li { border-top: 1px solid var(--line); padding-top: 20px; }
+.insights-list a { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+.insights-list p { margin: 8px 0 0; color: var(--soft); font-size: 16px; }
+.faq details { border-top: 1px solid var(--line); text-align: left; }
+.faq summary { font-size: 19px; font-weight: 600; padding: 16px 0; cursor: pointer; }
+.faq details p { color: var(--soft); max-width: 640px; padding-bottom: 16px; margin: 0; }

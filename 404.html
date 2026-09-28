@@ -8,11 +8,9 @@
 <meta name="theme-color" content="#FFFFF0">
 <link rel="icon" href="/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
-  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--ink); }
+  body { margin: 0; font-family: var(--font); background: transparent; color: var(--ink); }
   .wrap { max-width: 720px; margin: 0 auto; padding: 80px 22px; }
   a { color: var(--link); text-decoration: none; }
   a:hover { text-decoration: underline; }
@@ -23,8 +21,10 @@
   .logo img { display: block; height: 32px; width: auto; }
 </style>
 <link rel="stylesheet" href="/theme.css">
+<script src="/ambient.js"></script>
 </head>
 <body>
+<div class="ambient-wash" aria-hidden="true"></div>
   <main class="wrap">
     <a class="logo" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="160" height="32" decoding="async"></a>
     <h1>Page not found</h1>

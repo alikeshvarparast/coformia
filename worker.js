@@ -1,4 +1,36 @@
 const MAX_BODY = 32_000;
+const CANONICAL_HOST = 'coformia.com';
+const REDIRECT_HOSTS = new Set([
+  'www.coformia.com',
+  'keshvarco.com',
+  'www.keshvarco.com',
+]);
+
+const LONG_CACHE_PATHS = /^\/(images|fonts)\//;
+const MEDIUM_CACHE_PATHS = /^\/(theme\.css|prose\.css|fonts\/fonts\.css|favicon\.svg|ambient\.js|analytics\.js|contact-form\.js)/;
+
+function redirectToCanonical(request) {
+  const url = new URL(request.url);
+  if (!REDIRECT_HOSTS.has(url.hostname)) return null;
+  url.hostname = CANONICAL_HOST;
+  url.protocol = 'https:';
+  return Response.redirect(url.toString(), 301);
+}
+
+function withCacheHeaders(response, pathname) {
+  if (response.status !== 200) return response;
+  let cacheControl;
+  if (LONG_CACHE_PATHS.test(pathname)) {
+    cacheControl = 'public, max-age=31536000, immutable';
+  } else if (MEDIUM_CACHE_PATHS.test(pathname)) {
+    cacheControl = 'public, max-age=604800, stale-while-revalidate=86400';
+  } else {
+    return response;
+  }
+  const headers = new Headers(response.headers);
+  headers.set('Cache-Control', cacheControl);
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+}
 
 function json(data, status = 200, extraHeaders = {}) {
   return new Response(JSON.stringify(data), {
@@ -41,12 +73,13 @@ function validate(payload) {
   const process = String(payload.process || '').trim().slice(0, 300);
   const outcome = String(payload.outcome || '').trim().slice(0, 500);
   const message = String(payload.message || '').trim().slice(0, 4000);
+  const sourcePage = String(payload.sourcePage || payload.source_page || '').trim().slice(0, 240);
   if (!name || !email) return null;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
   const legacy = team && process && outcome;
   if (!legacy && message.length < 10) return null;
-  if (legacy) return { name, email, team, process, outcome, message, shortForm: false };
-  return { name, email, team: '', process: '', outcome: '', message, shortForm: true };
+  if (legacy) return { name, email, team, process, outcome, message, sourcePage, shortForm: false };
+  return { name, email, team: '', process: '', outcome: '', message, sourcePage, shortForm: true };
 }
 
 async function sendMail(fields, env) {
@@ -54,12 +87,13 @@ async function sendMail(fields, env) {
   const subject = fields.shortForm
     ? `Coformia contact — ${fields.name}`
     : `Coformia contact — ${fields.team}`;
+  const sourceLine = fields.sourcePage ? `Source page: ${fields.sourcePage}\n` : '';
   const text = fields.shortForm
     ? `New message from coformia.com
 
 Name: ${fields.name}
 Email: ${fields.email}
-
+${sourceLine}
 ${fields.message}
 
 Reply to reach the visitor.`
@@ -67,7 +101,7 @@ Reply to reach the visitor.`
 
 Name: ${fields.name}
 Email: ${fields.email}
-Team: ${fields.team}
+${sourceLine}Team: ${fields.team}
 Spreadsheet or chat: ${fields.process}
 What done looks like: ${fields.outcome}
 ${fields.message ? `\nExtra details:\n${fields.message}\n` : ''}
@@ -136,10 +170,14 @@ async function handleContact(request, env) {
 
 export default {
   async fetch(request, env) {
+    const redirect = redirectToCanonical(request);
+    if (redirect) return redirect;
+
     const url = new URL(request.url);
     if (url.pathname === '/api/contact') {
       return handleContact(request, env);
     }
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+    return withCacheHeaders(response, url.pathname);
   },
 };

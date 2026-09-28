@@ -23,20 +23,18 @@
 <meta name="twitter:description" content="Coformia turns paper, spreadsheets, and group chats into one connected process. AI prepares the work. People approve. Makers of Formulane and CountIn.">
 <meta name="twitter:image" content="https://coformia.com/images/og-home.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://coformia.com/#org","name":"Coformia","url":"https://coformia.com/","email":"info@coformia.com","logo":"https://coformia.com/images/coformia-logo.png","founder":{"@type":"Person","name":"Ali Keshvarparast"},"sameAs":["https://shiftiai.com","https://countin.sspi.trade/"]},{"@type":"WebSite","name":"Coformia","url":"https://coformia.com/","publisher":{"@id":"https://coformia.com/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does Coformia actually build?","acceptedAnswer":{"@type":"Answer","text":"Connected software for work that still lives in spreadsheets, inboxes, and chats. AI prepares the work. A person approves it."}},{"@type":"Question","name":"Do we have to replace our ERP?","acceptedAnswer":{"@type":"Answer","text":"No. The goal is one live record that stays in sync with the systems you already run, including ERP."}},{"@type":"Question","name":"What is Formulane?","acceptedAnswer":{"@type":"Answer","text":"Formula, specification, change, and approval software for food manufacturers. Change once, and the connected record stays right everywhere."}},{"@type":"Question","name":"What is CountIn?","acceptedAnswer":{"@type":"Answer","text":"Community and group activity management: who is coming, who is waiting, and who owes what. CountIn does not take the payment."}},{"@type":"Question","name":"How does a project start?","acceptedAnswer":{"@type":"Answer","text":"Understand how the work moves, prototype with your data, pilot with one team, then scale only if the pilot holds."}},{"@type":"Question","name":"How do we reach you?","acceptedAnswer":{"@type":"Answer","text":"Email info@coformia.com and describe one slow process. We reply by email."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://coformia.com/#org","name":"Coformia","url":"https://coformia.com/","email":"info@coformia.com","logo":"https://coformia.com/images/coformia-logo.png","founder":{"@type":"Person","name":"Ali Keshvarparast"},"sameAs":["https://shiftiai.com","https://coformia.com/about","https://coformia.com/formulane"]},{"@type":"WebSite","name":"Coformia","url":"https://coformia.com/","publisher":{"@id":"https://coformia.com/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does Coformia actually build?","acceptedAnswer":{"@type":"Answer","text":"Connected software for work that still lives in spreadsheets, inboxes, and chats. AI prepares the work. A person approves it."}},{"@type":"Question","name":"Do we have to replace our ERP?","acceptedAnswer":{"@type":"Answer","text":"No. The goal is one live record that stays in sync with the systems you already run, including ERP."}},{"@type":"Question","name":"What is Formulane?","acceptedAnswer":{"@type":"Answer","text":"Formula, specification, change, and approval software for food manufacturers. Change once, and the connected record stays right everywhere."}},{"@type":"Question","name":"What is CountIn?","acceptedAnswer":{"@type":"Answer","text":"Community and group activity management: who is coming, who is waiting, and who owes what. CountIn does not take the payment."}},{"@type":"Question","name":"How does a project start?","acceptedAnswer":{"@type":"Answer","text":"Understand how the work moves, prototype with your data, pilot with one team, then scale only if the pilot holds."}},{"@type":"Question","name":"How do we reach you?","acceptedAnswer":{"@type":"Answer","text":"Email info@coformia.com and describe one slow process. We reply by email."}}]}]}
 </script>
 <link rel="icon" href="/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.47; letter-spacing: -.01em; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: transparent; color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.47; letter-spacing: -.01em; -webkit-font-smoothing: antialiased; }
   a { color: var(--link); text-decoration: none; }
   a:hover { text-decoration: underline; }
   a:focus-visible, button:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 6px; }
@@ -46,11 +44,9 @@
   .center { text-align: center; }
 
   /* global nav */
-  .skip { position: absolute; left: 12px; top: 12px; z-index: 30; background: var(--bg); color: var(--ink); border: 1px solid var(--line); padding: 10px 14px; border-radius: 8px; transform: translateY(-160%); }
-  .skip:focus { transform: none; }
   .scroll-progress { position: absolute; left: 0; top: 0; right: 0; height: 2px; background: transparent; z-index: 22; pointer-events: none; }
   .scroll-progress span { display: block; height: 100%; width: 0; background: var(--blue); }
-  .gnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; overflow: visible; background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+  .gnav { overflow: visible; }
   .gnav .wrap { height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 18px; position: relative; }
   .gnav .wordmark { display: inline-flex; align-items: center; text-decoration: none; line-height: 0; }
   .gnav .wordmark:hover { text-decoration: none; }
@@ -146,7 +142,10 @@
   }
   .story-mock .panel-a, .story-mock .panel-b .fr { transition: opacity .35s ease, background .35s ease; }
   .story-mock[data-scene="scene-1"] .panel-a { opacity: .45; }
-  .story-mock[data-scene="scene-2"] #assist-line { box-shadow: 0 0 0 2px #7C93F2; }
+  .story-mock .panel-b .ab { transition: opacity .35s ease; }
+  .story-mock .assist-thread { display: flex; flex-direction: column; gap: 6px; overflow: hidden; flex-shrink: 0; }
+  .story-mock .ab.you { background: #1C39BB; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .story-mock .ab.bot { background: #1C1C1E; color: #E5E5EA; align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: none; }
   .story-mock[data-scene="scene-3"] .panel-b .fr { background: rgba(125,211,168,.12); }
   .story-mock[data-scene="scene-3"] .panel-a { opacity: .35; }
   @media (max-width: 900px) {
@@ -196,7 +195,7 @@
   }
 
   /* promise */
-  .promise { background: var(--bg2); padding: 110px 0; }
+  .promise { padding: 110px 0; }
   .promise h2 { font-size: clamp(36px, 6vw, 64px); line-height: 1.06; font-weight: 700; text-align: left; max-width: 820px; }
   .promise h2 .b { color: var(--link); }
   .triple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
@@ -215,10 +214,9 @@
   .tile .logo { width: 64px; height: 64px; object-fit: contain; margin-bottom: 18px; }
   .tile .tag { font-size: clamp(21px, 2.6vw, 28px); font-weight: 500; margin-top: 6px; line-height: 1.2; }
   .tile .links { margin-top: 18px; }
-  .tile.dark { background: var(--tile-dark); color: var(--on-dark); }
+  .tile.dark { color: var(--on-dark); }
   .tile.dark .tag { color: var(--on-dark); }
   .tile.dark a { color: var(--link); }
-  .tile.light { background: var(--bg2); }
   .tile .status { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #F0996A; margin-bottom: 10px; }
   .tile.light .status { color: var(--link); }
   .tile-art { margin-top: 44px; width: min(620px, 100%); }
@@ -255,7 +253,7 @@
   .approach-steps p { color: var(--soft); font-size: 17px; max-width: 560px; }
   @media (max-width: 760px) { .approach-layout { grid-template-columns: 1fr; } .approach-index { display: none; } }
 
-  .founder { background: var(--bg2); padding: 110px 0; }
+  .founder { padding: 110px 0; }
   .founder blockquote { margin: 0 auto; max-width: 820px; font-size: clamp(26px, 3.6vw, 40px); line-height: 1.2; font-weight: 600; letter-spacing: -.02em; text-align: center; }
   .founder blockquote::first-line { max-width: 18ch; }
   .founder cite { display: block; margin-top: 22px; font-style: normal; color: var(--soft); font-size: 17px; }
@@ -276,22 +274,18 @@
   .contact-form textarea { min-height: 72px; resize: vertical; }
   .contact-form .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
   .contact-form .turnstile-wrap { display: flex; justify-content: center; margin: 4px 0 8px; min-height: 65px; }
-  .contact-form button[type=submit] { margin-top: 4px; align-self: center; cursor: pointer; border: none; font: inherit; font-size: 16px; font-weight: 600; color: #fff; background: var(--blue); border-radius: 980px; padding: 12px 28px; }
-  .contact-form button[type=submit]:disabled { opacity: .55; cursor: not-allowed; }
+  .contact-form button[type=submit] { margin-top: 4px; align-self: center; font-size: 16px; }
   .form-status { min-height: 1.4em; font-size: 14px; color: var(--soft); margin-top: 8px; text-align: center; }
   .contact-alt { margin-top: 20px; font-size: 15px; color: var(--soft); }
   .copy { margin-top: 16px; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 980px; padding: 8px 18px; font: inherit; font-size: 15px; cursor: pointer; }
   .copy-state { min-height: 1.4em; font-size: 14px; color: var(--soft); margin-top: 10px; }
 
-  footer { background: var(--bg2); color: var(--soft); font-size: 12px; padding: 22px 0 30px; }
+  footer { color: var(--soft); font-size: 12px; padding: 22px 0 30px; }
   footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 16px; }
   footer a { color: var(--soft); }
 
   /* ---- effects ---- */
   .hero { position: relative; overflow: hidden; }
-  .hero::before { content: ""; position: absolute; left: -10%; right: -10%; top: -10%; height: 640px; background: radial-gradient(38% 45% at 30% 35%, rgba(28,57,187,.20), transparent 70%), radial-gradient(35% 45% at 72% 30%, rgba(124,147,242,.22), transparent 70%), radial-gradient(30% 40% at 50% 70%, rgba(217,98,43,.10), transparent 70%); animation: drift 16s ease-in-out infinite alternate; pointer-events: none; }
-  .hero > .wrap { position: relative; }
-  @keyframes drift { from { transform: translate(-3%, 0) scale(1); } to { transform: translate(3%, 5%) scale(1.1); } }
   .mess div { --r: 0deg; transform: rotate(var(--r)); animation: floaty 6s ease-in-out infinite; }
   .mess div:nth-child(1) { --r: -7deg; } .mess div:nth-child(2) { --r: 5deg; animation-delay: -1.5s; } .mess div:nth-child(3) { --r: -3deg; animation-delay: -3s; } .mess div:nth-child(4) { --r: 8deg; animation-delay: -4.5s; }
   @keyframes floaty { 0%, 100% { transform: rotate(var(--r)) translateY(0); } 50% { transform: rotate(calc(var(--r) * -0.6)) translateY(-10px); } }
@@ -302,9 +296,9 @@
   @keyframes shine { 0%, 60% { left: -60%; } 100% { left: 120%; } }
   .clean li { opacity: 1; }
 
-  .hub { padding: 110px 0 60px; }
-  .hub.ink { background: #0B1020; color: #F5F5F7; }
-  .hub.ink .hub-sub { color: #A1A1A6; margin-left: 0; margin-right: auto; text-align: left; }
+  .hub { padding: 12px; }
+  .hub.ink { color: #F5F5F7; }
+  .hub.ink .hub-sub { color: #E5E5EA; margin-left: 0; margin-right: auto; text-align: left; }
   .hub.ink .hub-title { text-align: left; }
   .hub.ink .wrap { text-align: left; }
   .hub.ink .node rect { fill: #161617; stroke: #424245; }
@@ -316,6 +310,7 @@
   .hub-title span { background: linear-gradient(90deg, #1C39BB, #7C93F2, #1C39BB); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 6s linear infinite; }
   @keyframes sheen { to { background-position: 200% center; } }
   .hub-sub { font-size: 21px; color: var(--soft); max-width: 640px; margin: 16px auto 0; }
+  .hub.ink .hub-title { color: #F5F5F7; }
   .hub-art { max-width: 900px; margin: 40px auto 0; }
   .hub-art svg { width: 100%; height: auto; display: block; overflow: visible; }
   .links-g path { stroke: var(--line); stroke-width: 2; fill: none; }
@@ -343,12 +338,12 @@
   .reveal { opacity: 0; transform: translateY(28px); }
   .reveal.in { opacity: 1; transform: none; transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; }
+    *:not(.ambient-wash):not(.ambient-wash *), *:not(.ambient-wash)::before, *:not(.ambient-wash)::after { animation: none !important; }
     .reveal { opacity: 1; transform: none; }
     .shift.is-playing .mess { opacity: 1; transform: none; }
     .story-chapter { transition: none; }
   }
-  .dock { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(120%); z-index: 15; display: flex; gap: 16px; align-items: center; background: var(--ink); color: var(--bg); border-radius: 980px; padding: 10px 10px 10px 18px; font-size: 14px; box-shadow: 0 12px 40px rgba(0,0,0,.25); max-width: calc(100% - 24px); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+  .dock { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(120%); z-index: 45; display: flex; gap: 16px; align-items: center; border-radius: 980px; padding: 10px 10px 10px 18px; font-size: 14px; max-width: calc(100% - 24px); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
   .dock.is-visible { transform: translateX(-50%) translateY(0); }
   .dock[hidden] { display: none !important; }
   .dock .pill { font-size: 14px; padding: 8px 14px; white-space: nowrap; }
@@ -379,7 +374,7 @@
   .dom-title { font-size: clamp(36px, 6vw, 64px); font-weight: 700; line-height: 1.06; }
   .dom-sub { font-size: 21px; color: var(--soft); max-width: 640px; margin: 16px auto 0; }
   .dom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 52px; text-align: left; }
-  .dom { background: var(--bg2); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 8px; transition: transform .3s ease, background .3s ease; }
+  .dom { border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 8px; transition: transform .3s ease, background .3s ease; }
   .dom:hover { transform: translateY(-4px); }
   .dom .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--blue); color: #fff; display: grid; place-items: center; font-size: 22px; margin-bottom: 6px; }
   .dom h3 { font-size: 21px; }
@@ -440,14 +435,16 @@
   .ab { padding: 8px 10px; border-radius: 12px; font-size: 12px; line-height: 1.35; }
   .ab.you { background: #1C39BB; color: #fff; align-self: flex-end; max-width: 90%; }
   .ab.bot { background: #3A3A3C; color: #E5E5EA; max-width: 95%; }
-  #assist-line.assist-pop { animation: assistIn .55s ease; }
+  .story-mock .ab.assist-pop { animation: assistIn .55s ease; }
   @keyframes assistIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @media (max-width: 760px) { .app-body { grid-template-columns: 1fr; } .app-side { display: none; } .kpis { grid-template-columns: 1fr 1fr; } .app-cols { grid-template-columns: 1fr; } }
 </style>
 <link rel="stylesheet" href="/theme.css">
+<script src="/ambient.js"></script>
 </head>
 <body>
-<svg width="0" height="0" aria-hidden="true" style="position:absolute"><filter id="glass-distort" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="8" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<div class="ambient-wash" aria-hidden="true"></div>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><filter id="glass-distort" color-interpolation-filters="sRGB" x="-35%" y="-20%" width="170%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.055 0.004" numOctaves="3" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="1 0 0 0 0  0 0.12 0 0 0  0 0 0.12 0 0  0 0 0 1 0" result="noiseH"/><feDisplacementMap in="SourceGraphic" in2="noiseH" scale="38" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="gnav">
@@ -456,8 +453,8 @@
     <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="180" height="36" decoding="async"></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" aria-label="Main">
-      <a class="app" href="/formulane">Formulane</a>
-      <a class="app" href="/countin">CountIn</a>
+      <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
+      <a class="app" href="/countin"><span class="pill-in">CountIn</span></a>
       <a class="opt" href="/#products">Products</a>
       <a class="opt" href="/#approach">Approach</a>
       <a class="opt" href="/#faq">FAQ</a>
@@ -474,7 +471,7 @@
         <h1>Your processes.<br><span>Digitalized, connected,<br>and smarter with AI.</span></h1>
         <p class="sub">We turn work that still runs on paper, spreadsheets and group chats into connected digital processes, then integrate AI where it makes them faster, more accurate and more reliable.</p>
         <div class="links hero-cta">
-          <a class="pill" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A">Talk to us</a>
+          <a class="pill" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A"><span class="pill-in">Talk to us</span></a>
           <a href="#contact">More ways to reach us</a>
           <a href="/#approach">See how we work</a>
         </div>
@@ -544,8 +541,10 @@
                   </div>
                   <div class="panel-b">
                     <p class="ph">Assistant</p>
-                    <div class="ab you">Plan 2 batches of Thai Green Curry, 2,000 kg each.</div>
-                    <div class="ab bot" id="assist-line">4,000 kg in total. Coconut milk is short by 120 kg. Draft purchase request ready.</div>
+                    <div class="assist-thread">
+                      <div class="ab you" id="assist-you">Plan 2 batches of Thai Green Curry, 2,000 kg each.</div>
+                      <div class="ab bot" id="assist-line">4,000 kg in total. Coconut milk is short by 120 kg. Draft purchase request ready.</div>
+                    </div>
                     <p class="ph" style="margin-top:10px">Approvals</p>
                     <div class="fr sm"><span>QA · allergen check</span><span class="st rev">Pending</span></div>
                     <div class="fr sm"><span>Customer M · spec v4</span><span class="st ok">Signed</span></div>
@@ -610,7 +609,7 @@
       <p class="status">New · For food manufacturers</p>
       <h2>Formulane</h2>
       <p class="tag">Change once. Right everywhere.</p>
-      <div class="links"><a href="/formulane">Learn more</a><a href="/formulane#contact">Book a demo</a></div>
+      <div class="links"><a href="/formulane">Formula management for food manufacturers</a><a href="/formulane#contact">Book a demo</a></div>
     </section>
 
     <div class="row2">
@@ -689,11 +688,11 @@
       </details>
       <details>
         <summary>What is Formulane?</summary>
-        <p>Formula, specification, change, and approval software for food manufacturers. Change once, and the connected record stays right everywhere.</p>
+        <p>Formula, specification, change, and approval software for food manufacturers. <a href="/formulane">See Formulane</a> for features, ERP integration, and demo requests.</p>
       </details>
       <details>
         <summary>What is CountIn?</summary>
-        <p>Community and group activity management: who is coming, who is waiting, and who owes what. CountIn does not take the payment.</p>
+        <p>Community and group activity management for who is coming, waiting, and who owes what. <a href="/countin">See CountIn</a> — it does not take payment.</p>
       </details>
       <details>
         <summary>How does a project start?</summary>
@@ -710,7 +709,7 @@
     <div class="wrap">
       <h2>What still runs on spreadsheets?</h2>
       <p class="sub">Tell us about one slow process. We'll show you what it could look like.</p>
-      <form class="contact-form" id="contact-form" novalidate>
+      <form class="contact-form" id="contact-form" data-source-page="/#contact" novalidate>
         <label class="hp" aria-hidden="true">Leave blank<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
         <div class="contact-form-row">
           <label>Your name<input name="name" type="text" required autocomplete="name" maxlength="120"></label>
@@ -718,7 +717,7 @@
         </div>
         <label>What slow process should we look at?<textarea name="message" required maxlength="4000" rows="3" placeholder="Team, spreadsheet or chat, and what done looks like."></textarea></label>
         <div class="turnstile-wrap"><div class="cf-turnstile" data-sitekey="0x4AAAAAAFFvq98oyGzG7UCt"></div></div>
-        <button type="submit" id="contact-submit">Send message</button>
+        <button type="submit" class="pill" id="contact-submit"><span class="pill-in">Send message</span></button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
       <p class="contact-alt">Prefer email? <a id="email" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize">info@coformia.com</a>
@@ -730,17 +729,19 @@
 
 <aside class="dock" id="dock" hidden aria-label="Quick contact">
   <span>One slow process. We’ll show the digital version.</span>
-  <a class="pill" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A">Talk to us</a>
+  <a class="pill" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A"><span class="pill-in">Talk to us</span></a>
 </aside>
 
 <footer>
   <div class="wrap">
     <span>Copyright © 2026 Coformia</span>
-    <span><a href="/formulane">Formulane</a> · <a href="/countin">CountIn</a> · <a href="https://shiftiai.com" target="_blank" rel="noopener">ShiftiAI</a></span>
+    <span><a href="/formulane">Formulane</a> · <a href="/about">About</a> · <a href="/insights/">Insights</a> · <a href="/countin">CountIn</a> · <a href="https://shiftiai.com" target="_blank" rel="noopener">ShiftiAI</a></span>
   </div>
 </footer>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="/contact-form.js" defer></script>
+<script src="/analytics.js" data-domain="coformia.com" defer></script>
 <script>
   (function () {
     var btn = document.getElementById('copy-email'), state = document.getElementById('copy-state'), el = document.getElementById('email');
@@ -749,48 +750,6 @@
       function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); state.textContent = 'Selected. Press Ctrl+C or Cmd+C to copy.'; }
       var addr = 'info@coformia.com';
       if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(addr).then(function () { state.textContent = 'Email address copied.'; }, fallback); } else { fallback(); }
-    });
-  })();
-</script>
-<script>
-  (function () {
-    var form = document.getElementById('contact-form');
-    var status = document.getElementById('form-status');
-    var submit = document.getElementById('contact-submit');
-    if (!form || !status) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      status.textContent = 'Sending…';
-      if (submit) submit.disabled = true;
-      var fd = new FormData(form);
-      var token = window.turnstile ? window.turnstile.getResponse() : '';
-      if (!token) {
-        status.textContent = 'Complete the verification check, then try again.';
-        if (submit) submit.disabled = false;
-        return;
-      }
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: fd.get('name'),
-          email: fd.get('email'),
-          message: fd.get('message'),
-          website: fd.get('website'),
-          turnstileToken: token
-        })
-      }).then(function (res) { return res.json().then(function (data) { return { res: res, data: data }; }); })
-        .then(function (_ref) {
-          var res = _ref.res, data = _ref.data;
-          if (!res.ok) throw new Error(data.error || 'Send failed');
-          status.textContent = 'Thanks — we got your message and will reply by email.';
-          form.reset();
-          if (window.turnstile) window.turnstile.reset();
-        })
-        .catch(function (err) {
-          status.textContent = err.message || 'Something went wrong. Email info@coformia.com directly.';
-        })
-        .finally(function () { if (submit) submit.disabled = false; });
     });
   })();
 </script>
@@ -891,14 +850,17 @@
       var scrolled = Math.min(Math.max(-rect.top, 0), travel);
       return scrolled / travel;
     }
+    var chapter = -1;
     function setChapter(idx) {
+      if (idx === chapter) return;
+      chapter = idx;
       chapters.forEach(function (c, i) { c.classList.toggle('is-on', i === idx); });
       mock.setAttribute('data-scene', 'scene-' + (idx + 1));
+      window.dispatchEvent(new CustomEvent('story-chapter', { detail: idx }));
     }
     function tick() {
       if (window.innerWidth < 901) {
         chapters.forEach(function (c) { c.classList.remove('is-on'); });
-        mock.setAttribute('data-scene', 'scene-1');
         story.classList.remove('is-locked');
         story.style.setProperty('--story-p', '0%');
         fitMock();
@@ -914,7 +876,7 @@
       setChapter(idx);
     }
     window.addEventListener('scroll', tick, { passive: true });
-    window.addEventListener('resize', tick);
+    window.addEventListener('resize', function () { requestAnimationFrame(tick); });
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(function () { fitMock(); tick(); });
     }
@@ -963,23 +925,65 @@
 </script>
 <script>
   (function () {
-    var el = document.getElementById('assist-line');
-    if (!el) return;
-    var lines = [
-      '4,000 kg in total. Coconut milk is short by 120 kg. Draft purchase request ready.',
-      'Allergen check still open. QA is the next approver.',
-      'Spec v4 is signed. Batch sheet matches the approved formula.'
+    var you = document.getElementById('assist-you');
+    var bot = document.getElementById('assist-line');
+    var thread = you && you.parentElement;
+    if (!you || !bot || !thread) return;
+    var turns = [
+      { you: 'Plan 2 batches of Thai Green Curry, 2,000 kg each.', bot: '4,000 kg in total. Coconut milk is short by 120 kg. Draft purchase request ready.' },
+      { you: 'Who still has to sign the allergen check?', bot: 'Allergen check still open. QA is the next approver.' },
+      { you: 'Is spec v4 signed off?', bot: 'Spec v4 is signed. Batch sheet matches the approved formula.' }
     ];
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { el.textContent = lines[0]; return; }
     var i = 0;
-    setInterval(function () {
-      i = (i + 1) % lines.length;
-      el.textContent = lines[i];
-      el.classList.remove('assist-pop');
-      void el.offsetWidth;
-      el.classList.add('assist-pop');
-    }, 4500);
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function showTurn(next) {
+      i = ((next % turns.length) + turns.length) % turns.length;
+      you.textContent = turns[i].you;
+      bot.textContent = turns[i].bot;
+      if (reduce) return;
+      you.classList.remove('assist-pop');
+      bot.classList.remove('assist-pop');
+      void bot.offsetWidth;
+      you.classList.add('assist-pop');
+      bot.classList.add('assist-pop');
+    }
+    function lockThread() {
+      var current = i;
+      thread.style.height = 'auto';
+      var max = 0;
+      turns.forEach(function (t) {
+        you.textContent = t.you;
+        bot.textContent = t.bot;
+        max = Math.max(max, thread.offsetHeight);
+      });
+      thread.style.height = max + 'px';
+      you.textContent = turns[current].you;
+      bot.textContent = turns[current].bot;
+    }
+    function refit() {
+      lockThread();
+      window.dispatchEvent(new Event('resize'));
+    }
+    var timer = 0;
+    function arm() {
+      clearInterval(timer);
+      timer = 0;
+      if (window.innerWidth < 901) timer = setInterval(function () { showTurn(i + 1); }, 4500);
+    }
+    var scene = document.getElementById('story-mock');
+    var start = 0;
+    if (scene && window.innerWidth >= 901) {
+      var n = parseInt(String(scene.getAttribute('data-scene') || '').replace('scene-', ''), 10);
+      if (n) start = n - 1;
+    }
+    showTurn(start);
+    refit();
+    arm();
+    window.addEventListener('story-chapter', function (e) {
+      if (window.innerWidth >= 901) showTurn(e.detail);
+    });
+    window.addEventListener('resize', function () { lockThread(); arm(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
   })();
 </script>
 <script>

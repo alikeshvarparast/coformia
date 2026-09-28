@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keeping customer formulas in sync with SAP — Coformia Insights</title>
+<meta name="description" content="How food manufacturers close the gap between formula changes in R&amp;D and the BOM your ERP runs in production—with human approval in the loop.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://coformia.com/insights/erp-formula-sync">
+<meta property="og:title" content="Keeping customer formulas in sync with SAP">
+<meta property="og:url" content="https://coformia.com/insights/erp-formula-sync">
+<meta property="og:image" content="https://coformia.com/images/og-formulane.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How food manufacturers keep customer formulas in sync with SAP","datePublished":"2026-09-28","author":{"@type":"Organization","name":"Coformia"},"publisher":{"@type":"Organization","name":"Coformia","logo":{"@type":"ImageObject","url":"https://coformia.com/images/coformia-logo.png"}},"mainEntityOfPage":"https://coformia.com/insights/erp-formula-sync"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do formulas drift from SAP?","acceptedAnswer":{"@type":"Answer","text":"Changes often start outside the ERP—in email, spreadsheets, or customer portals—and reach SAP late or with manual re-entry errors."}},{"@type":"Question","name":"What is the minimum viable fix?","acceptedAnswer":{"@type":"Answer","text":"One working record for each change, with approvals, that releases to SAP only when complete—often piloted on one product family first."}}]}]}
+</script>
+<link rel="icon" href="/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/prose.css">
+<script src="/analytics.js" data-domain="coformia.com" defer></script>
+</head>
+<body>
+<header style="border-bottom:1px solid var(--line);padding:12px 0">
+  <div style="max-width:1024px;margin:0 auto;padding-inline:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+    <a href="/"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="160" height="32" decoding="async"></a>
+    <nav style="display:flex;gap:18px;font-size:14px"><a href="/insights/">Insights</a><a href="/formulane">Formulane</a></nav>
+  </div>
+</header>
+<main id="main" class="prose-page">
+  <div style="max-width:1024px;margin:0 auto;padding-inline:22px">
+    <p class="crumb"><a href="/">Coformia</a> / <a href="/insights/">Insights</a> / ERP formula sync</p>
+    <h1>How food manufacturers keep customer formulas in sync with SAP</h1>
+    <p class="lede">SAP is usually right about what is in the warehouse. It is often wrong about what R&amp;D approved yesterday—because the change never crossed the gap as a single, approved record.</p>
+    <div class="content">
+      <h2>Where drift starts</h2>
+      <p>Customer-driven changes arrive as spec PDFs, email threads, or portal tickets. R&amp;D updates a spreadsheet or a lab notebook. QA signs a checklist stored on a shared drive. Someone re-keys the BOM into SAP when they have time. Each hop introduces latency and risk.</p>
+      <h2>What “in sync” actually means</h2>
+      <p>Sync is not real-time mirroring of every draft. It means: at the moment production releases a batch, the formula, spec, allergen statement, and SAP BOM all refer to the same approved version—with names and dates that auditors can follow.</p>
+      <h2>An approval layer, not another silo</h2>
+      <p>Tools like <a href="/formulane">Formulane</a> sit between informal change channels and SAP. They hold the working version, run calculations, route sign-offs, and push approved structures to ERP interfaces. See <a href="/formulane/erp-integration">ERP integration</a> for the data-flow picture.</p>
+      <h2>Start small</h2>
+      <p>Pilots that work pick one customer, one SKU family, and measure time from change request to approved BOM in SAP. Scale when that loop is reliable—not when a slide deck says you are “digital”.</p>
+      <div class="cta">
+        <a class="pill" href="/formulane#contact"><span class="pill-in">Book a demo</span></a>
+      </div>
+      <section class="faq" style="margin-top:40px">
+        <h2>FAQ</h2>
+        <details open>
+          <summary>Why do formulas drift from SAP?</summary>
+          <p>Changes often start outside the ERP—in email, spreadsheets, or customer portals—and reach SAP late or with manual re-entry errors.</p>
+        </details>
+        <details>
+          <summary>What is the minimum viable fix?</summary>
+          <p>One working record for each change, with approvals, that releases to SAP only when complete—often piloted on one product family first.</p>
+        </details>
+      </section>
+    </div>
+  </div>
+</main>
+<footer style="background:var(--bg2);color:var(--soft);font-size:12px;padding:22px 0">
+  <div style="max-width:1024px;margin:0 auto;padding-inline:22px"><a href="/insights/">More insights</a></div>
+</footer>
+</body>
+</html>
