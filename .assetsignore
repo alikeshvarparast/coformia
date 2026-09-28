@@ -1,0 +1,6 @@
+.git
+.wrangler
+preview
+worker.js
+.dev.vars
+*.md

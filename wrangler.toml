@@ -1,10 +1,18 @@
 name = "keshvarco"
+main = "worker.js"
+account_id = "c9b3025345ef1b86b3662d4c80b1a27e"
 compatibility_date = "2026-09-21"
+
+[vars]
+TURNSTILE_SITE_KEY = "0x4AAAAAAFFvq98oyGzG7UCt"
+MAIL_TO = "info@coformia.com"
 
 [assets]
 directory = "."
+binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
+run_worker_first = true
 
 [[routes]]
 pattern = "coformia.com"

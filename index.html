@@ -105,7 +105,7 @@
   .story-rail { position: fixed; right: 10px; top: 18vh; height: 64vh; width: 10px; border-radius: 12px; background: color-mix(in srgb, var(--bg) 70%, transparent); border: 1px solid var(--line); z-index: 30; opacity: 0; pointer-events: none; backdrop-filter: blur(8px); }
   .story.is-locked .story-rail { opacity: 1; }
   .story-rail span { display: block; width: 100%; height: var(--story-p, 0%); background: var(--blue); border-radius: 99px; box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent); }
-  .story-pin { position: sticky; top: 72px; height: calc(100vh - 96px); max-height: 720px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
+  .story-pin { position: sticky; top: 72px; height: calc(100vh - 96px); max-height: 720px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
   .story-chapters { position: relative; min-height: 240px; }
   .story-chapter { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s ease; pointer-events: none; }
   .story-chapter.is-on { opacity: 1; visibility: visible; pointer-events: auto; }
@@ -120,8 +120,19 @@
   .story-chapter.is-on .ch-num { color: var(--blue); }
   .story-chapter h3 { font-size: clamp(28px, 3.5vw, 40px); margin-top: 12px; line-height: 1.1; }
   .story-chapter p { color: var(--soft); font-size: 18px; margin-top: 14px; max-width: 420px; }
-  .story-mock-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.25); min-width: 0; }
-  .story-mock .app { border-radius: 18px 18px 0 0; box-shadow: none; }
+  .story-mock-wrap { min-width: 0; margin-left: auto; width: 100%; max-width: min(900px, 100%); display: flex; justify-content: flex-end; overflow: visible; padding: 14px 22px 32px 6px; box-sizing: border-box; }
+  .story-mock-fit { min-width: 0; max-width: 100%; width: 100%; flex-shrink: 1; overflow: visible; filter: drop-shadow(0 24px 48px rgba(0,0,0,.22)); }
+  .story-mock .app { border-radius: 18px; border-bottom: 1px solid #2C2C2E; box-shadow: none; overflow: hidden; max-width: 100%; }
+  .story-mock .app-body { grid-template-columns: minmax(0, 130px) minmax(0, 1fr); min-width: 0; }
+  .story-mock .app-main { min-width: 0; }
+  .story-mock .app-cols { min-width: 0; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+  .story-mock .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .story-mock .app-search { flex: 1 1 auto; min-width: 0; max-width: 52%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
+  .story-mock .fr span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .story-mock.app-art { width: 100%; max-width: 100%; min-width: 0; transform-origin: top left; will-change: transform; }
+  @media (min-width: 901px) {
+    .story-pin { overflow: visible; }
+  }
   .story-mock .panel-a, .story-mock .panel-b .fr { transition: opacity .35s ease, background .35s ease; }
   .story-mock[data-scene="scene-1"] .panel-a { opacity: .45; }
   .story-mock[data-scene="scene-2"] #assist-line { box-shadow: 0 0 0 2px #7C93F2; }
@@ -220,14 +231,26 @@
   .founder blockquote::first-line { max-width: 18ch; }
   .founder cite { display: block; margin-top: 22px; font-style: normal; color: var(--soft); font-size: 17px; }
 
-  .contact { padding: 120px 0; }
+  .contact { padding: 88px 0; }
   .contact h2 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; line-height: 1.05; }
-  .contact .sub { font-size: 21px; color: var(--soft); margin: 14px auto 30px; max-width: 620px; }
+  .contact .sub { font-size: 19px; color: var(--soft); margin: 10px auto 22px; max-width: 520px; }
   .email { font-size: clamp(24px, 3.4vw, 34px); font-weight: 600; user-select: all; color: var(--ink); }
   .email a { color: inherit; text-decoration: none; }
   .email a:hover { color: var(--link); text-decoration: underline; }
   .contact-actions { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: center; align-items: center; margin-top: 22px; }
   .contact-actions .copy { margin-top: 0; }
+  .contact-form { max-width: 480px; margin: 20px auto 0; text-align: left; display: flex; flex-direction: column; gap: 10px; }
+  .contact-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .contact-form-row { grid-template-columns: 1fr; } }
+  .contact-form label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; font-weight: 500; color: var(--soft); }
+  .contact-form input, .contact-form textarea { font: inherit; font-size: 16px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; width: 100%; }
+  .contact-form textarea { min-height: 72px; resize: vertical; }
+  .contact-form .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
+  .contact-form .turnstile-wrap { display: flex; justify-content: center; margin: 4px 0 8px; min-height: 65px; }
+  .contact-form button[type=submit] { margin-top: 4px; align-self: center; cursor: pointer; border: none; font: inherit; font-size: 16px; font-weight: 600; color: #fff; background: var(--blue); border-radius: 980px; padding: 12px 28px; }
+  .contact-form button[type=submit]:disabled { opacity: .55; cursor: not-allowed; }
+  .form-status { min-height: 1.4em; font-size: 14px; color: var(--soft); margin-top: 8px; text-align: center; }
+  .contact-alt { margin-top: 20px; font-size: 15px; color: var(--soft); }
   .copy { margin-top: 16px; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 980px; padding: 8px 18px; font: inherit; font-size: 15px; cursor: pointer; }
   .copy-state { min-height: 1.4em; font-size: 14px; color: var(--soft); margin-top: 10px; }
 
@@ -453,6 +476,7 @@
         </article>
       </div>
       <div class="story-mock-wrap">
+        <div class="story-mock-fit" id="story-mock-fit">
         <div class="story-mock app-art" id="story-mock" data-scene="scene-1">
           <div class="app" aria-label="Overview of the Formulane app: dashboard with formulas, requests, approvals and the AI assistant">
             <div class="app-top"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="app-title">Formulane</span><span class="app-search">Search formulas, customers, batches…</span></div>
@@ -488,6 +512,7 @@
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -634,7 +659,7 @@
       </details>
       <details>
         <summary>How do we reach you?</summary>
-        <p>Email info@coformia.com and describe one slow process. We reply by email.</p>
+        <p>Use the form below or email info@coformia.com and describe one slow process. We reply by email.</p>
       </details>
     </div>
   </section>
@@ -643,16 +668,19 @@
     <div class="wrap">
       <h2>What still runs on spreadsheets?</h2>
       <p class="sub">Tell us about one slow process. We'll show you what it could look like.</p>
-      <p class="email"><a id="email" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A">info@coformia.com</a></p>
-      <ul class="send-list">
-        <li>Which team does the work</li>
-        <li>What the spreadsheet or chat is called</li>
-        <li>What “done” looks like</li>
-      </ul>
-      <div class="contact-actions">
-        <a class="pill" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize&amp;body=Hi%20Coformia%2C%0A%0AWhich%20team%20does%20the%20work%3A%20%0AWhat%20spreadsheet%20or%20chat%3A%20%0AWhat%20done%20looks%20like%3A%20%0A">Email us</a>
-        <button class="copy" id="copy-email" type="button">Copy address</button>
-      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <label class="hp" aria-hidden="true">Leave blank<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        <div class="contact-form-row">
+          <label>Your name<input name="name" type="text" required autocomplete="name" maxlength="120"></label>
+          <label>Your email<input name="email" type="email" required autocomplete="email" maxlength="160"></label>
+        </div>
+        <label>What slow process should we look at?<textarea name="message" required maxlength="4000" rows="3" placeholder="Team, spreadsheet or chat, and what done looks like."></textarea></label>
+        <div class="turnstile-wrap"><div class="cf-turnstile" data-sitekey="0x4AAAAAAFFvq98oyGzG7UCt"></div></div>
+        <button type="submit" id="contact-submit">Send message</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="contact-alt">Prefer email? <a id="email" href="mailto:info@coformia.com?subject=One%20process%20to%20digitalize">info@coformia.com</a>
+        <button class="copy" id="copy-email" type="button">Copy address</button></p>
       <p class="copy-state" id="copy-state" aria-live="polite"></p>
     </div>
   </section>
@@ -670,13 +698,57 @@
   </div>
 </footer>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
   (function () {
     var btn = document.getElementById('copy-email'), state = document.getElementById('copy-state'), el = document.getElementById('email');
+    if (!btn || !el) return;
     btn.addEventListener('click', function () {
       function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); state.textContent = 'Selected. Press Ctrl+C or Cmd+C to copy.'; }
       var addr = 'info@coformia.com';
       if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(addr).then(function () { state.textContent = 'Email address copied.'; }, fallback); } else { fallback(); }
+    });
+  })();
+</script>
+<script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+    var submit = document.getElementById('contact-submit');
+    if (!form || !status) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      if (submit) submit.disabled = true;
+      var fd = new FormData(form);
+      var token = window.turnstile ? window.turnstile.getResponse() : '';
+      if (!token) {
+        status.textContent = 'Complete the verification check, then try again.';
+        if (submit) submit.disabled = false;
+        return;
+      }
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fd.get('name'),
+          email: fd.get('email'),
+          message: fd.get('message'),
+          website: fd.get('website'),
+          turnstileToken: token
+        })
+      }).then(function (res) { return res.json().then(function (data) { return { res: res, data: data }; }); })
+        .then(function (_ref) {
+          var res = _ref.res, data = _ref.data;
+          if (!res.ok) throw new Error(data.error || 'Send failed');
+          status.textContent = 'Thanks — we got your message and will reply by email.';
+          form.reset();
+          if (window.turnstile) window.turnstile.reset();
+        })
+        .catch(function (err) {
+          status.textContent = err.message || 'Something went wrong. Email info@coformia.com directly.';
+        })
+        .finally(function () { if (submit) submit.disabled = false; });
     });
   })();
 </script>
@@ -741,6 +813,35 @@
     if (!story || !mock) return;
     var chapters = story.querySelectorAll('.story-chapter');
     if (!chapters.length) return;
+    var mockFit = document.getElementById('story-mock-fit');
+    var mockWrap = mockFit ? mockFit.parentElement : mock.parentElement;
+    var app = mock.querySelector('.app');
+    var pin = story.querySelector('.story-pin');
+    function fitMock() {
+      mock.style.transform = '';
+      mock.style.width = '';
+      if (mockFit) { mockFit.style.width = ''; mockFit.style.height = ''; }
+      if (window.innerWidth < 901 || !app || !pin || !mockFit) return;
+      var maxW = (mockWrap ? mockWrap.clientWidth : pin.clientWidth) - 28;
+      var maxH = pin.clientHeight - 46;
+      mock.style.width = '100%';
+      var w = mock.offsetWidth;
+      var h = app.offsetHeight;
+      if (w < 1 || h < 1) return;
+      var sW = app.scrollWidth > app.clientWidth + 1 ? app.clientWidth / app.scrollWidth : 1;
+      var sBox = w > maxW ? maxW / w : 1;
+      var sH = h > maxH ? maxH / h : 1;
+      var s = Math.min(1, sBox, sW, sH);
+      if (s >= 0.999) {
+        mock.style.transform = '';
+        if (mockFit) { mockFit.style.width = ''; mockFit.style.height = ''; }
+        return;
+      }
+      mock.style.transform = 'scale(' + s + ')';
+      mock.style.transformOrigin = 'top left';
+      mockFit.style.width = (w * s) + 'px';
+      mockFit.style.height = (h * s) + 'px';
+    }
     function storyProgress() {
       var travel = story.offsetHeight - window.innerHeight;
       if (travel < 1) return 0;
@@ -758,8 +859,10 @@
         mock.setAttribute('data-scene', 'scene-1');
         story.classList.remove('is-locked');
         story.style.setProperty('--story-p', '0%');
+        fitMock();
         return;
       }
+      fitMock();
       var p = storyProgress();
       var rect = story.getBoundingClientRect();
       var inLock = rect.top < window.innerHeight * 0.45 && rect.bottom > window.innerHeight * 0.55;
@@ -770,6 +873,10 @@
     }
     window.addEventListener('scroll', tick, { passive: true });
     window.addEventListener('resize', tick);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { fitMock(); tick(); });
+    }
+    fitMock();
     tick();
   })();
 </script>
