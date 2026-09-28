@@ -396,7 +396,34 @@ button.copy:hover,
 
 .hero-frame {
   border-radius: var(--radius-lg);
+  aspect-ratio: 16 / 6;
+  padding: 4px 10px;
+  background: color-mix(in srgb, var(--bg) 32%, transparent);
+  backdrop-filter: saturate(170%) blur(22px);
+  -webkit-backdrop-filter: saturate(170%) blur(22px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 20px 50px color-mix(in srgb, var(--ink) 6%, transparent);
 }
+
+.hero-frame .mess {
+  min-height: 96px;
+}
+
+.hero-frame .clean {
+  padding: 10px 12px;
+}
+
+.hero-frame .mess div {
+  --r: 0deg;
+  transform: rotate(var(--r));
+}
+
+.hero-frame .mess div:nth-child(1) { --r: -5deg; }
+.hero-frame .mess div:nth-child(2) { --r: 4deg; }
+.hero-frame .mess div:nth-child(3) { --r: -3deg; }
+.hero-frame .mess div:nth-child(4) { --r: 6deg; }
 
 .card,
 .panel,
@@ -539,12 +566,19 @@ main > section,
     0 24px 56px color-mix(in srgb, var(--blue) 8%, transparent);
 }
 
+body > header:not(.gnav):not(.pnav) {
+  background: color-mix(in srgb, var(--bg) 28%, transparent);
+  backdrop-filter: saturate(170%) blur(20px);
+  -webkit-backdrop-filter: saturate(170%) blur(20px);
+  border-bottom: 1px solid var(--glass-panel-stroke);
+}
+
 footer {
   padding-bottom: 88px;
-  background: color-mix(in srgb, var(--bg) 34%, transparent);
-  backdrop-filter: saturate(160%) blur(18px);
-  -webkit-backdrop-filter: saturate(160%) blur(18px);
-  border-top: 1px solid var(--glass-panel-stroke);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
 }
 
 .dock {
@@ -567,7 +601,6 @@ footer {
   color: var(--on-dark-soft);
 }
 
-.alt,
 .offer,
 .sheet,
 .card,
@@ -581,16 +614,38 @@ footer {
   box-shadow: 0 1px 0 var(--glass-highlight) inset;
 }
 
-.alt {
-  background: color-mix(in srgb, var(--bg2) 30%, transparent);
+section.alt,
+section.risk {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  box-shadow: none;
 }
 
-.risk,
-.ai {
-  background: color-mix(in srgb, var(--tile-dark) 42%, transparent);
+.alt > .wrap {
+  padding-block: 48px 56px;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--bg2) 30%, transparent);
+  backdrop-filter: saturate(165%) blur(20px);
+  -webkit-backdrop-filter: saturate(165%) blur(20px);
+  border: 1px solid var(--glass-panel-stroke);
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 20px 48px color-mix(in srgb, var(--ink) 5%, transparent);
+}
+
+.risk > .wrap {
+  padding-block: 56px 64px;
+  border-radius: var(--radius-lg);
+  color: #f5f5f7;
+  background: color-mix(in srgb, var(--tile-dark) 58%, transparent);
   backdrop-filter: saturate(150%) blur(24px);
   -webkit-backdrop-filter: saturate(150%) blur(24px);
-  border-block: 1px solid var(--glass-dark-stroke);
+  border: 1px solid var(--glass-dark-stroke);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, #ffffff 12%, transparent) inset,
+    0 24px 56px color-mix(in srgb, #000000 22%, transparent);
 }
 
 .alt .card,
@@ -714,16 +769,10 @@ body {
 
 .ambient-wash {
   position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  min-height: 100vh;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
-  overflow: visible;
-  perspective: 1200px;
-  perspective-origin: 50% 40%;
-  will-change: transform;
+  overflow: hidden;
 }
 
 .ambient-wash::before {
@@ -743,7 +792,6 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  transform-style: preserve-3d;
   overflow: visible;
 }
 
@@ -758,8 +806,6 @@ body {
   width: var(--blob-s, 48vmin);
   height: var(--blob-s, 48vmin);
   transform: translate(-50%, -50%);
-  transform-style: preserve-3d;
-  will-change: transform;
 }
 
 .ambient-blob--faint .ambient-blob-motion {
@@ -772,8 +818,6 @@ body {
   height: 100%;
   border-radius: 50%;
   filter: blur(64px);
-  transform-style: preserve-3d;
-  will-change: transform;
 }
 
 .ambient-blob--a {

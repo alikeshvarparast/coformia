@@ -73,6 +73,7 @@
   .shift .arrow { transition: opacity .4s ease, transform .4s ease; }
   .shift .clean { transform: scale(.94); transition: transform .65s cubic-bezier(.2,.8,.2,1), box-shadow .65s ease; }
   .shift.is-playing .mess div { animation: none !important; }
+  .hero-frame .shift.is-playing .mess { opacity: 1; transform: none; pointer-events: auto; }
 
   /* hero */
   .hero { padding: 72px 0 56px; }
@@ -82,16 +83,16 @@
   .hero h1 { font-size: clamp(40px, 5.5vw, 72px); line-height: 1.05; font-weight: 700; text-align: left; }
   .hero h1 span { color: var(--link); }
   .hero .sub { font-size: clamp(18px, 2.2vw, 22px); line-height: 1.35; color: var(--soft); max-width: 540px; margin: 20px 0 0; font-weight: 500; text-align: left; }
-  .hero-frame { aspect-ratio: 16 / 10; border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: 0 20px 50px color-mix(in srgb, var(--ink) 8%, transparent); background: var(--bg2); padding: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-frame { display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .hero-frame .shift { width: 100%; max-width: 100%; gap: 4px; grid-template-columns: minmax(0, 1fr) 14px minmax(0, 0.82fr); align-items: center; }
   .hero-frame .shift > * { min-width: 0; }
   .hero-frame .shift .clean { transform: scale(0.9); }
   .hero-frame .shift.is-playing .clean { transform: scale(0.94); box-shadow: 0 10px 28px rgba(28,57,187,.32); }
-  .hero-frame .mess { height: auto; min-height: 168px; overflow: visible; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-content: center; }
-  .hero-frame .mess div { position: static; width: auto; font-size: 9px; line-height: 1.25; padding: 7px 8px; transform: none !important; }
+  .hero-frame .mess { height: auto; overflow: visible; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-content: center; }
+  .hero-frame .mess div { position: static; width: auto; font-size: 9px; line-height: 1.25; padding: 7px 8px; }
   .hero-frame .mess div b { font-size: 10px; overflow-wrap: anywhere; }
   .hero-frame .arrow { font-size: 20px; animation: none; }
-  .hero-frame .clean { padding: 14px; min-width: 0; }
+  .hero-frame .clean { min-width: 0; }
   .hero-frame .clean h3 { font-size: 15px; }
   .hero-frame .clean ul { font-size: 11px; gap: 4px; }
   @media (max-width: 900px) {
@@ -191,7 +192,7 @@
   .caption { font-size: 13px; color: var(--soft); margin-top: 18px; text-align: center; }
   @media (max-width: 760px) {
     .hero-frame .shift { grid-template-columns: 1fr 14px 0.92fr; }
-    .hero-frame .mess { height: 130px; }
+    .hero-frame .mess { height: 100px; }
   }
 
   /* promise */
@@ -286,14 +287,11 @@
 
   /* ---- effects ---- */
   .hero { position: relative; overflow: hidden; }
-  .mess div { --r: 0deg; transform: rotate(var(--r)); animation: floaty 6s ease-in-out infinite; }
-  .mess div:nth-child(1) { --r: -7deg; } .mess div:nth-child(2) { --r: 5deg; animation-delay: -1.5s; } .mess div:nth-child(3) { --r: -3deg; animation-delay: -3s; } .mess div:nth-child(4) { --r: 8deg; animation-delay: -4.5s; }
-  @keyframes floaty { 0%, 100% { transform: rotate(var(--r)) translateY(0); } 50% { transform: rotate(calc(var(--r) * -0.6)) translateY(-10px); } }
-  .arrow { animation: nudge 1.6s ease-in-out infinite; }
-  @keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+  .mess div { --r: 0deg; transform: rotate(var(--r)); }
+  .mess div:nth-child(1) { --r: -7deg; } .mess div:nth-child(2) { --r: 5deg; } .mess div:nth-child(3) { --r: -3deg; } .mess div:nth-child(4) { --r: 8deg; }
+  .arrow { animation: none; }
   .clean { position: relative; overflow: hidden; }
-  .clean::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.22), transparent); animation: shine 4s ease-in-out infinite; }
-  @keyframes shine { 0%, 60% { left: -60%; } 100% { left: 120%; } }
+  .clean::after { content: none; }
   .clean li { opacity: 1; }
 
   .hub { padding: 12px; }
@@ -307,18 +305,14 @@
   .hub.ink .node.erp text { fill: #0B1020; }
   .hub.ink .links-g path { stroke: #424245; }
   .hub-title { font-size: clamp(36px, 6vw, 64px); font-weight: 700; line-height: 1.06; }
-  .hub-title span { background: linear-gradient(90deg, #1C39BB, #7C93F2, #1C39BB); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 6s linear infinite; }
-  @keyframes sheen { to { background-position: 200% center; } }
+  .hub-title span { color: var(--link); }
   .hub-sub { font-size: 21px; color: var(--soft); max-width: 640px; margin: 16px auto 0; }
   .hub.ink .hub-title { color: #F5F5F7; }
   .hub-art { max-width: 900px; margin: 40px auto 0; }
   .hub-art svg { width: 100%; height: auto; display: block; overflow: visible; }
   .links-g path { stroke: var(--line); stroke-width: 2; fill: none; }
-  .pulse-g path { stroke: #1C39BB; stroke-width: 3; fill: none; stroke-dasharray: 10 190; stroke-linecap: round; animation: pulse 2.6s linear infinite; }
-  .pulse-g path:nth-child(2n) { animation-delay: -1.3s; } .pulse-g path:nth-child(3n) { animation-delay: -.7s; }
-  @keyframes pulse { from { stroke-dashoffset: 200; } to { stroke-dashoffset: 0; } }
-  .ring { fill: none; stroke: #7C93F2; stroke-width: 2; opacity: .5; transform-origin: 450px 230px; animation: ring 2.6s ease-out infinite; }
-  @keyframes ring { from { transform: scale(.8); opacity: .7; } to { transform: scale(1.35); opacity: 0; } }
+  .pulse-g path { stroke: #1C39BB; stroke-width: 3; fill: none; stroke-linecap: round; }
+  .ring { display: none; }
   .core { fill: #1C39BB; }
   .core-t { fill: #fff; font-size: 20px; font-weight: 600; font-family: var(--font); }
   .hub-art .node { cursor: pointer; }
@@ -793,18 +787,6 @@
     window.addEventListener('scroll', tick, { passive: true });
     window.addEventListener('resize', tick);
     tick();
-  })();
-</script>
-<script>
-  (function () {
-    var shift = document.getElementById('hero-shift');
-    if (!shift) return;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
-    setTimeout(function () {
-      shift.classList.add('is-playing');
-      setTimeout(function () { shift.classList.remove('is-playing'); }, 2200);
-    }, 400);
   })();
 </script>
 <script>
