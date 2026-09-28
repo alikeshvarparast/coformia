@@ -91,7 +91,7 @@
 :root[data-theme="dark"] .logo-dark { display: block; }
 .logo-dark { display: none; }
 
-/* Glass buttons — label warps behind a frosted lens (::before) */
+/* Glass buttons — frosted ::before only (no SVG filter; same on all browsers) */
 .pill,
 button.replay,
 .gnav nav a.app {
@@ -108,7 +108,6 @@ button.replay,
   text-decoration: none;
   cursor: pointer;
   font: inherit;
-  filter: url(#glass-distort);
 }
 
 .pill::before,
@@ -257,13 +256,6 @@ button.replay:disabled:hover::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pill,
-  button.replay,
-  .gnav nav a.app,
-  .gnav::before,
-  .pnav::before {
-    filter: none;
-  }
   .pill,
   button.replay,
   .gnav nav a.app {
