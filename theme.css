@@ -3,7 +3,7 @@
   color-scheme: light;
   --page-max: 1200px;
   --bg: #FFFFF0;
-  --bg2: #F4EFE8;
+  --bg2: #EDE6DC;
   --ink: #3F3A34;
   --soft: #6B6560;
   --line: #E6DFD6;
@@ -24,8 +24,8 @@
   --glass-shadow: color-mix(in srgb, var(--blue) 22%, transparent);
   --glass-nav-fill: color-mix(in srgb, var(--blue) 14%, var(--bg) 86%);
   --glass-nav-stroke: color-mix(in srgb, var(--blue) 28%, var(--line));
-  --glass-panel: color-mix(in srgb, var(--bg) 68%, transparent);
-  --glass-panel-muted: color-mix(in srgb, var(--bg2) 62%, transparent);
+  --glass-panel: color-mix(in srgb, var(--bg) 82%, transparent);
+  --glass-panel-muted: color-mix(in srgb, var(--bg2) 78%, transparent);
   --glass-panel-stroke: color-mix(in srgb, var(--line) 70%, #ffffff 30%);
   --glass-dark-panel: color-mix(in srgb, var(--tile-dark) 82%, transparent);
   --glass-dark-stroke: color-mix(in srgb, #ffffff 14%, var(--tile-dark));
@@ -303,7 +303,7 @@ button.replay:disabled:hover::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--glass-panel-stroke);
@@ -415,7 +415,7 @@ button.copy:hover,
   border-radius: var(--radius-lg);
   aspect-ratio: auto;
   padding: 18px 20px 20px;
-  background: color-mix(in srgb, var(--bg) 32%, transparent);
+  background: color-mix(in srgb, var(--bg) 48%, transparent);
   backdrop-filter: saturate(170%) blur(22px);
   -webkit-backdrop-filter: saturate(170%) blur(22px);
   border: 1px solid var(--glass-panel-stroke);
@@ -598,7 +598,7 @@ main > section,
 .triple > div {
   padding: 22px 20px;
   border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--bg) 36%, transparent);
+  background: color-mix(in srgb, var(--bg) 48%, transparent);
   backdrop-filter: blur(18px) saturate(165%);
   -webkit-backdrop-filter: blur(18px) saturate(165%);
   border: 1px solid var(--glass-panel-stroke);
@@ -608,7 +608,7 @@ main > section,
 .faq .wrap {
   padding: 36px 32px;
   border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--bg) 36%, transparent);
+  background: color-mix(in srgb, var(--bg) 48%, transparent);
   backdrop-filter: saturate(165%) blur(22px);
   -webkit-backdrop-filter: saturate(165%) blur(22px);
   border: 1px solid var(--glass-panel-stroke);
@@ -618,7 +618,7 @@ main > section,
 .contact > .wrap {
   padding: 44px 36px 48px;
   border-radius: calc(var(--radius-lg) + 4px);
-  background: color-mix(in srgb, var(--bg) 36%, transparent);
+  background: color-mix(in srgb, var(--bg) 48%, transparent);
   backdrop-filter: saturate(170%) blur(22px);
   -webkit-backdrop-filter: saturate(170%) blur(22px);
   border: 1px solid var(--glass-panel-stroke);
@@ -687,7 +687,7 @@ section.risk {
 .alt > .wrap {
   padding-block: 48px 56px;
   border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--bg2) 30%, transparent);
+  background: color-mix(in srgb, var(--bg2) 42%, transparent);
   backdrop-filter: saturate(165%) blur(20px);
   -webkit-backdrop-filter: saturate(165%) blur(20px);
   border: 1px solid var(--glass-panel-stroke);
@@ -711,7 +711,7 @@ section.risk {
 
 .alt .card,
 .alt .panel {
-  background: color-mix(in srgb, var(--bg) 32%, transparent);
+  background: color-mix(in srgb, var(--bg) 44%, transparent);
 }
 
 .panel .row,
@@ -844,7 +844,12 @@ body {
   top: 0;
   bottom: 0;
   min-height: 100%;
-  background: var(--bg);
+  background: linear-gradient(
+    165deg,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--bg2) 55%, var(--bg)) 45%,
+    color-mix(in srgb, var(--bg2) 70%, var(--bg)) 100%
+  );
   z-index: -1;
 }
 
@@ -889,7 +894,7 @@ body {
   --blob-dur: var(--blob-1-dur, 16s);
 }
 .ambient-blob--a .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(28, 57, 187, 0.14) 0%, rgba(28, 57, 187, 0.03) 48%, transparent 74%);
+  background: radial-gradient(circle, rgba(28, 57, 187, 0.22) 0%, rgba(28, 57, 187, 0.07) 48%, transparent 74%);
 }
 
 .ambient-blob--b {
@@ -900,7 +905,7 @@ body {
   --blob-dur: var(--blob-2-dur, 19s);
 }
 .ambient-blob--b .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(124, 147, 242, 0.15) 0%, rgba(124, 147, 242, 0.03) 48%, transparent 74%);
+  background: radial-gradient(circle, rgba(124, 147, 242, 0.24) 0%, rgba(124, 147, 242, 0.07) 48%, transparent 74%);
 }
 
 .ambient-blob--c {
@@ -911,7 +916,7 @@ body {
   --blob-dur: var(--blob-3-dur, 21s);
 }
 .ambient-blob--c .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(217, 98, 43, 0.11) 0%, rgba(217, 98, 43, 0.02) 48%, transparent 74%);
+  background: radial-gradient(circle, rgba(217, 98, 43, 0.18) 0%, rgba(217, 98, 43, 0.05) 48%, transparent 74%);
 }
 
 .ambient-blob--d {
@@ -922,7 +927,7 @@ body {
   --blob-dur: var(--blob-4-dur, 17s);
 }
 .ambient-blob--d .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(47, 107, 82, 0.1) 0%, rgba(28, 57, 187, 0.02) 48%, transparent 74%);
+  background: radial-gradient(circle, rgba(47, 107, 82, 0.16) 0%, rgba(28, 57, 187, 0.05) 48%, transparent 74%);
 }
 
 body > :not(.ambient-wash):not(.gnav):not(.pnav):not(.skip):not(.dock) {
