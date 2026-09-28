@@ -24,6 +24,8 @@ function withCacheHeaders(response, pathname) {
     cacheControl = 'public, max-age=31536000, immutable';
   } else if (MEDIUM_CACHE_PATHS.test(pathname)) {
     cacheControl = 'public, max-age=604800, stale-while-revalidate=86400';
+  } else if (pathname === '/' || pathname.endsWith('.html')) {
+    cacheControl = 'no-cache, must-revalidate';
   } else {
     return response;
   }
@@ -112,7 +114,7 @@ Reply to reach the visitor.`;
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
       personalizations: [{ to: [{ email: mailTo, name: 'Coformia' }] }],
-      from: { email: 'website@coformia.com', name: 'Coformia website' },
+      from: { email: 'info@coformia.com', name: 'Coformia website' },
       reply_to: { email: fields.email, name: fields.name },
       subject,
       content: [{ type: 'text/plain', value: text }],
