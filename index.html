@@ -40,7 +40,7 @@
   a:focus-visible, button:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 6px; }
   h1, h2, h3, p { margin: 0; }
   h1, h2, h3 { text-wrap: balance; letter-spacing: -.025em; }
-  .wrap { max-width: 1024px; margin: 0 auto; padding-inline: 22px; }
+  .wrap { max-width: var(--page-max, 1200px); margin: 0 auto; padding-inline: 22px; }
   .center { text-align: center; }
 
   /* global nav */
@@ -78,29 +78,27 @@
   /* hero */
   .hero { padding: 72px 0 56px; }
   .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; }
+  @media (min-width: 901px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(380px, 1.2fr); gap: 48px; align-items: start; }
+  }
+  @media (min-width: 1600px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(440px, 1.28fr); gap: 56px; }
+  }
   .hero-copy { max-width: 640px; }
   .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--link); margin-bottom: 16px; }
   .hero h1 { font-size: clamp(40px, 5.5vw, 72px); line-height: 1.05; font-weight: 700; text-align: left; }
   .hero h1 span { color: var(--link); }
   .hero .sub { font-size: clamp(18px, 2.2vw, 22px); line-height: 1.35; color: var(--soft); max-width: 540px; margin: 20px 0 0; font-weight: 500; text-align: left; }
-  .hero-frame { display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .hero-frame .shift { width: 100%; max-width: 100%; gap: 4px; grid-template-columns: minmax(0, 1fr) 14px minmax(0, 0.82fr); align-items: center; }
-  .hero-frame .shift > * { min-width: 0; }
-  .hero-frame .shift .clean { transform: scale(0.9); }
-  .hero-frame .shift.is-playing .clean { transform: scale(0.94); box-shadow: 0 10px 28px rgba(28,57,187,.32); }
-  .hero-frame .mess { height: auto; overflow: visible; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-content: center; }
-  .hero-frame .mess div { position: static; width: auto; font-size: 9px; line-height: 1.25; padding: 7px 8px; }
-  .hero-frame .mess div b { font-size: 10px; overflow-wrap: anywhere; }
-  .hero-frame .arrow { font-size: 20px; animation: none; }
-  .hero-frame .clean { min-width: 0; }
-  .hero-frame .clean h3 { font-size: 15px; }
-  .hero-frame .clean ul { font-size: 11px; gap: 4px; }
+  .hero-frame { display: block; overflow: hidden; width: 100%; }
+  .hero-frame .shift { width: 100%; max-width: 100%; margin: 0; }
+  .hero-frame .shift .clean { transform: none; }
+  .hero-frame .shift.is-playing .clean { transform: none; box-shadow: 0 12px 32px rgba(28,57,187,.32); }
   @media (max-width: 900px) {
     .hero { padding: 48px 0 40px; }
     .hero-grid { grid-template-columns: 1fr; gap: 28px; }
     .hero h1 { font-size: clamp(32px, 9vw, 44px); }
     .hero .sub { font-size: 17px; margin-top: 14px; }
-    .hero-frame { max-width: none; margin: 0; aspect-ratio: auto; min-height: 0; padding: 10px; }
+    .hero-frame { margin: 0; min-height: 0; }
     .hero-cta .links { flex-direction: column; align-items: stretch; gap: 10px; }
     .hero-cta .pill { text-align: center; }
   }
@@ -190,10 +188,6 @@
   .clean ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 16px; }
   .clean li::before { content: "✓  "; font-weight: 700; }
   .caption { font-size: 13px; color: var(--soft); margin-top: 18px; text-align: center; }
-  @media (max-width: 760px) {
-    .hero-frame .shift { grid-template-columns: 1fr 14px 0.92fr; }
-    .hero-frame .mess { height: 100px; }
-  }
 
   /* promise */
   .promise { padding: 110px 0; }
@@ -433,7 +427,7 @@
   @keyframes assistIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @media (max-width: 760px) { .app-body { grid-template-columns: 1fr; } .app-side { display: none; } .kpis { grid-template-columns: 1fr 1fr; } .app-cols { grid-template-columns: 1fr; } }
 </style>
-<link rel="stylesheet" href="/theme.css?v=20260328">
+<link rel="stylesheet" href="/theme.css?v=20260328-hero">
 <script src="/ambient.js"></script>
 </head>
 <body>
