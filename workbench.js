@@ -473,7 +473,17 @@
   function renderTabs() {
     $('tabs').innerHTML = state.tabs.map(id => `<button type="button" class="tab" role="tab" data-tab="${id}" aria-selected="${id === state.active}">${V[id].title}<span class="x" data-close="${id}" title="Close tab" aria-label="Close ${V[id].title}">×</span></button>`).join('');
     const act = $('tabs').querySelector('[aria-selected="true"]');
-    if (act) act.scrollIntoView({ block:'nearest', inline:'nearest' });
+    if (act) {
+      if (embed) {
+        const strip = $('tabs');
+        const left = act.offsetLeft - strip.scrollLeft;
+        const right = left + act.offsetWidth;
+        if (left < 0) strip.scrollLeft += left;
+        else if (right > strip.clientWidth) strip.scrollLeft += right - strip.clientWidth;
+      } else {
+        act.scrollIntoView({ block:'nearest', inline:'nearest' });
+      }
+    }
   }
   function renderEditor() {
     const v = V[state.active];
