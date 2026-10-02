@@ -1,3 +1,7 @@
+banner/node_modules/
+banner/dist/
 .wrangler/
 .dev.vars
+.env
+.deployed-sha
 .DS_Store

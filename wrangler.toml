@@ -3,6 +3,9 @@ main = "worker.js"
 account_id = "c9b3025345ef1b86b3662d4c80b1a27e"
 compatibility_date = "2026-09-21"
 
+# Contact form: wrangler secret put RESEND_API_KEY (from resend.com, domain coformia.com verified)
+# Optional override: MAIL_FROM = "Coformia website <info@coformia.com>"
+
 [vars]
 TURNSTILE_SITE_KEY = "0x4AAAAAAFFvq98oyGzG7UCt"
 MAIL_TO = "info@coformia.com"
@@ -14,18 +17,5 @@ html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
 run_worker_first = true
 
-[[routes]]
-pattern = "coformia.com"
-custom_domain = true
-
-[[routes]]
-pattern = "www.coformia.com"
-custom_domain = true
-
-[[routes]]
-pattern = "keshvarco.com"
-custom_domain = true
-
-[[routes]]
-pattern = "www.keshvarco.com"
-custom_domain = true
+# Production traffic: cloudflared-coformia tunnel → Docker :8102
+# (custom_domain routes removed — do not re-add without removing tunnel DNS.)

@@ -13,21 +13,32 @@
 <meta property="og:image" content="https://coformia.com/images/og-home.png">
 <meta property="og:type" content="website">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Coformia","url":"https://coformia.com/","email":"info@coformia.com","logo":"https://coformia.com/images/coformia-logo.png","description":"Coformia builds connected software for work that still lives in spreadsheets, inboxes, and group chats.","founder":{"@type":"Person","name":"Ali Keshvarparast"},"sameAs":["https://shiftiai.com","https://coformia.com/formulane"]}
+{"@context":"https://schema.org","@type":"Organization","name":"Coformia","url":"https://coformia.com/","email":"info@coformia.com","logo":"https://coformia.com/images/coformia-logo.png","description":"Coformia builds connected software for work that still lives in spreadsheets, inboxes, and group chats.","founder":{"@type":"Person","name":"Ali Keshvarparast"},"sameAs":["https://shiftiai.com","https://coformia.com/formulane","https://coformia.com/qualane"]}
 </script>
 <link rel="icon" href="/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/theme.css?v=20260328-bg">
+<link rel="stylesheet" href="/theme.css?v=20261002-persian">
+<link rel="stylesheet" href="/marketing.css?v=20261002-persian">
 <link rel="stylesheet" href="/prose.css">
-<script src="/ambient.js"></script>
+<script src="/ambient.js?v=20261002-persian"></script>
+<script src="/site.js?v=20261002-persian" defer></script>
 <script src="/analytics.js" data-domain="coformia.com" defer></script>
 </head>
 <body>
 <div class="ambient-wash" aria-hidden="true"></div>
-<header style="padding:12px 0">
-  <div style="max-width:1024px;margin:0 auto;padding-inline:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
-    <a href="/"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="160" height="32" decoding="async"></a>
-    <nav style="display:flex;gap:18px;font-size:14px"><a href="/formulane">Formulane</a><a href="/insights/">Insights</a><a href="/#contact">Contact</a></nav>
+<header class="gnav">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="180" height="36" decoding="async"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Main">
+      <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
+      <a class="app" href="/qualane"><span class="pill-in">Qualane</span></a>
+      <a class="app" href="/countin"><span class="pill-in">CountIn</span></a>
+      <a class="opt" href="/#products">Products</a>
+      <a class="opt" href="/#approach">Approach</a>
+      <a class="opt" href="/#faq">FAQ</a>
+      <a href="/#contact">Contact</a>
+    </nav>
   </div>
 </header>
 <main id="main" class="prose-page">
@@ -37,7 +48,7 @@
     <p class="lede">We turn work that still runs on paper, spreadsheets, and group chats into connected digital processes—and use AI where it makes those processes faster, more accurate, and more reliable.</p>
     <div class="content">
       <h2>What we build</h2>
-      <p>Coformia is the company behind <a href="/formulane">Formulane</a>, formula and specification management for food manufacturers, and <a href="/countin">CountIn</a>, community and group activity management. We co-founded <a href="https://shiftiai.com" rel="noopener">ShiftiAI</a> for fair shift planning.</p>
+      <p>Coformia is the company behind <a href="/formulane">Formulane</a>, formula and specification management for food manufacturers, <a href="/qualane">Qualane</a>, shift-level quality control for food plants, and <a href="/countin">CountIn</a>, community and group activity management. We co-founded <a href="https://shiftiai.com" rel="noopener">ShiftiAI</a> for fair shift planning.</p>
       <p>Across products, the contract is the same: <strong>AI prepares the work. People approve.</strong> Software should not silently override human judgment on regulated or customer-facing decisions.</p>
       <h2>How we work with customers</h2>
       <p>We map how work really moves, prototype with your data, pilot with one team, and scale only when the pilot proves value. No big-bang ERP replacements—one live record that stays in sync with systems you already run.</p>
@@ -53,7 +64,7 @@
 <footer style="color:var(--soft);font-size:12px;padding:22px 0">
   <div style="max-width:1024px;margin:0 auto;padding-inline:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
     <span>Copyright © 2026 Coformia</span>
-    <span><a href="/formulane">Formulane</a> · <a href="/insights/">Insights</a></span>
+    <span><a href="/formulane">Formulane</a> · <a href="/qualane">Qualane</a> · <a href="/insights/">Insights</a></span>
   </div>
 </footer>
 </body>

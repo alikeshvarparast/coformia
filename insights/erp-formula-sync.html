@@ -15,17 +15,26 @@
 </script>
 <link rel="icon" href="/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/theme.css?v=20260328-bg">
+<link rel="stylesheet" href="/theme.css?v=20261002-persian">
 <link rel="stylesheet" href="/prose.css">
-<script src="/ambient.js"></script>
+<script src="/ambient.js?v=20261002-persian"></script>
 <script src="/analytics.js" data-domain="coformia.com" defer></script>
 </head>
 <body>
 <div class="ambient-wash" aria-hidden="true"></div>
-<header style="padding:12px 0">
-  <div style="max-width:1024px;margin:0 auto;padding-inline:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
-    <a href="/"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="160" height="32" decoding="async"></a>
-    <nav style="display:flex;gap:18px;font-size:14px"><a href="/insights/">Insights</a><a href="/formulane">Formulane</a></nav>
+<header class="gnav">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="180" height="36" decoding="async"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Main">
+      <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
+      <a class="app" href="/qualane"><span class="pill-in">Qualane</span></a>
+      <a class="app" href="/countin"><span class="pill-in">CountIn</span></a>
+      <a class="opt" href="/#products">Products</a>
+      <a class="opt" href="/#approach">Approach</a>
+      <a class="opt" href="/#faq">FAQ</a>
+      <a href="/#contact">Contact</a>
+    </nav>
   </div>
 </header>
 <main id="main" class="prose-page">

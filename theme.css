@@ -1,18 +1,18 @@
-/* Coformia — Stone + Persian */
+/* Coformia — White + Persian */
 :root {
   color-scheme: light;
   --page-max: 1200px;
-  --bg: #FFFFF0;
-  --bg2: #EDE6DC;
-  --ink: #3F3A34;
-  --soft: #6B6560;
-  --line: #E6DFD6;
+  --bg: #FFFFFF;
+  --bg2: #F4F5F7;
+  --ink: #2E3440;
+  --soft: #5B6577;
+  --line: #E6E8EC;
   --blue: #1C39BB;
   --link: #1C39BB;
   --blue-hover: #152E96;
   --tile-dark: #15204A;
-  --on-dark: #FFFFF0;
-  --on-dark-soft: #C9C4B8;
+  --on-dark: #ECEFF4;
+  --on-dark-soft: #A4AEC0;
   --dark: var(--tile-dark);
   --radius: 12px;
   --radius-lg: 12px;
@@ -34,17 +34,17 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #0C0B0A;
-    --bg2: #1A1816;
-    --ink: #F6F1EA;
-    --soft: #B8AFA4;
-    --line: #3A342E;
+    --bg: #2E3440;
+    --bg2: #2B303B;
+    --ink: #ECEFF4;
+    --soft: #A4AEC0;
+    --line: #434C5E;
     --link: #8A9AE8;
     --blue: #6B82E0;
     --blue-hover: #8A9AE8;
     --tile-dark: #10183A;
-    --on-dark: #FFFFF0;
-    --on-dark-soft: #9A9488;
+    --on-dark: #ECEFF4;
+    --on-dark-soft: #A4AEC0;
     --glass-fill: color-mix(in srgb, var(--blue) 34%, transparent);
     --glass-fill-hover: color-mix(in srgb, var(--blue) 50%, transparent);
     --glass-stroke: color-mix(in srgb, #ffffff 22%, var(--blue) 78%);
@@ -64,17 +64,17 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0C0B0A;
-  --bg2: #1A1816;
-  --ink: #F6F1EA;
-  --soft: #B8AFA4;
-  --line: #3A342E;
+  --bg: #2E3440;
+  --bg2: #2B303B;
+  --ink: #ECEFF4;
+  --soft: #A4AEC0;
+  --line: #434C5E;
   --link: #8A9AE8;
   --blue: #6B82E0;
   --blue-hover: #8A9AE8;
   --tile-dark: #10183A;
-  --on-dark: #FFFFF0;
-  --on-dark-soft: #9A9488;
+  --on-dark: #ECEFF4;
+  --on-dark-soft: #A4AEC0;
   --glass-fill: color-mix(in srgb, var(--blue) 34%, transparent);
   --glass-fill-hover: color-mix(in srgb, var(--blue) 50%, transparent);
   --glass-stroke: color-mix(in srgb, #ffffff 22%, var(--blue) 78%);
@@ -315,7 +315,7 @@ button.replay:disabled:hover::before {
   z-index: 1;
 }
 .pnav {
-  top: calc(env(safe-area-inset-top, 0px) + 48px);
+  top: calc(env(safe-area-inset-top, 0px) + 52px);
   z-index: 39;
 }
 
@@ -338,6 +338,55 @@ button.replay:disabled:hover::before {
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: none;
+}
+
+.gnav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 52px;
+  height: 52px;
+}
+.gnav nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.gnav nav a {
+  color: var(--ink);
+  font-size: 13px;
+  opacity: 0.85;
+  text-decoration: none;
+}
+.gnav nav a:hover { opacity: 1; text-decoration: none; }
+.gnav nav a.app { opacity: 1; }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 980px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+@media (max-width: 960px) {
+  .nav-toggle { display: inline-flex; }
+  .gnav .wrap { height: auto; }
+  #site-nav { display: none; }
+  .gnav.is-open #site-nav {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 22px 18px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -436,17 +485,16 @@ button.copy:hover,
 .hero-frame .mess {
   min-height: 0;
   order: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .hero-frame .arrow {
   order: 2;
   justify-self: center;
   line-height: 1;
-  transform: rotate(90deg);
+  transform: none;
 }
 
 .hero-frame .clean {
@@ -477,14 +525,8 @@ button.copy:hover,
 }
 
 .hero-frame .mess div {
-  --r: 0deg;
-  transform: rotate(var(--r));
+  transform: none;
 }
-
-.hero-frame .mess div:nth-child(1) { --r: -5deg; }
-.hero-frame .mess div:nth-child(2) { --r: 4deg; }
-.hero-frame .mess div:nth-child(3) { --r: -3deg; }
-.hero-frame .mess div:nth-child(4) { --r: 6deg; }
 
 .card,
 .panel,
@@ -830,10 +872,14 @@ body {
 
 .ambient-wash {
   position: fixed;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  min-height: 100vh;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
+  will-change: transform;
 }
 
 .ambient-wash::before {
@@ -872,6 +918,7 @@ body {
   width: var(--blob-s, 48vmin);
   height: var(--blob-s, 48vmin);
   transform: translate(-50%, -50%);
+  opacity: 0.72;
 }
 
 .ambient-blob--faint .ambient-blob-motion {
@@ -894,7 +941,7 @@ body {
   --blob-dur: var(--blob-1-dur, 16s);
 }
 .ambient-blob--a .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(28, 57, 187, 0.22) 0%, rgba(28, 57, 187, 0.07) 48%, transparent 74%);
+  background: radial-gradient(circle, rgba(28, 57, 187, 0.16) 0%, rgba(28, 57, 187, 0.05) 48%, transparent 74%);
 }
 
 .ambient-blob--b {
@@ -905,7 +952,7 @@ body {
   --blob-dur: var(--blob-2-dur, 19s);
 }
 .ambient-blob--b .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(124, 147, 242, 0.24) 0%, rgba(124, 147, 242, 0.07) 48%, transparent 74%);
+  background: radial-gradient(circle, rgba(124, 147, 242, 0.17) 0%, rgba(124, 147, 242, 0.05) 48%, transparent 74%);
 }
 
 .ambient-blob--c {
@@ -916,7 +963,7 @@ body {
   --blob-dur: var(--blob-3-dur, 21s);
 }
 .ambient-blob--c .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(217, 98, 43, 0.18) 0%, rgba(217, 98, 43, 0.05) 48%, transparent 74%);
+  background: radial-gradient(circle, rgba(217, 98, 43, 0.13) 0%, rgba(217, 98, 43, 0.04) 48%, transparent 74%);
 }
 
 .ambient-blob--d {
@@ -927,7 +974,7 @@ body {
   --blob-dur: var(--blob-4-dur, 17s);
 }
 .ambient-blob--d .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(47, 107, 82, 0.16) 0%, rgba(28, 57, 187, 0.05) 48%, transparent 74%);
+  background: radial-gradient(circle, rgba(47, 107, 82, 0.12) 0%, rgba(28, 57, 187, 0.04) 48%, transparent 74%);
 }
 
 body > :not(.ambient-wash):not(.gnav):not(.pnav):not(.skip):not(.dock) {
@@ -941,34 +988,34 @@ body > .dock {
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .ambient-blob {
-    opacity: 0.62;
+    opacity: 0.48;
   }
   :root:not([data-theme="light"]) .ambient-blob--a .ambient-blob-motion {
-    background: radial-gradient(circle, rgba(107, 130, 224, 0.28) 0%, transparent 68%);
+    background: radial-gradient(circle, rgba(107, 130, 224, 0.2) 0%, transparent 68%);
   }
   :root:not([data-theme="light"]) .ambient-blob--b .ambient-blob-motion {
-    background: radial-gradient(circle, rgba(138, 154, 232, 0.26) 0%, transparent 68%);
+    background: radial-gradient(circle, rgba(138, 154, 232, 0.18) 0%, transparent 68%);
   }
   :root:not([data-theme="light"]) .ambient-blob--c .ambient-blob-motion {
-    background: radial-gradient(circle, rgba(217, 98, 43, 0.16) 0%, transparent 68%);
+    background: radial-gradient(circle, rgba(217, 98, 43, 0.12) 0%, transparent 68%);
   }
   :root:not([data-theme="light"]) .ambient-blob--d .ambient-blob-motion {
-    background: radial-gradient(circle, rgba(107, 130, 224, 0.18) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(107, 130, 224, 0.13) 0%, transparent 70%);
   }
 }
 
 :root[data-theme="dark"] .ambient-blob {
-  opacity: 0.62;
+  opacity: 0.48;
 }
 :root[data-theme="dark"] .ambient-blob--a .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(107, 130, 224, 0.28) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(107, 130, 224, 0.2) 0%, transparent 68%);
 }
 :root[data-theme="dark"] .ambient-blob--b .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(138, 154, 232, 0.26) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(138, 154, 232, 0.18) 0%, transparent 68%);
 }
 :root[data-theme="dark"] .ambient-blob--c .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(217, 98, 43, 0.16) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(217, 98, 43, 0.12) 0%, transparent 68%);
 }
 :root[data-theme="dark"] .ambient-blob--d .ambient-blob-motion {
-  background: radial-gradient(circle, rgba(107, 130, 224, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(107, 130, 224, 0.13) 0%, transparent 70%);
 }

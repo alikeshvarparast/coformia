@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coformia sample app</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/workbench.css?v=20261001-wb3">
+</head>
+<body>
+<div class="wrap">
+  <header class="intro">
+    <div class="eyebrow">Sample app · sample data</div>
+    <h1>One workbench for Formulane and Qualane</h1>
+    <p>Click the icons, open a record, and ask the assistant. Dashed notes explain each page. Nothing here is a live plant.</p>
+  </header>
+  <div class="controls" role="group" aria-label="Sample controls">
+    <div class="ctl" id="ctl-product"><span class="ctl-label" id="l-prod">Product</span>
+      <div class="seg" role="group" aria-labelledby="l-prod">
+        <button type="button" data-set="product" data-val="formulane" aria-pressed="true">Formulane</button>
+        <button type="button" data-set="product" data-val="qualane" aria-pressed="false">Qualane</button>
+      </div></div>
+    <div class="ctl"><span class="ctl-label" id="l-pal">Palette</span>
+      <div class="seg" role="group" aria-labelledby="l-pal">
+        <button type="button" data-set="palette" data-val="nord" aria-pressed="true">Nord</button>
+        <button type="button" data-set="palette" data-val="catppuccin" aria-pressed="false">Catppuccin</button>
+      </div></div>
+    <div class="ctl"><span class="ctl-label" id="l-mode">Mode</span>
+      <div class="seg" role="group" aria-labelledby="l-mode">
+        <button type="button" data-set="mode" data-val="light" aria-pressed="true">Light</button>
+        <button type="button" data-set="mode" data-val="dark" aria-pressed="false">Dark</button>
+      </div></div>
+    <div class="ctl"><span class="ctl-label" id="l-guide">Guide notes</span>
+      <div class="seg" role="group" aria-labelledby="l-guide">
+        <button type="button" data-set="guides" data-val="on" aria-pressed="true">On</button>
+        <button type="button" data-set="guides" data-val="off" aria-pressed="false">Off</button>
+      </div></div>
+  </div>
+  <div id="ds">
+    <section class="app" id="app" aria-label="Sample app">
+      <div class="titlebar">
+        <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="brand">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="3" fill="var(--c-accent-strong)"></rect><rect x="7" y="7" width="12" height="12" rx="3" fill="none" stroke="var(--c-fg)" stroke-width="1.6"></rect></svg>
+          <span id="brand-name">Formulane</span><small>by Coformia</small>
+        </div>
+        <button type="button" class="cmd" id="cmd-open" aria-label="Open command palette">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <span id="cmd-hint">Search</span><kbd>⌘K</kbd>
+        </button>
+        <button type="button" class="ai-btn" id="ai-toggle" aria-pressed="false" aria-controls="chat">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9z"></path></svg>
+          <span class="lbl">Ask AI</span>
+        </button>
+        <div class="avatar" title="You">AK</div>
+      </div>
+      <nav class="activity" aria-label="Sections" id="activity"></nav>
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main">
+        <div class="tabs" id="tabs" role="tablist"></div>
+        <div class="editor" id="editor"></div>
+      </div>
+      <aside class="chat" id="chat" aria-label="AI assistant" hidden>
+        <div class="chat-h">
+          <b><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9z"></path></svg><span id="chat-title">AI</span></b>
+          <button type="button" class="icon-btn" id="chat-new" aria-label="New chat">+</button>
+          <button type="button" class="icon-btn" id="chat-close" aria-label="Close AI panel">×</button>
+        </div>
+        <div class="ctx" id="chat-ctx"></div>
+        <div class="msgs" id="msgs" aria-live="polite"></div>
+        <div class="chat-foot">
+          <div class="sugg" id="sugg"></div>
+          <form id="composer" class="composer">
+            <textarea id="chat-input" rows="1" placeholder="Ask about this page" aria-label="Message"></textarea>
+            <button type="submit" class="btn primary">Send</button>
+          </form>
+        </div>
+      </aside>
+      <footer class="statusbar" id="statusbar"></footer>
+      <div class="palette" id="palette" hidden>
+        <input id="palette-input" type="text" placeholder="Type a page, record or command" autocomplete="off" aria-label="Command">
+        <ul id="palette-list" role="listbox"></ul>
+      </div>
+    </section>
+    <section class="sheet" aria-label="Design notes">
+      <div class="card span-12"><div id="legend" class="legend"></div></div>
+      <div class="card span-12">
+        <h3 id="sw-caption">Tokens</h3>
+        <div id="swatches" class="swatches"></div>
+      </div>
+      <div class="card span-12">
+        <div class="code-head"><h3>CSS variables</h3><button type="button" class="copy" id="copy-css">Copy CSS</button></div>
+        <pre id="css-out" tabindex="0"></pre>
+      </div>
+    </section>
+  </div>
+</div>
+<script src="/workbench.js?v=20261001-wb2"></script>
+</body>
+</html>

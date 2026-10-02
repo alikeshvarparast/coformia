@@ -6,7 +6,7 @@
 <title>CountIn — Community and group activity management</title>
 <meta name="description" content="CountIn manages communities and group activities. Members mark going or not going, the waitlist fills open spots, and a shared ledger tracks who owes what. CountIn never takes the payment.">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#FFFFF0">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="canonical" href="https://coformia.com/countin">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
@@ -68,7 +68,7 @@
   .faq details { border-top: 1px solid var(--line); text-align: left; }
   .faq summary { font-size: 21px; font-weight: 600; padding: 18px 0; cursor: pointer; }
   .faq details p { color: var(--soft); max-width: 640px; padding-bottom: 18px; }
-  @media (max-width: 720px) {
+  @media (max-width: 960px) {
     .nav-toggle { display: inline-flex; }
     .gnav .wrap { height: auto; min-height: 48px; }
     #site-nav { display: none; }
@@ -190,8 +190,10 @@
     .reveal { opacity: 1; transform: none; }
   }
 </style>
-<link rel="stylesheet" href="/theme.css?v=20260328-bg">
-<script src="/ambient.js"></script>
+<link rel="stylesheet" href="/theme.css?v=20261002-persian">
+<link rel="stylesheet" href="/marketing.css?v=20261002-persian">
+<script src="/ambient.js?v=20261002-persian"></script>
+<script src="/site.js?v=20261002-persian" defer></script>
 </head>
 <body>
 <div class="ambient-wash" aria-hidden="true"></div>
@@ -203,6 +205,7 @@
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" aria-label="Main">
       <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
+      <a class="app" href="/qualane"><span class="pill-in">Qualane</span></a>
       <a class="app" href="/countin"><span class="pill-in">CountIn</span></a>
       <a class="opt" href="/#products">Products</a>
       <a class="opt" href="/#approach">Approach</a>
@@ -215,6 +218,7 @@
   <div class="wrap">
     <span class="name"><img src="/images/countin-logo.png" alt="CountIn" width="24" height="24" decoding="async">CountIn</span>
     <nav aria-label="CountIn">
+      <a class="opt" href="#look">The app</a>
       <a class="opt" href="#why">Why CountIn</a>
       <a class="opt" href="#features">Features</a>
       <a class="pill" href="https://countin.sspi.trade/" target="_blank" rel="noopener"><span class="pill-in">Open CountIn</span></a>
@@ -242,6 +246,24 @@
         <img src="/images/countin-club.jpg" alt="Thursday night 8v8 in CountIn: presence vote with Going and Not going, 12 going and 2 not going">
         <figcaption>Thursday night 8v8. Members vote going or not going for the event.</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section class="center" id="look">
+    <div class="wrap">
+      <p class="section-label">The app</p>
+      <h2 class="big">One session. One list.</h2>
+      <p class="sub">Going, waitlist, and ledger on the same screen—CountIn never collects payment.</p>
+      <div class="countin-preview" aria-label="Example CountIn session">
+        <header><span>Thursday meetup · 8:00 pm</span><span class="badge">Full</span></header>
+        <div class="avatars" aria-hidden="true"><i>AK</i><i>MR</i><i>SJ</i><i>LB</i><i>OT</i><i>NP</i><i>RD</i><i>EV</i><i>KM</i><i class="new">JS</i></div>
+        <ul>
+          <li><span>Going</span><span>10 / 10</span></li>
+          <li><span>Waitlist</span><span>2</span></li>
+          <li><span>Court fee · $12 each</span><span>8 paid</span></li>
+        </ul>
+      </div>
+      <p class="note" style="margin-top:16px;color:var(--soft);font-size:14px">Live app at <a href="https://countin.sspi.trade/" target="_blank" rel="noopener">countin.sspi.trade</a></p>
     </div>
   </section>
 
@@ -397,6 +419,7 @@
     var btn = document.querySelector('.nav-toggle');
     var nav = document.getElementById('site-nav');
     if (!btn || !nav || !header) return;
+    btn.dataset.navBound = '1';
     function setOpen(open) {
       header.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');

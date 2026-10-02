@@ -1,0 +1,40 @@
+---
+description: Coformia marketing site — static HTML + contact API in Docker
+globs: coformia/**
+---
+
+# Coformia
+
+## Folder Purpose
+
+Public marketing site (Formulane, Qualane, CountIn) and contact form. Served from Docker on loopback `:8102`, not Cloudflare Workers for origin.
+
+## Module Inventory
+
+| Path | Role |
+|------|------|
+| `docker-compose.yml` | `coformia-web` (nginx static + `/api` proxy), `coformia-api` (Node contact handler) |
+| `nginx/default.conf` | Static files, cache headers, canonical redirects to `https://coformia.com` |
+| `api/server.js` | `POST /api/contact` (Turnstile + Resend or SMTP), `GET /api/health` |
+| `scripts/sync-env-from-host.py` | Builds `.env` (Turnstile from CF API, SMTP from `mail-triage/mail-triage.env` optional) |
+| `docs/docker.md` | Runbook, cutover from Workers |
+| `worker.js` / `wrangler.toml` | Legacy Cloudflare Worker; disable routes when DNS points here |
+| `preview/` | Deprecated; use root `docker-compose.yml` |
+
+## Internal Contracts
+
+- Contact POST: same JSON as `contact-form.js` (`name`, `email`, `message`, `turnstileToken`, optional legacy team fields).
+- Env: `TURNSTILE_SECRET`, `MAIL_TO`, `MAIL_FROM`, and either `RESEND_API_KEY` or `SMTP_*`.
+- Public: `127.0.0.1:8102`; tunnel hostnames via `countin/scripts/front-proxy.py` → `:8102`.
+
+## Dependencies
+
+- `mail-triage/mail-triage.env` — optional Gmail SMTP source for `sync-env-from-host.py`.
+- `hmanager/deploy/.env` — Cloudflare API for Turnstile secret sync.
+- `cloudflared-countin` — ingress to `:8097` proxy for `coformia.sspi.trade` / `coformia.com` when configured.
+
+## Local Risks & Debt
+
+- `coformia.com` may still hit Workers until CF routes/DNS are switched.
+- Gmail SMTP `MAIL_FROM` with `@coformia.com` may fail DMARC at some receivers; prefer Resend with verified domain long term.
+- `.env` is gitignored; run `scripts/sync-env-from-host.py` after secret rotation.

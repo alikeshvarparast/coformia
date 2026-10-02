@@ -23,7 +23,8 @@ function withCacheHeaders(response, pathname) {
   if (LONG_CACHE_PATHS.test(pathname)) {
     cacheControl = 'public, max-age=31536000, immutable';
   } else if (MEDIUM_CACHE_PATHS.test(pathname)) {
-    cacheControl = 'public, max-age=604800, stale-while-revalidate=86400';
+    /* Short TTL so theme/token updates reach browsers without week-long stale edge cache */
+    cacheControl = 'public, max-age=3600, must-revalidate';
   } else if (pathname === '/' || pathname.endsWith('.html')) {
     cacheControl = 'no-cache, must-revalidate';
   } else {
@@ -85,7 +86,13 @@ function validate(payload) {
 }
 
 async function sendMail(fields, env) {
+  const apiKey = env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error('RESEND_API_KEY is not configured');
+  }
+
   const mailTo = env.MAIL_TO || 'info@coformia.com';
+  const mailFrom = env.MAIL_FROM || 'Coformia website <info@coformia.com>';
   const subject = fields.shortForm
     ? `Coformia contact — ${fields.name}`
     : `Coformia contact — ${fields.team}`;
@@ -109,20 +116,23 @@ What done looks like: ${fields.outcome}
 ${fields.message ? `\nExtra details:\n${fields.message}\n` : ''}
 Reply to reach the visitor.`;
 
-  const res = await fetch('https://api.mailchannels.net/tx/v1/send', {
+  const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: mailTo, name: 'Coformia' }] }],
-      from: { email: 'info@coformia.com', name: 'Coformia website' },
-      reply_to: { email: fields.email, name: fields.name },
+      from: mailFrom,
+      to: [mailTo],
+      reply_to: fields.email,
       subject,
-      content: [{ type: 'text/plain', value: text }],
+      text,
     }),
   });
   if (!res.ok) {
     const detail = await res.text().catch(() => '');
-    throw new Error(`Mail send failed (${res.status}): ${detail.slice(0, 200)}`);
+    throw new Error(`Mail send failed (${res.status}): ${detail.slice(0, 400)}`);
   }
 }
 
@@ -162,7 +172,8 @@ async function handleContact(request, env) {
 
   try {
     await sendMail(fields, env);
-  } catch {
+  } catch (err) {
+    console.error('contact send failed', err && err.message ? err.message : err);
     return json({ error: 'Could not send your message. Email info@coformia.com directly.' }, 502);
   }
 

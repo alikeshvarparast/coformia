@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coformia — 15s Reel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=block" rel="stylesheet">
+<style>
+:root {
+  --bg: #050508;
+  --brand: #1C39BB;
+  --brand-lit: #6B82E0;
+  --electric: #3b82f6;
+  --emerald: #10b981;
+  --ink: #F5F7FB;
+  --muted: #8B93A7;
+  --glass: rgba(255,255,255,0.035);
+  --stroke: rgba(255,255,255,0.08);
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+body { display: grid; place-items: center; }
+#viewport { position: relative; width: 100vw; height: 100vh; display: grid; place-items: center; }
+#stage {
+  position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px;
+  transform-origin: 50% 50%; overflow: hidden; background: var(--bg);
+  font-family: var(--font); color: var(--ink); -webkit-font-smoothing: antialiased;
+}
+#cam { position: absolute; inset: 0; transform-origin: 50% 50%; perspective: 1800px; }
+
+.orb { position: absolute; border-radius: 50%; filter: blur(80px); will-change: transform; pointer-events: none; }
+.orb.a { width: 900px; height: 900px; left: 510px; top: 90px; background: radial-gradient(circle, rgba(59,130,246,.55), rgba(28,57,187,.25) 45%, transparent 70%); }
+.orb.b { width: 620px; height: 620px; left: 1180px; top: 520px; background: radial-gradient(circle, rgba(16,185,129,.35), transparent 70%); }
+.orb.c { width: 560px; height: 560px; left: 120px; top: 560px; background: radial-gradient(circle, rgba(28,57,187,.45), transparent 70%); }
+
+.grid {
+  position: absolute; inset: -200px; opacity: .55; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(30deg, rgba(255,255,255,.055) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(150deg, rgba(255,255,255,.055) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 64px);
+  -webkit-mask-image: radial-gradient(ellipse 55% 55% at 50% 50%, #000 0%, rgba(0,0,0,.4) 55%, transparent 80%);
+          mask-image: radial-gradient(ellipse 55% 55% at 50% 50%, #000 0%, rgba(0,0,0,.4) 55%, transparent 80%);
+}
+.noise { position: absolute; inset: 0; pointer-events: none; opacity: .05; background-size: 160px 160px; }
+.vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.75) 100%); }
+.bar { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--brand), var(--electric), var(--emerald)); box-shadow: 0 0 16px var(--electric); z-index: 20; }
+
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid var(--stroke); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 40px 120px -40px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.07);
+}
+.mask { display: block; overflow: hidden; padding-bottom: .04em; }
+.line { display: block; will-change: transform; }
+
+/* Beat 1 */
+#hook { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.badge {
+  display: inline-flex; align-items: center; gap: 12px; padding: 12px 22px 12px 14px; border-radius: 999px;
+  font-size: 20px; font-weight: 600; letter-spacing: .01em; color: #DCE4FF; margin-bottom: 44px;
+}
+.badge .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 5px rgba(16,185,129,.18), 0 0 18px var(--emerald); }
+.badge b { color: #fff; font-weight: 700; }
+.headline { margin: 0; font-size: 148px; line-height: .98; font-weight: 800; letter-spacing: -.055em; }
+.headline .grad { background: linear-gradient(90deg, #8FB0FF 0%, var(--electric) 45%, var(--emerald) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sub { margin: 36px 0 0; font-size: 30px; font-weight: 500; color: var(--muted); letter-spacing: -.01em; }
+
+/* Beat 2 */
+#engine { position: absolute; inset: 0; display: grid; place-items: center; perspective: 1800px; visibility: hidden; }
+.card {
+  position: relative; width: 1240px; height: 700px; border-radius: 28px; padding: 36px 40px;
+  transform-style: preserve-3d; overflow: hidden;
+}
+.card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(600px 300px at 15% 0%, rgba(59,130,246,.16), transparent 70%); }
+.card-top { position: relative; display: flex; align-items: center; justify-content: space-between; }
+.crumbs { display: flex; align-items: center; gap: 14px; font-size: 18px; color: var(--muted); font-weight: 500; }
+.crumbs b { color: var(--ink); font-weight: 600; }
+.crumbs i { width: 10px; height: 10px; border-radius: 3px; background: var(--brand-lit); box-shadow: 0 0 12px var(--electric); }
+.live { display: inline-flex; gap: 10px; align-items: center; padding: 8px 14px; border-radius: 999px; font-size: 15px; font-weight: 600; color: #A7F3D0; background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.25); }
+.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 10px var(--emerald); }
+.card-body { position: relative; display: grid; grid-template-columns: 1fr 330px; gap: 32px; margin-top: 30px; height: 560px; }
+.chart { position: relative; border-radius: 20px; padding: 26px 26px 18px; }
+.chart h4 { margin: 0; font-size: 17px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.chart svg { position: absolute; left: 0; top: 70px; width: 100%; height: calc(100% - 90px); overflow: visible; }
+.ripple { fill: none; stroke: var(--emerald); stroke-width: 2; opacity: 0; }
+.pt { fill: #fff; }
+.side { display: flex; flex-direction: column; gap: 18px; }
+.metric { border-radius: 20px; padding: 26px; }
+.metric small { display: block; font-size: 15px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.metric .big { display: block; margin-top: 10px; font-size: 92px; font-weight: 800; letter-spacing: -.05em; line-height: 1; font-variant-numeric: tabular-nums;
+  background: linear-gradient(180deg, #fff, #A7F3D0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.metric .delta { margin-top: 10px; font-size: 16px; color: #6EE7B7; font-weight: 600; }
+.row { border-radius: 16px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; font-size: 17px; font-weight: 500; }
+.row span { color: var(--muted); }
+.row b { font-weight: 600; }
+.tick { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 800; color: #04120C; background: var(--emerald); box-shadow: 0 0 14px rgba(16,185,129,.7); }
+
+/* Beat 3 */
+#finale { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; visibility: hidden; }
+.rim-wrap { position: relative; width: 300px; height: 300px; display: grid; place-items: center; }
+.rim { position: absolute; inset: -6px; border-radius: 76px;
+  background: conic-gradient(from 0deg, transparent 0deg, var(--electric) 60deg, var(--emerald) 120deg, transparent 180deg, var(--brand-lit) 260deg, transparent 360deg);
+  filter: blur(2px); }
+.rim-glow { position: absolute; inset: -40px; border-radius: 110px; filter: blur(40px); opacity: .7;
+  background: conic-gradient(from 0deg, transparent, var(--electric), var(--emerald), transparent, var(--brand)); }
+.logo { position: relative; width: 288px; height: 288px; border-radius: 70px; background: #07080F; display: grid; place-items: center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+.logo svg { width: 170px; height: 170px; }
+.wordmark { margin: 54px 0 0; font-size: 150px; font-weight: 800; letter-spacing: -.06em; line-height: 1; }
+.wordmark .ch { display: inline-block; will-change: transform; }
+.tag { margin: 22px 0 0; font-size: 30px; color: var(--muted); font-weight: 500; }
+.cta {
+  position: relative; overflow: hidden; margin-top: 52px; display: inline-flex; align-items: center; gap: 16px;
+  padding: 24px 40px; border-radius: 999px; font-size: 26px; font-weight: 700; color: #fff;
+  background: linear-gradient(90deg, var(--brand), var(--electric));
+  box-shadow: 0 20px 60px -10px rgba(59,130,246,.7), inset 0 1px 0 rgba(255,255,255,.35);
+}
+.cta em { font-style: normal; font-weight: 500; opacity: .8; }
+.cta .beam { position: absolute; top: -30%; left: 0; width: 120px; height: 160%; transform: translateX(-200px) skewX(-22deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.75), transparent); filter: blur(4px); }
+.flash { position: absolute; inset: 0; background: radial-gradient(circle at 50% 42%, rgba(255,255,255,.9), rgba(59,130,246,.35) 25%, transparent 55%); opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <div class="orb a"></div>
+    <div class="orb b"></div>
+    <div class="orb c"></div>
+    <div class="grid"></div>
+
+    <div id="cam">
+      <section id="hook">
+        <div class="badge glass"><span class="dot"></span><b>AI prepares.</b> People approve.</div>
+        <h1 class="headline">
+          <span class="mask"><span class="line">Your processes.</span></span>
+          <span class="mask"><span class="line grad">Connected.</span></span>
+        </h1>
+        <p class="sub"><span class="mask"><span class="line">Paper, sheets, and chats become one live record.</span></span></p>
+      </section>
+
+      <section id="engine">
+        <div class="card glass">
+          <div class="card-top">
+            <div class="crumbs"><i></i>Formulane <span>/</span> <b>Spec change FX-2148</b></div>
+            <div class="live">Synced to ERP</div>
+          </div>
+          <div class="card-body">
+            <div class="chart glass">
+              <h4>SPEC CHECKS PASSED · LAST 30 RUNS</h4>
+              <svg viewBox="0 0 800 420" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="lg" x1="0" x2="1">
+                    <stop offset="0" stop-color="#3b82f6"/>
+                    <stop offset="1" stop-color="#10b981"/>
+                  </linearGradient>
+                  <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#3b82f6" stop-opacity=".35"/>
+                    <stop offset="1" stop-color="#3b82f6" stop-opacity="0"/>
+                  </linearGradient>
+                  <filter id="glow" x="-10%" y="-30%" width="120%" height="160%">
+                    <feGaussianBlur stdDeviation="7" result="b"/>
+                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+                <g stroke="rgba(255,255,255,.06)" stroke-width="1">
+                  <line x1="0" y1="80" x2="800" y2="80"/><line x1="0" y1="180" x2="800" y2="180"/>
+                  <line x1="0" y1="280" x2="800" y2="280"/><line x1="0" y1="380" x2="800" y2="380"/>
+                </g>
+                <path id="area" d="M0 360 C80 340 120 300 180 290 S300 250 360 210 S480 190 540 140 S680 80 800 50 L800 420 L0 420 Z" fill="url(#fill)" opacity="0"/>
+                <path id="curve" d="M0 360 C80 340 120 300 180 290 S300 250 360 210 S480 190 540 140 S680 80 800 50" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linecap="round" filter="url(#glow)"/>
+                <g class="node-g" data-x="180" data-y="290"><circle class="ripple" cx="180" cy="290" r="8"/><circle class="ripple" cx="180" cy="290" r="8"/><circle class="pt" cx="180" cy="290" r="7"/></g>
+                <g class="node-g"><circle class="ripple" cx="360" cy="210" r="8"/><circle class="ripple" cx="360" cy="210" r="8"/><circle class="pt" cx="360" cy="210" r="7"/></g>
+                <g class="node-g"><circle class="ripple" cx="540" cy="140" r="8"/><circle class="ripple" cx="540" cy="140" r="8"/><circle class="pt" cx="540" cy="140" r="7"/></g>
+                <g class="node-g"><circle class="ripple" cx="800" cy="50" r="8"/><circle class="ripple" cx="800" cy="50" r="8"/><circle class="pt" cx="800" cy="50" r="8"/></g>
+              </svg>
+            </div>
+            <div class="side">
+              <div class="metric glass">
+                <small>Spec checks passed</small>
+                <span class="big" id="counter">0.0%</span>
+                <div class="delta">One record, every system</div>
+              </div>
+              <div class="row glass"><span>Formula updated</span><span class="tick"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#04120C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+              <div class="row glass"><span>AI draft + spec check</span><span class="tick"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#04120C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+              <div class="row glass"><span>QA approved</span><span class="tick"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#04120C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+              <div class="row glass"><span>BOM released to SAP</span><span class="tick"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#04120C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="finale">
+        <div class="rim-wrap">
+          <div class="rim-glow"></div>
+          <div class="rim"></div>
+          <div class="logo">
+            <svg viewBox="0 0 64 64" aria-label="Coformia">
+              <circle cx="32" cy="30" r="20" fill="#fff"/>
+              <path fill="#07080F" d="M21 23c2.2 4.2 4.4 8.4 4.4 12.6 0 2.1-1 4.2-3.2 4.2s-3.2-2.1-3.2-4.2c0-5.2 1.8-9.4 2-12.6zM43 23c-2.2 4.2-4.4 8.4-4.4 12.6 0 2.1 1 4.2 3.2 4.2s3.2-2.1 3.2-4.2c0-5.2-1.8-9.4-2-12.6z"/>
+            </svg>
+          </div>
+        </div>
+        <h2 class="wordmark" id="wordmark">Coformia</h2>
+        <p class="tag"><span class="mask"><span class="line">Connected processes, smarter with AI.</span></span></p>
+        <div class="cta"><span class="beam"></span>Talk to us <em>info@coformia.com</em></div>
+      </section>
+    </div>
+
+    <div class="flash"></div>
+    <div class="noise"></div>
+    <div class="vignette"></div>
+    <div class="bar"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script>
+(function () {
+  const stage = document.getElementById("stage");
+  function fit() {
+    const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = `translate(-50%, -50%) scale(${s})`;
+  }
+  window.addEventListener("resize", fit); fit();
+
+  const grain = document.createElement("canvas");
+  grain.width = grain.height = 160;
+  const g = grain.getContext("2d");
+  const img = g.createImageData(160, 160);
+  let seed = 7;
+  for (let i = 0; i < img.data.length; i += 4) {
+    seed = (seed * 16807) % 2147483647;
+    const v = seed % 256;
+    img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+    img.data[i + 3] = 255;
+  }
+  g.putImageData(img, 0, 0);
+  document.querySelector(".noise").style.backgroundImage = `url(${grain.toDataURL()})`;
+
+  const wm = document.getElementById("wordmark");
+  wm.innerHTML = [...wm.textContent].map(c => `<span class="ch">${c}</span>`).join("");
+
+  const curve = document.getElementById("curve");
+  const len = curve.getTotalLength();
+  const counter = document.getElementById("counter");
+  const metric = { v: 0 };
+
+  const DURATION = 15;
+  const tl = gsap.timeline({ paused: true, defaults: { ease: "power4.out" } });
+
+  gsap.set(".line", { yPercent: 120 });
+  gsap.set(".badge", { scale: 0, opacity: 0 });
+  gsap.set(".orb.a", { scale: 0.3, opacity: 0 });
+  gsap.set([".orb.b", ".orb.c"], { opacity: 0 });
+  gsap.set(".grid", { opacity: 0 });
+  gsap.set(curve, { strokeDasharray: len, strokeDashoffset: len });
+  gsap.set(".card", { rotateX: 32, rotateY: -28, z: -600, opacity: 0, transformPerspective: 1800 });
+  gsap.set([".chart", ".metric", ".row"], { opacity: 0, y: 30 });
+  gsap.set(".pt", { scale: 0, transformOrigin: "50% 50%", transformBox: "fill-box" });
+  gsap.set(".ripple", { transformOrigin: "50% 50%", transformBox: "fill-box" });
+  gsap.set(".tick", { scale: 0 });
+  gsap.set(".rim-wrap", { scale: 0, rotate: -40 });
+  gsap.set("#wordmark .ch", { yPercent: 110, scale: 2.4, opacity: 0, filter: "blur(18px)" });
+  gsap.set(".cta", { x: -160, opacity: 0 });
+
+  tl.to(".bar", { scaleX: 1, duration: DURATION, ease: "none" }, 0);
+
+  // Ambient drift spanning the whole reel
+  tl.to(".orb.a", { x: 160, y: -60, duration: DURATION, ease: "sine.inOut" }, 0);
+  tl.to(".orb.b", { x: -260, y: -120, duration: DURATION, ease: "sine.inOut" }, 0);
+  tl.to(".orb.c", { x: 220, y: -80, duration: DURATION, ease: "sine.inOut" }, 0);
+  tl.to(".grid", { x: 64, y: 37, duration: DURATION, ease: "none" }, 0);
+  tl.to(".rim", { rotate: 360 * 4, duration: 5, ease: "none" }, 10);
+  tl.to(".rim-glow", { rotate: 360 * 4, duration: 5, ease: "none" }, 10);
+
+  // Beat 1 — Hook (0 – 4.5s)
+  tl.to(".orb.a", { scale: 1, opacity: 1, duration: 2.4, ease: "expo.out" }, 0.1);
+  tl.to(".grid", { opacity: 0.55, duration: 1.6, ease: "power2.out" }, 0.4);
+  tl.to([".orb.b", ".orb.c"], { opacity: 1, duration: 2, ease: "power2.out" }, 0.8);
+  tl.to("#hook .line", { yPercent: 0, duration: 1.1, stagger: 0.12 }, 0.55);
+  tl.to(".badge", { scale: 1.08, opacity: 1, duration: 0.32, ease: "back.out(3)" }, 1.55)
+    .to(".badge", { scale: 1, duration: 0.3, ease: "power2.out" }, 1.87);
+  tl.to("#hook", { y: -18, duration: 2.2, ease: "sine.inOut" }, 2.1);
+  tl.to("#hook .line", { yPercent: -120, duration: 0.55, stagger: 0.05, ease: "power4.in" }, 4.0);
+  tl.to(".badge", { scale: 0.6, opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "power3.in" }, 4.05);
+
+  // Beat 2 — Engine (4.5 – 10.5s)
+  tl.set("#engine", { visibility: "visible" }, 4.4);
+  tl.fromTo("#cam", { scale: 1 }, { scale: 1.06, duration: 6, ease: "sine.inOut" }, 4.5);
+  tl.to(".card", { rotateX: 12, rotateY: -8, z: 0, opacity: 1, duration: 1.4, ease: "expo.out" }, 4.5);
+  tl.to(".card", { rotateX: 6, rotateY: 6, duration: 4.2, ease: "sine.inOut" }, 5.9);
+  tl.to([".chart", ".metric", ".row"], { opacity: 1, y: 0, duration: 0.7, stagger: 0.05, ease: "expo.out" }, 4.85);
+  tl.to(curve, { strokeDashoffset: 0, duration: 2.6, ease: "power2.inOut" }, 5.4);
+  tl.to("#area", { opacity: 1, duration: 1.4, ease: "power2.out" }, 6.6);
+
+  const nodeTimes = [5.95, 6.6, 7.25, 7.95];
+  document.querySelectorAll(".node-g").forEach((g, i) => {
+    const t = nodeTimes[i];
+    tl.to(g.querySelector(".pt"), { scale: 1, duration: 0.45, ease: "back.out(3)" }, t);
+    g.querySelectorAll(".ripple").forEach((r, k) => {
+      tl.fromTo(r, { scale: 1, opacity: 0.9 }, { scale: 5, opacity: 0, duration: 1.1, ease: "expo.out" }, t + k * 0.22);
+    });
+  });
+  tl.to(".tick", { scale: 1, duration: 0.42, stagger: 0.32, ease: "back.out(2.6)" }, 6.0);
+  tl.to(metric, {
+    v: 98.6, duration: 2.8, ease: "expo.out",
+    onUpdate: () => { counter.textContent = metric.v.toFixed(1) + "%"; }
+  }, 5.6);
+
+  // Beat 3 — Climax (10.5 – 15s)
+  tl.to(".card", { scale: 0.55, z: -500, opacity: 0, filter: "blur(24px)", duration: 0.85, ease: "power4.in" }, 10.0);
+  tl.to("#cam", { scale: 1, duration: 0.9, ease: "expo.inOut" }, 10.3);
+  tl.set("#engine", { visibility: "hidden" }, 10.9);
+  tl.set("#finale", { visibility: "visible" }, 10.6);
+  tl.fromTo(".flash", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, 10.68)
+    .to(".flash", { opacity: 0, duration: 0.7, ease: "power2.out" }, 10.8);
+  tl.to(".rim-wrap", { scale: 1.18, rotate: 0, duration: 0.55, ease: "expo.out" }, 10.68)
+    .to(".rim-wrap", { scale: 1, duration: 0.6, ease: "elastic.out(1, 0.45)" }, 11.23);
+  tl.to("#wordmark .ch", {
+    yPercent: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.9, stagger: 0.05, ease: "expo.out"
+  }, 10.95);
+  tl.to("#finale .line", { yPercent: 0, duration: 0.9 }, 11.7);
+  tl.to(".cta", { x: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, 12.2);
+  tl.fromTo(".cta .beam", { x: -200 }, { x: 760, duration: 1.0, ease: "power2.inOut" }, 12.8);
+  tl.fromTo(".cta .beam", { x: -200 }, { x: 760, duration: 1.0, ease: "power2.inOut", immediateRender: false }, 14.0);
+  tl.to(".cta", { scale: 1.04, duration: 0.45, yoyo: true, repeat: 1, ease: "sine.inOut" }, 13.4);
+  tl.to("#finale", { scale: 1.03, duration: 4, ease: "sine.out" }, 11);
+  tl.set({}, {}, DURATION);
+
+  window.reel = tl;
+  window.seekFrame = (frame, total) => { tl.seek((frame / total) * DURATION, false); };
+
+  const exportMode = new URLSearchParams(location.search).has("export");
+  document.fonts.ready.then(() => {
+    window.__ready = true;
+    if (!exportMode) tl.play(0);
+  });
+  if (!exportMode) tl.eventCallback("onComplete", () => setTimeout(() => tl.restart(), 800));
+})();
+</script>
+</body>
+</html>
