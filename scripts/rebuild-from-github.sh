@@ -20,19 +20,14 @@ cd "$REPO_DIR"
 
 git fetch --quiet origin "$BRANCH"
 remote_sha="$(git rev-parse "origin/${BRANCH}")"
-
-if ! git merge-base --is-ancestor "$remote_sha" HEAD; then
-  local_sha="$(git rev-parse --short HEAD)"
-  log "rebasing ${local_sha} onto ${remote_sha:0:12}"
-  git checkout --quiet "$BRANCH"
-  if ! git rebase --quiet "origin/${BRANCH}"; then
-    log "rebase failed; aborting (resolve conflicts manually)"
-    git rebase --abort
-    exit 1
-  fi
-fi
-
 head_sha="$(git rev-parse HEAD)"
+
+if [[ "$head_sha" != "$remote_sha" ]]; then
+  log "syncing ${head_sha:0:12} → ${remote_sha:0:12} (origin/${BRANCH})"
+  git checkout --quiet "$BRANCH"
+  git reset --hard "origin/${BRANCH}"
+  head_sha="$remote_sha"
+fi
 deployed_sha=""
 if [[ -f "$DEPLOYED_SHA_FILE" ]]; then
   deployed_sha="$(tr -d '[:space:]' < "$DEPLOYED_SHA_FILE")"
