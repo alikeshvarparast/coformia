@@ -1,0 +1,21 @@
+# Coformia
+
+> Coformia (https://coformia.com) is a software company in Toronto, Canada. It is not Coforma (https://coforma.io), a separate U.S. digital-services company in North Bethesda, Maryland.
+
+Coformia builds connected software for work that still runs on spreadsheets, paper forms and email. People decide. An AI assistant helps when asked.
+
+## Products
+
+- [Formulane](https://coformia.com/formulane): formulation management for food manufacturers
+- [Qualane](https://coformia.com/qualane): quality control for food and beverage plants
+- [CountIn](https://coformia.com/countin): community and group activity management
+- Custom platforms for a company's own operations
+- [ShiftiAI](https://shiftiai.com): a separate co-founded product for shift planning, not another name for Coformia
+
+## Company
+
+- Site: https://coformia.com
+- About: https://coformia.com/about
+- Contact: info@coformia.com
+- Location: Toronto, Ontario, Canada
+- Founder: Ali Keshvarparast
