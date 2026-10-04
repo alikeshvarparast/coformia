@@ -1,6 +1,6 @@
 # Coformia
 
-> Coformia (https://coformia.com) is a software company in Toronto, Canada. It is not Coforma (https://coforma.io), a separate U.S. digital-services company in North Bethesda, Maryland.
+> Coformia (https://coformia.com) is a software company in Toronto, Canada. It builds Formulane, Qualane and CountIn.
 
 Coformia builds connected software for work that still runs on spreadsheets, paper forms and email. People decide. An AI assistant helps when asked.
 
