@@ -245,6 +245,7 @@
 <link rel="stylesheet" href="/marketing.css?v=20261002-persian">
 <script src="/ambient.js?v=20261002-persian"></script>
 <script src="/site.js?v=20261002-persian" defer></script>
+<link rel="stylesheet" href="/fit.css?v=7">
 </head>
 <body>
 <div class="ambient-wash" aria-hidden="true"></div>
@@ -279,18 +280,17 @@
 </div>
 
 <main id="main">
-  <div class="wrap"><p class="crumb"><a href="/">Coformia</a> / Qualane</p></div>
   <section class="hero" id="floor">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="6" width="44" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="4"/><path d="M20 6h24v10H20z" fill="currentColor"/><circle cx="22" cy="32" r="4" fill="#2F6B52"/><circle cx="32" cy="32" r="4" fill="#E0A106"/><circle cx="42" cy="32" r="4" fill="#B42318"/><path d="M20 46h24M20 52h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
         <h1>Qualane</h1>
         <p class="tag">Prove every sample. Catch every spec.</p>
-        <p class="lead">Shift-level quality control for food and beverage plants. Each technician gets a timed task list. A sample closes only with proof. Lab forms arrive pre-filled. Out-of-spec results flag the moment they are entered. Lot codes and customer reports come from the same record.</p>
+        <p class="lead">Shift quality control for food and beverage plants. Timed tasks, proof for every sample, pre-filled lab forms, and out-of-spec results flagged the moment they are entered.</p>
         <ul class="ai-points">
-          <li>RFID scan, photo, and sample count before a sampling task can close</li>
-          <li>Green, yellow, or red against the product spec, in real time</li>
-          <li>AI suggests a cause. A person releases, reworks, or holds</li>
+          <li>Scan, photo and count before a sample can close</li>
+          <li>Green, yellow or red against the spec, in real time</li>
+          <li>AI suggests a cause. A person decides</li>
         </ul>
         <div class="hero-links">
           <a class="pill" href="#contact"><span class="pill-in">Book a demo</span></a>
@@ -350,27 +350,20 @@
     </div>
   </section>
 
-  <section class="center" id="look">
+  <section class="center appview" id="look">
     <div class="wrap">
-      <p class="kicker">The app</p>
-      <h2 class="big">Walk a shift before you book a demo.</h2>
-      <p class="sub">Open the line board, start a check, and read a certificate. Sample shift data. A result outside the limit holds the lot until a person signs the release.</p>
+      <div class="appview-head">
+        <h2>Walk a shift.</h2>
+        <p>Line checks, results, and certificates. Sample shift data. Nothing is saved.</p>
+        <a class="pill" href="#contact"><span class="pill-in">Book a demo</span></a>
+      </div>
       <div class="app-stage">
         <iframe src="/workbench.html?product=qualane&amp;embed=1" title="Qualane sample app" loading="lazy"></iframe>
       </div>
     </div>
   </section>
 
-  <section class="risk center" id="why">
-    <div class="wrap">
-      <p class="kicker" style="color:#F0996A">On the floor today</p>
-      <div class="list"><span>Paper checklists</span><span>The same header, retyped</span><span>A code changed by hand at midnight</span><span>A red result noticed late</span></div>
-      <h2>Then the lot is<br><span>wrong on the pallet.</span></h2>
-      <p class="sub">Rework, a destroyed batch, or a Certificate of Analysis assembled after the fact.</p>
-    </div>
-  </section>
-
-  <section class="alt center">
+  <section class="alt center" id="why">
     <div class="wrap">
       <h2 class="big">One shift.<br>Too many copies.</h2>
       <p class="sub">One or two technicians cover several lines. Each product has its own tests. The record of what happened should not depend on who remembered to escalate.</p>
@@ -383,8 +376,11 @@
     </div>
   </section>
 
-  <section id="features">
+  <section id="features" class="features-grid cols-3">
     <div class="wrap">
+      <p class="kicker">Features</p>
+      <h2>What Qualane does on the floor.</h2>
+      <div class="fgrid">
       <div class="feature">
         <div>
           <p class="k">Coverage before the shift starts</p>
@@ -396,8 +392,8 @@
           <p class="cover" id="cover" role="status"></p>
         </div>
       </div>
-
-      <div class="feature flip">
+    
+      <div class="feature">
         <div class="panel">
           <div class="coder" id="coder">
             <small>Line 2 printer · read-back</small>
@@ -412,7 +408,7 @@
           <p>At rollover the engine builds the next code, sends it to the coder, and confirms the active message matches. If the coder cannot be reached, the technician sees the correct code, enters it, and scans a verification sample. Every change is logged.</p>
         </div>
       </div>
-
+    
       <div class="feature">
         <div>
           <p class="k">Customer documents</p>
@@ -433,6 +429,8 @@
           </article>
         </div>
       </div>
+    
+      </div>
     </div>
   </section>
 
@@ -447,17 +445,6 @@
         <li><span class="n">4</span><h4>Result</h4><p>Green saves. Yellow retests. A second yellow becomes red.</p></li>
         <li><span class="n">5</span><h4>Sign</h4><p>Head of QC holds, reworks, or releases. The CoA follows.</p></li>
       </ol>
-    </div>
-  </section>
-
-  <section class="center">
-    <div class="wrap">
-      <h2 class="big">Built for the people on the shift.</h2>
-      <div class="trio">
-        <div><h3>QC technician</h3><p>Rugged tablet, offline when the plant network drops. Own tasks, own results, a retest when the band says so.</p></div>
-        <div><h3>Head of QC</h3><p>Red alerts by push, SMS, or call. Hold and release, deviation sign-off, and the right to override a suggestion. The override is logged.</p></div>
-        <div><h3>Plant admin</h3><p>Lines, products, specs, test methods, coding rules, and RFID tags. Customers see only their own products in the portal.</p></div>
-      </div>
     </div>
   </section>
 
@@ -479,7 +466,8 @@
 
   <section class="faq" id="faq">
     <div class="wrap">
-      <h2 class="big">Questions</h2>
+      <h2 class="big">Questions we hear first.</h2>
+      <p class="faq-intro">What QC teams ask us most about Qualane. <a href="#contact">Ask us anything else.</a></p>
       <details open>
         <summary>What does Qualane do on a shift?</summary>
         <p>It turns a QC technician’s shift into a timed task list, requires proof that each sample was taken, pre-fills lab forms, and flags results against the product spec as they are entered.</p>
@@ -495,6 +483,14 @@
       <details>
         <summary>What standards is the record built for?</summary>
         <p>Safe Food for Canadians, HACCP and preventive controls, and GFSI schemes such as SQF and BRCGS. Electronic signatures are designed so they can meet FDA 21 CFR Part 11 for plants that export. Records are corrected with a reason. They are not deleted.</p>
+      </details>
+      <details>
+        <summary>Who uses Qualane on a shift?</summary>
+        <p>QC technicians run their tasks on a rugged tablet that works offline. The Head of QC gets red alerts and decides on hold and release. A plant admin sets up lines, products, specs, test methods and coding rules.</p>
+      </details>
+      <details>
+        <summary>Can our customers see results?</summary>
+        <p>Yes, through a customer portal. Each customer sees only its own products and certificates.</p>
       </details>
     </div>
   </section>
@@ -752,5 +748,6 @@
   tick();
 })();
 </script>
+<script src="/fit.js?v=3" defer></script>
 </body>
 </html>

@@ -140,10 +140,10 @@
       FORMULAS.map(f => tr([td(f.code, 'mono'), td(`<b>${f.name}</b>`), td(f.cat, 'muted'), td('v' + f.ver, 'mono'), td(chip(...f.st)), td(f.owner), td(f.upd, 'muted')], f.id)))));
 
   FORMULAS.forEach(f => def(f.id, 'formulane', 'formulas', f.name, () => {
-    const rows = f.ings.map(([n, p]) => tr([td(n), td(SUP_OF(n), 'muted'), td(fmt(p, 2), 'num'), td(fmt(p * f.batch / 100, 1), 'num'), td(ALLERGEN_OF(n) ? `<span class="allergen">${ALLERGEN_OF(n)}</span>` : '')], RM[n] ? 'rm-' + RM[n].code : null));
+    const rows = f.ings.map(([n, p]) => tr([td(n), td(SUP_OF(n), 'muted'), td(fmt(p, 2), 'num'), `<td class="num" data-kg="${p * f.batch / 100}">${fmt(p * f.batch / 100, 1)}</td>`, td(ALLERGEN_OF(n) ? `<span class="allergen">${ALLERGEN_OF(n)}</span>` : '')], RM[n] ? 'rm-' + RM[n].code : null));
     const total = f.ings.reduce((a, [, p]) => a + p, 0);
-    const ingPanel = panel('Ingredients', 'Click an ingredient to open it in the library', table(['Ingredient', 'Supplier', '#%', '#kg / batch', 'Allergen'], rows,
-      { foot: `<tr><td>Total</td><td></td><td class="num">${fmt(total, 2)}</td><td class="num">${fmt(f.batch, 1)}</td><td></td></tr>` }));
+    const ingPanel = panel('Ingredients', '<span class="units" role="group" aria-label="Batch units">Units <button type="button" data-unit="kg" aria-pressed="true">kg</button><button type="button" data-unit="lb" aria-pressed="false">lb</button><button type="button" data-unit="g" aria-pressed="false">g</button></span>', table(['Ingredient', 'Supplier', '#%', '#<span class="u">kg</span> / batch', 'Allergen'], rows,
+      { foot: `<tr><td>Total</td><td></td><td class="num">${fmt(total, 2)}</td><td class="num" data-kg="${f.batch}">${fmt(f.batch, 1)}</td><td></td></tr>` }));
     const specPanel = panel('Spec limits', 'Shared with Qualane', `<ul class="specs">${f.specs.map(([k, v]) => `<li><b>${k}</b><span class="mono">${v}</span></li>`).join('')}</ul>`);
     const versions = panel('Versions', '', `<ul class="timeline">
       <li><time>${f.upd}</time><span class="tdot info"></span><div><b>v${f.ver}</b> ${f.st[1].toLowerCase()} · ${f.owner}</div></li>
@@ -658,6 +658,15 @@
     });
   } catch (e) {}
 
+  /* batch units: each customer can work in kg, lb or g; % stays the same */
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-unit]'); if (!b) return;
+    const pnl = b.closest('.panel'); if (!pnl) return;
+    const u = b.dataset.unit, k = { kg: 1, lb: 2.20462, g: 1000 }[u], d = u === 'g' ? 0 : 1;
+    pnl.querySelectorAll('[data-unit]').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    pnl.querySelectorAll('[data-kg]').forEach(c => { c.textContent = fmt(parseFloat(c.dataset.kg) * k, d); });
+    pnl.querySelectorAll('th .u').forEach(h => { h.textContent = u; });
+  });
   $('copy-css').addEventListener('click', () => {
     const btn = $('copy-css'), text = $('css-out').textContent;
     const done = msg => { btn.textContent = msg; setTimeout(() => btn.textContent = 'Copy CSS', 1600); };

@@ -292,6 +292,7 @@
 <link rel="stylesheet" href="/marketing.css?v=20261002-persian">
 <script src="/ambient.js?v=20261002-persian"></script>
 <script src="/site.js?v=20261002-persian" defer></script>
+<link rel="stylesheet" href="/fit.css?v=7">
 </head>
 <body>
 <div class="ambient-wash" aria-hidden="true"></div>
@@ -325,14 +326,14 @@
 </div>
 
 <main id="main">
-  <div class="wrap"><p class="crumb"><a href="/">Coformia</a> / Formulane</p></div>
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <svg class="mark" viewBox="0 0 64 80" aria-hidden="true"><path d="M24 4h16v20l16 40a8 8 0 0 1-7 12H15a8 8 0 0 1-7-12l16-40z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="M18 44h28l4 10H14z" fill="#D9622B"/><path d="M14 54h36l4 10H10z" fill="#2F6B52"/><path d="M10 64h44l3 6a5 5 0 0 1-5 5H12a5 5 0 0 1-5-5z" fill="currentColor"/></svg>
-        <h1>Formulane — formula and spec management for food manufacturers</h1>
+        <p class="kicker">Formulation management for food manufacturers</p>
+        <h1>Formulane</h1>
         <p class="tag">Change once. Right everywhere.</p>
-        <p class="lead">Customer formulas, specifications, and approvals in one connected record—synced with SAP and your ERP. AI scales batches and drafts documents; your team approves before anything is released.</p>
+        <p class="lead">Formulas, specifications, versions, changes and approvals in one place, from the first draft to production, connected to your ERP.</p>
         <ul class="ai-points">
           <li>Every number comes from one tested calculation engine</li>
           <li>Stock is checked and shortages are flagged</li>
@@ -397,65 +398,16 @@
     </div>
   </section>
 
-  <section class="center" id="look">
+  <section class="center appview" id="look">
     <div class="wrap">
-      <p class="kicker">The app</p>
-      <h2 class="big">Open a formula. Follow it to the floor.</h2>
-      <p class="sub">Click through recipes, ingredients, change requests, and the approval inbox. Sample plant data. The assistant can draft a change. A person still approves it.</p>
+      <div class="appview-head">
+        <h2>Open a formula.</h2>
+        <p>Follow it from the recipe to the floor. Sample plant data. Nothing is saved.</p>
+        <a class="pill" href="#contact"><span class="pill-in">Book a demo</span></a>
+      </div>
       <div class="app-stage">
         <iframe src="/workbench.html?product=formulane&amp;embed=1" title="Formulane sample app" loading="lazy"></iframe>
       </div>
-    </div>
-  </section>
-
-  <section class="line center">
-    <div class="wrap">
-      <p class="kicker">From chat to production floor</p>
-      <h2 class="big">Right on the sheet.<br>Right on the line.</h2>
-      <p class="sub">The approved batch sheet goes straight to the production line, with the exact amount of every ingredient for every batch.</p>
-      <div class="plant">
-        <svg viewBox="0 0 1000 300" role="img" aria-label="Illustration: a mixer filled with protein bar dough feeds a slab former and cutter, and coated bars move along a conveyor belt">
-          <defs>
-            <clipPath id="tankClip"><rect x="92" y="62" width="176" height="176" rx="26"/></clipPath>
-            <linearGradient id="sauce" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5634"/><stop offset="1" stop-color="#4E2C18"/></linearGradient>
-          </defs>
-          <rect x="0" y="282" width="1000" height="4" rx="2" class="floor"/>
-          <!-- tank -->
-          <rect x="120" y="238" width="10" height="44" class="metal"/><rect x="230" y="238" width="10" height="44" class="metal"/>
-          <g clip-path="url(#tankClip)">
-            <rect x="92" y="62" width="176" height="176" class="glass"/>
-            <g class="wave"><path d="M60 128 q22 -10 44 0 t44 0 t44 0 t44 0 t44 0 t44 0 V240 H60 Z" fill="url(#sauce)"/></g>
-          </g>
-          <rect x="92" y="62" width="176" height="176" rx="26" fill="none" class="outline"/>
-          <rect x="176" y="30" width="8" height="34" class="metal"/>
-          <g class="mixer"><rect x="150" y="150" width="60" height="6" rx="3" fill="#F5F5F7" opacity=".8"/></g>
-          <!-- pipe -->
-          <path d="M268 200 H360 V120 H420" fill="none" class="pipe"/>
-          <path d="M268 200 H360 V120 H420" fill="none" class="flow"/>
-          <g class="cutter"><rect x="530" y="150" width="40" height="8" rx="3" fill="#8E8E93"/><rect x="546" y="158" width="8" height="70" rx="2" fill="#C7C7CC"/></g>
-          <!-- filler -->
-          <rect x="420" y="80" width="96" height="92" rx="14" class="machine"/>
-          <rect x="460" y="172" width="16" height="30" class="metal"/>
-          <circle cx="468" cy="126" r="16" class="dial"/>
-          <!-- conveyor -->
-          <rect x="360" y="250" width="620" height="14" rx="7" class="belt"/>
-          <g class="rollers"><circle cx="380" cy="257" r="5"/><circle cx="480" cy="257" r="5"/><circle cx="580" cy="257" r="5"/><circle cx="680" cy="257" r="5"/><circle cx="780" cy="257" r="5"/><circle cx="880" cy="257" r="5"/><circle cx="960" cy="257" r="5"/></g>
-          <clipPath id="beltClip"><rect x="360" y="150" width="640" height="120"/></clipPath>
-          <g clip-path="url(#beltClip)"><g class="jars">
-            <g transform="translate(280 0)"><use href="#jar"/></g>
-            <g transform="translate(380 0)"><use href="#jar"/></g><g transform="translate(480 0)"><use href="#jar"/></g><g transform="translate(580 0)"><use href="#jar"/></g><g transform="translate(680 0)"><use href="#jar"/></g><g transform="translate(780 0)"><use href="#jar"/></g><g transform="translate(880 0)"><use href="#jar"/></g><g transform="translate(980 0)"><use href="#jar"/></g>
-          </g></g>
-          <defs>
-            <g id="jar"><rect x="-30" y="232" width="60" height="18" rx="6" fill="url(#sauce)"/><path d="M-24 238 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6" fill="none" stroke="#C99A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
-          </defs>
-        </svg>
-        <div class="sheet" aria-label="Batch sheet card">
-          <b>Batch sheet · Choc Almond Protein Bar</b>
-          <span>Batch 1 of 3 · 618 kg · 10,300 bars</span>
-          <span class="chip ok">Approved</span>
-        </div>
-      </div>
-      <p class="note">Illustration</p>
     </div>
   </section>
 
@@ -501,17 +453,7 @@
     </div>
   </section>
 
-  <section class="risk center" id="why">
-    <div class="wrap">
-      <p class="kicker" style="color:#F0996A">Why it matters</p>
-      <p class="sub" style="margin-top:0">It rarely starts with a big mistake. It starts with a small one that repeats.</p>
-      <div class="list"><span>A miscalculation</span><span>The wrong raw material ordered</span><span>The wrong ingredient</span><span>A failed trial</span></div>
-      <h2>Then your customer<br><span>loses trust.</span></h2>
-      <p class="sub">And trust is the hardest thing to win back.</p>
-    </div>
-  </section>
-
-  <section class="alt center">
+  <section class="alt center" id="why">
     <div class="wrap">
       <h2 class="big">One formula.<br>Too many copies.</h2>
       <p class="sub">In most food plants, a formula lives in spreadsheets, email threads and printouts across R&amp;D, QA, purchasing, production and sales.</p>
@@ -524,8 +466,11 @@
     </div>
   </section>
 
-  <section id="features">
+  <section id="features" class="features-grid cols-2">
     <div class="wrap">
+      <p class="kicker">Features</p>
+      <h2>What Formulane does.</h2>
+      <div class="fgrid">
       <div class="feature">
         <div><p class="k">One live formula</p><h3>Change it once.<br>It's right everywhere.</h3><p>Spec sheets, nutrition and label data, cost sheets, batch sheets and the ERP bill of materials all come from the same approved version.</p></div>
         <div class="panel" aria-label="One approved formula updates every document">
@@ -537,7 +482,8 @@
           <div class="row"><span>ERP bill of materials</span><span class="chip ok">Updated</span></div>
         </div>
       </div>
-      <div class="feature flip">
+    
+      <div class="feature">
         <div class="panel" aria-label="Automatic checks on every formula">
           <div class="row"><span>Total = 100.00%</span><span class="chip ok">Pass</span></div>
           <div class="row"><span>Batch scaled, 4% cooking loss</span><span class="chip ok">Done</span></div>
@@ -546,6 +492,8 @@
           <div class="row"><span>Customer vs. production formula</span><span class="chip ok">±2%</span></div>
         </div>
         <div><p class="k">Calculation engine</p><h3>Numbers you<br>can sign.</h3><p>Weight percentages, batch scaling, yield, nutrition, allergens and cost, calculated by one tested engine and checked against the customer's spec before anyone approves.</p></div>
+      </div>
+    
       </div>
     </div>
   </section>
@@ -557,7 +505,7 @@
       <p class="sub">From the customer's request to the production floor, every step has an owner, a due date and a live status.</p>
       <ol class="flow">
         <li><span class="n">1</span><h4>Customer submits</h4><p>In the customer portal, as a form, Excel or PDF.</p></li>
-        <li><span class="n">2</span><h4>AI prepares</h4><p>A draft formula with calculations, checks and impact.</p></li>
+        <li><span class="n">2</span><h4>R&amp;D drafts</h4><p>A new version with calculations and checks. The AI assistant helps if asked.</p></li>
         <li><span class="n">3</span><h4>Teams approve</h4><p>R&amp;D, QA, purchasing and production, in parallel.</p></li>
         <li><span class="n">4</span><h4>Customer signs</h4><p>The exact version, approved online.</p></li>
         <li><span class="n">5</span><h4>ERP release</h4><p>The approved BOM goes to your ERP. No retyping.</p></li>
@@ -570,22 +518,11 @@
 
 
 
-  <section class="center">
-    <div class="wrap">
-      <h2 class="big">Built for how<br>food is really made.</h2>
-      <div class="trio">
-        <div><h3>For contract manufacturers</h3><p>Your customers own the recipes. Formulane keeps each customer's formulas, specs and approvals separate and linked to your production formulas.</p></div>
-        <div><h3>Connects to your ERP</h3><p>Designed to work with SAP and other ERPs: it reads materials, prices and stock, and releases approved BOMs, confirmed by your team.</p></div>
-        <div><h3>Private by design</h3><p>Canadian hosting, private AI that never trains on your data, and each customer sees only its own records.</p></div>
-      </div>
-    </div>
-  </section>
-
   <section class="alt center" id="founding">
     <div class="wrap">
-      <p class="kicker">Founding customers</p>
+      <p class="kicker">Founding partners</p>
       <h2 class="big">Be one of the first.</h2>
-      <p class="sub">Formulane is new. We're working with a small group of food manufacturers to shape it around real plants and real formulas, with preferential pricing and a direct say in what we build next.</p>
+      <p class="sub">We are completing Formulane with a small group of founding partners. They use it free of charge until launch, keep preferred terms after that, and have a direct say in what we build next.</p>
       <div class="offer">
         <ol>
           <li><b>Discovery, 2 weeks.</b> We map how a formula change moves through your company.</li>
@@ -597,23 +534,10 @@
     </div>
   </section>
 
-  <section class="alt center" id="resources">
-    <div class="wrap">
-      <h2 class="big">Resources</h2>
-      <div class="resources">
-        <ul>
-          <li><a href="/formulane/food-formula-management">Food formula management software</a><p>One live record instead of scattered spreadsheets.</p></li>
-          <li><a href="/formulane/erp-integration">Formula management &amp; ERP integration</a><p>SAP and ERP sync with human approval.</p></li>
-          <li><a href="/formulane/specification-change-control">Specification change control</a><p>Audit-ready spec changes linked to formulas.</p></li>
-          <li><a href="/insights/erp-formula-sync">Insight: keeping formulas in sync with SAP</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <section class="faq" id="faq">
     <div class="wrap">
-      <h2 class="big">Questions</h2>
+      <h2 class="big">Questions we hear first.</h2>
+      <p class="faq-intro">What food manufacturers ask us most about Formulane. <a href="#contact">Ask us anything else.</a></p>
       <details open>
         <summary>What does Formulane keep in one place?</summary>
         <p>Customer formulas, specifications, changes, and approvals, connected to the ERP.</p>
@@ -625,6 +549,22 @@
       <details>
         <summary>Who approves a change?</summary>
         <p>People do. Nothing is released until people approve.</p>
+      </details>
+      <details>
+        <summary>We are a contract manufacturer. Can customers see each other's data?</summary>
+        <p>No. Each customer's formulas, specs and approvals stay separate and linked to your own production formulas. A customer sees only its own records.</p>
+      </details>
+      <details>
+        <summary>Does it work with SAP or our ERP?</summary>
+        <p>Yes. Formulane reads materials, prices and stock from your ERP and releases approved bills of materials back to it, after your team confirms them.</p>
+      </details>
+      <details>
+        <summary>Where is our data stored?</summary>
+        <p>In Canada. The AI is private and never trains on your data.</p>
+      </details>
+      <details>
+        <summary>How do we start?</summary>
+        <p>With a free two-week discovery and a working demo on one of your own formulas. Founding partners use Formulane free of charge until launch.</p>
       </details>
     </div>
   </section>
@@ -747,5 +687,6 @@
   })();
 </script>
 
+<script src="/fit.js?v=3" defer></script>
 </body>
 </html>

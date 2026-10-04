@@ -194,6 +194,7 @@
 <link rel="stylesheet" href="/marketing.css?v=20261002-persian">
 <script src="/ambient.js?v=20261002-persian"></script>
 <script src="/site.js?v=20261002-persian" defer></script>
+<link rel="stylesheet" href="/fit.css?v=7">
 </head>
 <body>
 <div class="ambient-wash" aria-hidden="true"></div>
@@ -227,13 +228,12 @@
 </div>
 
 <main id="main">
-  <div class="wrap"><p class="crumb"><a href="/">Coformia</a> / CountIn</p></div>
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <img class="mark" src="/images/countin-logo.png" alt="CountIn">
         <h1>CountIn</h1>
-        <p class="tag">Community and group activity management.</p>
+        <p class="tag">Group activities, organised.</p>
         <p class="lead">For communities that meet on purpose. Members say if they are in, the waitlist fills the gaps, and a shared ledger shows who owes what.</p>
         <ul class="ai-points">
           <li>One list for the activity, instead of a group-chat thread</li>
@@ -249,29 +249,16 @@
     </div>
   </section>
 
-  <section class="center" id="look">
+  <section class="alt center appview" id="look">
     <div class="wrap">
-      <p class="section-label">The app</p>
-      <h2 class="big">One session. One list.</h2>
-      <p class="sub">Going, waitlist, and ledger on the same screen—CountIn never collects payment.</p>
-      <div class="countin-preview" aria-label="Example CountIn session">
-        <header><span>Thursday meetup · 8:00 pm</span><span class="badge">Full</span></header>
-        <div class="avatars" aria-hidden="true"><i>AK</i><i>MR</i><i>SJ</i><i>LB</i><i>OT</i><i>NP</i><i>RD</i><i>EV</i><i>KM</i><i class="new">JS</i></div>
-        <ul>
-          <li><span>Going</span><span>10 / 10</span></li>
-          <li><span>Waitlist</span><span>2</span></li>
-          <li><span>Court fee · $12 each</span><span>8 paid</span></li>
-        </ul>
+      <div class="appview-split">
+      <div class="av-copy">
+        <p class="kicker">The app</p>
+        <h2 class="big">Who's coming.<br>Who's next. Who paid.</h2>
+        <p class="sub">Everyone sees the same session. When someone drops out, the next person on the waitlist takes the spot.</p>
+        <p class="note">Screens from the live CountIn app.</p>
+        <a class="pill" href="https://countin.sspi.trade/" target="_blank" rel="noopener"><span class="pill-in">Open CountIn</span></a>
       </div>
-      <p class="note" style="margin-top:16px;color:var(--soft);font-size:14px">Live app at <a href="https://countin.sspi.trade/" target="_blank" rel="noopener">countin.sspi.trade</a></p>
-    </div>
-  </section>
-
-  <section class="alt center">
-    <div class="wrap">
-      <p class="kicker">One activity, one list</p>
-      <h2 class="big">Who's coming.<br>Who's next. Who paid.</h2>
-      <p class="sub">Everyone sees the same session. When someone drops out, the next person on the waitlist can take the spot.</p>
       <div class="shots two">
         <figure class="phone">
           <img src="/images/countin-home.jpg" alt="Showcase United upcoming events: Thursday night 8v8 and Sunday morning turf, each with 12 going" width="390" height="844" loading="lazy" decoding="async">
@@ -282,21 +269,11 @@
           <figcaption>The ledger shows what you owe and what is owed to you. It does not collect the money.</figcaption>
         </figure>
       </div>
-      <p class="note">Screens from the live CountIn app.</p>
+      </div>
     </div>
   </section>
 
-  <section class="risk center" id="why">
-    <div class="wrap">
-      <p class="kicker" style="color:#7DD3A8">Why it matters</p>
-      <p class="sub" style="margin-top:0">The activity is simple. The organising is not.</p>
-      <div class="list"><span>Who's coming?</span><span>The list is full</span><span>Someone cancelled</span><span>Who still owes $12?</span></div>
-      <h2>Then the plan<br><span>falls apart.</span></h2>
-      <p class="sub">CountIn keeps the list, the waitlist, and the ledger in one place.</p>
-    </div>
-  </section>
-
-  <section class="alt center">
+  <section class="alt center" id="why">
     <div class="wrap">
       <h2 class="big">The group chat<br>is not a roster.</h2>
       <p class="sub">A group activity still runs on replies, screenshots, and one person who remembers who paid.</p>
@@ -309,8 +286,11 @@
     </div>
   </section>
 
-  <section id="features">
+  <section id="features" class="features-grid cols-3">
     <div class="wrap">
+      <p class="kicker">Features</p>
+      <h2>Everything a group needs.</h2>
+      <div class="fgrid">
       <div class="feature">
         <div><p class="k">Sessions</p><h3>Open the activity.<br>See who's in.</h3><p>Set the time, or poll the group first. Members mark going or not going. Guests can be added, and an admin approves them before they count.</p></div>
         <div class="panel" aria-label="A session moving from poll to booked">
@@ -320,7 +300,8 @@
           <div class="row"><span>Field booked</span><span class="chip ok">Booked</span></div>
         </div>
       </div>
-      <div class="feature flip">
+    
+      <div class="feature">
         <div class="panel" aria-label="Waitlist and a season exchange">
           <div class="row"><span>Priya · waitlist</span><span class="chip wait">Next up</span></div>
           <div class="row"><span>Sam · waitlist</span><span class="chip wait">Waiting</span></div>
@@ -329,6 +310,7 @@
         </div>
         <div><p class="k">Waitlist and seasons</p><h3>Someone drops.<br>Someone steps in.</h3><p>When an activity is full, later replies wait in order. For a season of the same dates, a regular member can offer one date, and another member can take that date or the rest of the season.</p></div>
       </div>
+    
       <div class="feature">
         <div><p class="k">Ledger</p><h3>Who owes what.<br>Nothing else.</h3><p>After the activity, post the cost and CountIn splits it across everyone who came. The ledger shows what is open and what is marked paid. Cash and e-transfer stay between members. CountIn does not move money.</p></div>
         <div class="panel" aria-label="Shared ledger lines">
@@ -337,6 +319,8 @@
           <div class="row"><span>Jon, Sara</span><span class="chip wait">Open</span></div>
           <div class="row"><span>Priya · this night only</span><span class="chip ok">Owes Jon</span></div>
         </div>
+      </div>
+    
       </div>
     </div>
   </section>
@@ -355,20 +339,10 @@
     </div>
   </section>
 
-  <section class="center">
-    <div class="wrap">
-      <h2 class="big">Built for a community<br>that already meets.</h2>
-      <div class="trio">
-        <div><h3>Activities, on purpose</h3><p>Repeating dates and one-off sessions. One organiser. Everyone else says if they are in.</p></div>
-        <div><h3>Public or private</h3><p>A public group can be found by name or UID, then requested. A private group is joined only with an invite link.</p></div>
-        <div><h3>A tracker, not a till</h3><p>CountIn shows the split and who has been marked paid. It does not collect the money.</p></div>
-      </div>
-    </div>
-  </section>
-
   <section class="faq" id="faq">
     <div class="wrap">
-      <h2 class="big">Questions</h2>
+      <h2 class="big">Questions we hear first.</h2>
+      <p class="faq-intro">What organisers ask us most about CountIn. <a href="#contact">Ask us anything else.</a></p>
       <details open>
         <summary>What does CountIn track?</summary>
         <p>Who is coming, who is waiting, and who owes what. Members mark going or not going, the waitlist fills open spots, and a shared ledger tracks the split.</p>
@@ -380,6 +354,14 @@
       <details>
         <summary>Where is CountIn?</summary>
         <p>CountIn is live at https://countin.sspi.trade/.</p>
+      </details>
+      <details>
+        <summary>Who is CountIn for?</summary>
+        <p>Groups that meet on purpose: sports, clubs and community activities, with one organiser and repeating or one-off sessions.</p>
+      </details>
+      <details>
+        <summary>Can a group be private?</summary>
+        <p>Yes. A public group can be found by name and joined on request. A private group is joined only with an invite link.</p>
       </details>
     </div>
   </section>
@@ -458,5 +440,6 @@
   })();
 </script>
 <script src="/analytics.js" data-domain="coformia.com" defer></script>
+<script src="/fit.js?v=3" defer></script>
 </body>
 </html>
