@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Merge mail + Turnstile into coformia/.env (never prints secrets)."""
+"""Merge Turnstile into coformia/.env (never prints secrets).
+
+Does not copy Gmail app passwords from mail-triage. SMTP stays whatever is already in .env.
 import json
 import os
 import urllib.request
@@ -8,7 +10,6 @@ from pathlib import Path
 ROOT = Path("/opt/docker/coformia")
 ENV = ROOT / ".env"
 EXAMPLE = ROOT / ".env.example"
-MAIL_TRIAGE = Path("/opt/docker/mail-triage/mail-triage.env")
 SITEKEY = "0x4AAAAAAFFvq98oyGzG7UCt"
 ACCOUNT_ID = "c9b3025345ef1b86b3662d4c80b1a27e"
 
@@ -60,14 +61,6 @@ def main() -> None:
     base = load_kv(EXAMPLE)
     if ENV.is_file():
         base.update(load_kv(ENV))
-    mt = load_kv(MAIL_TRIAGE)
-    if not base.get("SMTP_PASS") and mt.get("GMAIL_2_APP_PASSWORD"):
-        base["SMTP_HOST"] = "smtp.gmail.com"
-        base["SMTP_PORT"] = "587"
-        base["SMTP_SECURE"] = "false"
-        base["SMTP_USER"] = mt.get("GMAIL_2_USER", "hoseinkhodabakhsh@gmail.com")
-        base["SMTP_PASS"] = mt["GMAIL_2_APP_PASSWORD"]
-        base.setdefault("MAIL_FROM", "Coformia website <info@coformia.com>")
     if not base.get("TURNSTILE_SECRET"):
         secret = fetch_turnstile_secret()
         if secret:
@@ -94,6 +87,7 @@ def main() -> None:
         if k not in seen and v:
             lines.append(f"{k}={v}")
     ENV.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    os.chmod(ENV, 0o600)
     has_mail = bool(base.get("RESEND_API_KEY") or base.get("SMTP_PASS"))
     has_ts = bool(base.get("TURNSTILE_SECRET"))
     print(f"wrote {ENV} mail={'ok' if has_mail else 'missing'} turnstile={'ok' if has_ts else 'missing'}")
