@@ -46,6 +46,9 @@ else
   log "first deploy at ${head_sha:0:12}"
 fi
 
+log "assembling HTML partials"
+node scripts/assemble-html.mjs || log "assemble-html failed"
+
 log "building api image (static site is bind-mounted)"
 docker compose build api
 

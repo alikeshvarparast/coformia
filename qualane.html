@@ -241,20 +241,22 @@
   .contact-form button[type=submit] { margin-top: 4px; align-self: center; font-size: 16px; }
   .form-status { min-height: 1.4em; font-size: 15px; color: var(--soft); text-align: center; }
 </style>
-<link rel="stylesheet" href="/theme.css?v=20261109-nav">
-<link rel="stylesheet" href="/marketing.css?v=20261109-nav">
-<script src="/ambient.js?v=20261109-nav"></script>
-<script src="/site.js?v=20261109-nav" defer></script>
-<link rel="stylesheet" href="/fit.css?v=9">
+<link rel="stylesheet" href="/theme.css?v=20261110-ebd0a910eef8-3279a5d5">
+<link rel="stylesheet" href="/marketing.css?v=20261110-ebd0a910eef8-3279a5d5">
+<script src="/ambient.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/nav.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/site.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<link rel="stylesheet" href="/fit.css?v=20261110-ebd0a910eef8-3279a5d5">
 </head>
 <body>
+<!-- @header -->
 <div class="ambient-wash" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="gnav">
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"><span></span></div>
   <div class="wrap">
-    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="160" height="32" decoding="async"></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="180" height="36" decoding="async"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">Menu</button>
     <nav id="site-nav" aria-label="Main">
       <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
       <a class="app" href="/qualane"><span class="pill-in">Qualane</span></a>
@@ -262,10 +264,12 @@
       <a class="opt" href="/#products">Products</a>
       <a class="opt" href="/#approach">Approach</a>
       <a class="opt" href="/#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="/#contact">Contact</a>
     </nav>
   </div>
 </header>
+<button type="button" class="nav-backdrop" hidden aria-label="Close menu"></button>
+<!-- /@header -->
 <div class="pnav">
   <div class="wrap">
     <span class="name"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4.5h10v4H11z" fill="currentColor"/><circle cx="12" cy="16" r="2" fill="#2F6B52"/><circle cx="16" cy="16" r="2" fill="#E0A106"/><circle cx="20" cy="16" r="2" fill="#B42318"/><path d="M11 22h10M11 25h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Qualane</span>
@@ -358,7 +362,8 @@
         <a class="pill" href="#contact"><span class="pill-in">Book a demo</span></a>
       </div>
       <div class="app-stage">
-        <iframe src="/workbench.html?product=qualane&amp;embed=1" title="Qualane sample app" loading="lazy"></iframe>
+        <button type="button" class="load-demo pill">Load sample</button>
+        <iframe data-src="/workbench.html?product=qualane&amp;embed=1" title="Qualane sample app"></iframe>
       </div>
     </div>
   </section>
@@ -522,16 +527,27 @@
   </section>
 </main>
 
-<footer>
+<!-- @footer -->
+<footer class="site-footer">
   <div class="wrap">
     <span>Copyright © 2026 Coformia</span>
-    <span><a href="/">Home</a> · <a href="/formulane">Formulane</a> · <a href="/about">About</a> · <a href="/insights/">Insights</a> · <a href="/countin">CountIn</a></span>
+    <span>
+      <a href="/formulane">Formulane</a> ·
+      <a href="/qualane">Qualane</a> ·
+      <a href="/countin">CountIn</a> ·
+      <a href="/about">About</a> ·
+      <a href="/insights/">Insights</a> ·
+      <a href="/privacy">Privacy</a> ·
+      <a href="/security">Security</a> ·
+      <a href="/#contact">Contact</a>
+    </span>
   </div>
 </footer>
+<!-- /@footer -->
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="/contact-form.js" defer></script>
-<script src="/analytics.js" data-domain="coformia.com" defer></script>
+<script src="/contact-form.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/analytics.js?v=20261110-ebd0a910eef8-3279a5d5" data-domain="coformia.com" defer></script>
 <script>
 (function () {
   var scanned = false;
@@ -740,6 +756,6 @@
   tick();
 })();
 </script>
-<script src="/fit.js?v=3" defer></script>
+<script src="/fit.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
 </body>
 </html>

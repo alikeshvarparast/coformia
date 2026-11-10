@@ -288,20 +288,22 @@
   .resources a { font-weight: 600; font-size: 18px; }
   .resources p { color: var(--soft); font-size: 15px; margin: 4px 0 0; }
 </style>
-<link rel="stylesheet" href="/theme.css?v=20261109-nav">
-<link rel="stylesheet" href="/marketing.css?v=20261109-nav">
-<script src="/ambient.js?v=20261109-nav"></script>
-<script src="/site.js?v=20261109-nav" defer></script>
-<link rel="stylesheet" href="/fit.css?v=9">
+<link rel="stylesheet" href="/theme.css?v=20261110-ebd0a910eef8-3279a5d5">
+<link rel="stylesheet" href="/marketing.css?v=20261110-ebd0a910eef8-3279a5d5">
+<script src="/ambient.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/nav.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/site.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<link rel="stylesheet" href="/fit.css?v=20261110-ebd0a910eef8-3279a5d5">
 </head>
 <body>
+<!-- @header -->
 <div class="ambient-wash" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="gnav">
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"><span></span></div>
   <div class="wrap">
-    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="160" height="32" decoding="async"></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="180" height="36" decoding="async"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">Menu</button>
     <nav id="site-nav" aria-label="Main">
       <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
       <a class="app" href="/qualane"><span class="pill-in">Qualane</span></a>
@@ -309,10 +311,12 @@
       <a class="opt" href="/#products">Products</a>
       <a class="opt" href="/#approach">Approach</a>
       <a class="opt" href="/#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="/#contact">Contact</a>
     </nav>
   </div>
 </header>
+<button type="button" class="nav-backdrop" hidden aria-label="Close menu"></button>
+<!-- /@header -->
 <div class="pnav">
   <div class="wrap">
     <span class="name"><svg viewBox="0 0 64 80" aria-hidden="true"><path d="M24 4h16v20l16 40a8 8 0 0 1-7 12H15a8 8 0 0 1-7-12l16-40z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M18 44h28l4 10H14z" fill="#D9622B"/><path d="M14 54h36l4 10H10z" fill="#2F6B52"/></svg>Formulane</span>
@@ -406,7 +410,8 @@
         <a class="pill" href="#contact"><span class="pill-in">Book a demo</span></a>
       </div>
       <div class="app-stage">
-        <iframe src="/workbench.html?product=formulane&amp;embed=1" title="Formulane sample app" loading="lazy"></iframe>
+        <button type="button" class="load-demo pill">Load sample</button>
+        <iframe data-src="/workbench.html?product=formulane&amp;embed=1" title="Formulane sample app"></iframe>
       </div>
     </div>
   </section>
@@ -596,16 +601,27 @@
   </section>
 </main>
 
-<footer>
+<!-- @footer -->
+<footer class="site-footer">
   <div class="wrap">
     <span>Copyright © 2026 Coformia</span>
-    <span><a href="/">Home</a> · <a href="/about">About</a> · <a href="/insights/">Insights</a> · <a href="/formulane/food-formula-management">Solutions</a></span>
+    <span>
+      <a href="/formulane">Formulane</a> ·
+      <a href="/qualane">Qualane</a> ·
+      <a href="/countin">CountIn</a> ·
+      <a href="/about">About</a> ·
+      <a href="/insights/">Insights</a> ·
+      <a href="/privacy">Privacy</a> ·
+      <a href="/security">Security</a> ·
+      <a href="/#contact">Contact</a>
+    </span>
   </div>
 </footer>
+<!-- /@footer -->
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="/contact-form.js" defer></script>
-<script src="/analytics.js" data-domain="coformia.com" defer></script>
+<script src="/contact-form.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/analytics.js?v=20261110-ebd0a910eef8-3279a5d5" data-domain="coformia.com" defer></script>
 <script>
   (function () {
     var btn = document.getElementById('copy-email'), state = document.getElementById('copy-state'), el = document.getElementById('email');
@@ -673,6 +689,6 @@
   })();
 </script>
 
-<script src="/fit.js?v=3" defer></script>
+<script src="/fit.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
 </body>
 </html>

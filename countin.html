@@ -190,20 +190,22 @@
     .reveal { opacity: 1; transform: none; }
   }
 </style>
-<link rel="stylesheet" href="/theme.css?v=20261109-nav">
-<link rel="stylesheet" href="/marketing.css?v=20261109-nav">
-<script src="/ambient.js?v=20261109-nav"></script>
-<script src="/site.js?v=20261109-nav" defer></script>
-<link rel="stylesheet" href="/fit.css?v=9">
+<link rel="stylesheet" href="/theme.css?v=20261110-ebd0a910eef8-3279a5d5">
+<link rel="stylesheet" href="/marketing.css?v=20261110-ebd0a910eef8-3279a5d5">
+<script src="/ambient.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/nav.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/site.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<link rel="stylesheet" href="/fit.css?v=20261110-ebd0a910eef8-3279a5d5">
 </head>
 <body>
+<!-- @header -->
 <div class="ambient-wash" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="gnav">
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"><span></span></div>
   <div class="wrap">
-    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="160" height="32" decoding="async"></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="180" height="36" decoding="async"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">Menu</button>
     <nav id="site-nav" aria-label="Main">
       <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
       <a class="app" href="/qualane"><span class="pill-in">Qualane</span></a>
@@ -211,10 +213,12 @@
       <a class="opt" href="/#products">Products</a>
       <a class="opt" href="/#approach">Approach</a>
       <a class="opt" href="/#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="/#contact">Contact</a>
     </nav>
   </div>
 </header>
+<button type="button" class="nav-backdrop" hidden aria-label="Close menu"></button>
+<!-- /@header -->
 <div class="pnav">
   <div class="wrap">
     <span class="name"><img src="/images/countin-logo.png" alt="CountIn" width="24" height="24" decoding="async">CountIn</span>
@@ -383,12 +387,23 @@
   </section>
 </main>
 
-<footer>
+<!-- @footer -->
+<footer class="site-footer">
   <div class="wrap">
     <span>Copyright © 2026 Coformia</span>
-    <a href="/">Coformia home</a> · <a href="https://coformia.com/" rel="noopener">coformia.com</a>
+    <span>
+      <a href="/formulane">Formulane</a> ·
+      <a href="/qualane">Qualane</a> ·
+      <a href="/countin">CountIn</a> ·
+      <a href="/about">About</a> ·
+      <a href="/insights/">Insights</a> ·
+      <a href="/privacy">Privacy</a> ·
+      <a href="/security">Security</a> ·
+      <a href="/#contact">Contact</a>
+    </span>
   </div>
 </footer>
+<!-- /@footer -->
 
 <script>
   (function () {
@@ -425,7 +440,7 @@
     });
   })();
 </script>
-<script src="/analytics.js" data-domain="coformia.com" defer></script>
-<script src="/fit.js?v=3" defer></script>
+<script src="/analytics.js?v=20261110-ebd0a910eef8-3279a5d5" data-domain="coformia.com" defer></script>
+<script src="/fit.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
 </body>
 </html>

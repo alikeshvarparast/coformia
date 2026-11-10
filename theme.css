@@ -676,6 +676,38 @@ body > header:not(.gnav):not(.pnav) {
   border-bottom: 1px solid var(--glass-panel-stroke);
 }
 
+html.nav-open { overflow: hidden; }
+
+.nav-backdrop {
+  display: none;
+}
+@media (max-width: 960px) {
+  .nav-backdrop:not([hidden]) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 35;
+    border: 0;
+    padding: 0;
+    background: color-mix(in srgb, #000 35%, transparent);
+    cursor: pointer;
+  }
+  .gnav { z-index: 40; }
+}
+
+.site-footer {
+  color: var(--soft);
+  font-size: 12px;
+  padding: 22px 0 88px;
+}
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { color: var(--ink); }
+
 footer {
   padding-bottom: 88px;
   background: transparent;

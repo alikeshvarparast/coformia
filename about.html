@@ -17,20 +17,24 @@
 </script>
 <link rel="icon" href="/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/theme.css?v=20261109-nav">
-<link rel="stylesheet" href="/marketing.css?v=20261109-nav">
-<link rel="stylesheet" href="/prose.css">
-<script src="/ambient.js?v=20261109-nav"></script>
-<script src="/site.js?v=20261109-nav" defer></script>
-<script src="/analytics.js" data-domain="coformia.com" defer></script>
-<link rel="stylesheet" href="/fit.css?v=9">
+<link rel="stylesheet" href="/theme.css?v=20261110-ebd0a910eef8-3279a5d5">
+<link rel="stylesheet" href="/marketing.css?v=20261110-ebd0a910eef8-3279a5d5">
+<link rel="stylesheet" href="/prose.css?v=20261110-ebd0a910eef8-3279a5d5">
+<script src="/ambient.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/nav.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/site.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/analytics.js?v=20261110-ebd0a910eef8-3279a5d5" data-domain="coformia.com" defer></script>
+<link rel="stylesheet" href="/fit.css?v=20261110-ebd0a910eef8-3279a5d5">
 </head>
 <body>
+<!-- @header -->
 <div class="ambient-wash" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
 <header class="gnav">
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"><span></span></div>
   <div class="wrap">
     <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="180" height="36" decoding="async"></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">Menu</button>
     <nav id="site-nav" aria-label="Main">
       <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
       <a class="app" href="/qualane"><span class="pill-in">Qualane</span></a>
@@ -42,8 +46,10 @@
     </nav>
   </div>
 </header>
+<button type="button" class="nav-backdrop" hidden aria-label="Close menu"></button>
+<!-- /@header -->
 <main id="main" class="prose-page about-fit">
-  <div style="max-width:1024px;margin:0 auto;padding-inline:22px">
+  <div class="prose-wrap">
     <h1>About Coformia</h1>
     <p class="lede">We turn work that still runs on paper, spreadsheets, and group chats into connected digital processes—and use AI where it makes those processes faster, more accurate, and more reliable.</p>
     <p>Coformia is a software company in Toronto, Canada. This website, coformia.com, is ours. We build Formulane, Qualane and CountIn.</p>
@@ -54,7 +60,8 @@
       <h2>How we work with customers</h2>
       <p>We map how work really moves, prototype with your data, pilot with one team, and scale only when the pilot works. No ERP replacement: one live record that stays in sync with the systems you already run.</p>
       <h2>Team</h2>
-      <p><strong>Ali Keshvarparast</strong> is a co-founder of Coformia. He created CountIn, co-founded ShiftiAI, and works directly with Formulane's founding partners.</p>
+      <p><strong>Ali Keshvarparast</strong> is a co-founder of Coformia. He created CountIn, co-founded ShiftiAI, and works directly with Formulane's founding partners. <a href="https://www.linkedin.com/in/ali-keshvarparast-b7586369" rel="noopener">LinkedIn</a>.</p>
+      <p>The company is based in Toronto, Ontario. Product work for Formulane and Qualane is aimed at food manufacturers and plants; CountIn is for groups that still organise on chats and spreadsheets.</p>
       <div class="cta">
         <a class="pill" href="/formulane#contact"><span class="pill-in">Formulane demo</span></a>
         <a href="mailto:info@coformia.com">info@coformia.com</a>
@@ -62,12 +69,23 @@
     </div>
   </div>
 </main>
-<footer style="color:var(--soft);font-size:12px;padding:22px 0">
-  <div style="max-width:1024px;margin:0 auto;padding-inline:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+<!-- @footer -->
+<footer class="site-footer">
+  <div class="wrap">
     <span>Copyright © 2026 Coformia</span>
-    <span><a href="/formulane">Formulane</a> · <a href="/qualane">Qualane</a> · <a href="/insights/">Insights</a></span>
+    <span>
+      <a href="/formulane">Formulane</a> ·
+      <a href="/qualane">Qualane</a> ·
+      <a href="/countin">CountIn</a> ·
+      <a href="/about">About</a> ·
+      <a href="/insights/">Insights</a> ·
+      <a href="/privacy">Privacy</a> ·
+      <a href="/security">Security</a> ·
+      <a href="/#contact">Contact</a>
+    </span>
   </div>
 </footer>
-<script src="/fit.js?v=3" defer></script>
+<!-- /@footer -->
+<script src="/fit.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
 </body>
 </html>

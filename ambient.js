@@ -76,6 +76,10 @@
       }, 120);
     }
 
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var narrow = window.matchMedia && window.matchMedia('(max-width: 719px)').matches;
+    if (reduce || narrow) return;
+
     rebuildWash();
     applyScrollParallax();
 
@@ -84,32 +88,8 @@
     window.addEventListener('load', scheduleRebuild);
   }
 
-  function initNav() {
-    var header = document.querySelector('.gnav');
-    var btn = document.querySelector('.nav-toggle');
-    var nav = document.getElementById('site-nav');
-    if (!btn || !nav || !header || btn.dataset.navBound) return;
-    btn.dataset.navBound = '1';
-    function setOpen(open) {
-      header.classList.toggle('is-open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        var first = nav.querySelector('a');
-        if (first) first.focus();
-      } else {
-        btn.focus();
-      }
-    }
-    btn.addEventListener('click', function () { setOpen(!header.classList.contains('is-open')); });
-    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && header.classList.contains('is-open')) setOpen(false);
-    });
-  }
-
   function boot() {
     initWash();
-    initNav();
   }
 
   if (document.readyState === 'loading') {

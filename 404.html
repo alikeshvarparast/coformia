@@ -20,27 +20,54 @@
   .logo { display: inline-block; background: #fff; border-radius: 8px; padding: 4px 10px; }
   .logo img { display: block; height: 32px; width: auto; }
 </style>
-<link rel="stylesheet" href="/theme.css?v=20261109-nav">
-<link rel="stylesheet" href="/marketing.css?v=20261109-nav">
-<script src="/ambient.js?v=20261109-nav"></script>
-<script src="/site.js?v=20261109-nav" defer></script>
+<link rel="stylesheet" href="/theme.css?v=20261110-ebd0a910eef8-3279a5d5">
+<link rel="stylesheet" href="/marketing.css?v=20261110-ebd0a910eef8-3279a5d5">
+<script src="/ambient.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/nav.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
+<script src="/site.js?v=20261110-ebd0a910eef8-3279a5d5" defer></script>
 </head>
 <body>
+<!-- @header -->
 <div class="ambient-wash" aria-hidden="true"></div>
-  <main class="wrap">
-    <a class="logo" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="160" height="32" decoding="async"></a>
-    <h1>Page not found</h1>
-    <p>That address is not on this site.</p>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/formulane">Formulane</a>
-      <a href="/qualane">Qualane</a>
-      <a href="/countin">CountIn</a>
-      <a href="/#products">Products</a>
-      <a href="/#approach">Approach</a>
-      <a href="/#faq">FAQ</a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="gnav">
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="Coformia home"><img src="/images/coformia-logo-nav.png" alt="Coformia" width="180" height="36" decoding="async"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">Menu</button>
+    <nav id="site-nav" aria-label="Main">
+      <a class="app" href="/formulane"><span class="pill-in">Formulane</span></a>
+      <a class="app" href="/qualane"><span class="pill-in">Qualane</span></a>
+      <a class="app" href="/countin"><span class="pill-in">CountIn</span></a>
+      <a class="opt" href="/#products">Products</a>
+      <a class="opt" href="/#approach">Approach</a>
+      <a class="opt" href="/#faq">FAQ</a>
       <a href="/#contact">Contact</a>
     </nav>
+  </div>
+</header>
+<button type="button" class="nav-backdrop" hidden aria-label="Close menu"></button>
+<!-- /@header -->
+<main id="main" class="wrap prose-page">
+    <h1>Page not found</h1>
+    <p>That address is not on this site. Use the menu or go back <a href="/">home</a>.</p>
   </main>
+<!-- @footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Copyright © 2026 Coformia</span>
+    <span>
+      <a href="/formulane">Formulane</a> ·
+      <a href="/qualane">Qualane</a> ·
+      <a href="/countin">CountIn</a> ·
+      <a href="/about">About</a> ·
+      <a href="/insights/">Insights</a> ·
+      <a href="/privacy">Privacy</a> ·
+      <a href="/security">Security</a> ·
+      <a href="/#contact">Contact</a>
+    </span>
+  </div>
+</footer>
+<!-- /@footer -->
 </body>
 </html>

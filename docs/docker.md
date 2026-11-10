@@ -42,6 +42,14 @@ Push to `main` on `alikeshvarparast/coformia` triggers a rebuild on this host vi
 
 Manual rebuild: `/opt/docker/coformia/scripts/rebuild-from-github.sh`
 
+## Cache and HTML assembly
+
+HTML responses use `Cache-Control: no-cache`. Shared chrome lives in `partials/` and is written into pages by `scripts/assemble-html.mjs` (also run from the rebuild script). `asset-version.txt` is the `?v=` query on CSS and JS. Change that query whenever those file bytes change so Cloudflare does not keep an old script. `site.js`, `ambient.js`, `nav.js`, and `home.js` are also `no-cache` at nginx. Optional: purge old `?v=` URLs in Cloudflare after a bad cache hit.
+
+After a performance change, run a mobile Lighthouse pass on `https://coformia.com/` and note LCP and CLS. There is no Lighthouse CI in this repo.
+
+Content-Security-Policy is **report-only** until Turnstile and Plausible are confirmed in a real browser.
+
 ## Preview stack
 
 `preview/docker-compose.yml` is superseded by root `docker-compose.yml` (same port 8102).
