@@ -1,34 +1,4 @@
 (function () {
-  function bindNav() {
-    var header = document.querySelector('.gnav');
-    var btn = document.querySelector('.nav-toggle');
-    var nav = document.getElementById('site-nav');
-    if (!header || !btn || !nav) return;
-    btn.addEventListener('click', function () {
-      var open = header.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        var first = nav.querySelector('a');
-        if (first) first.focus();
-      } else {
-        btn.focus();
-      }
-    });
-    nav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        header.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-      });
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && header.classList.contains('is-open')) {
-        header.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.focus();
-      }
-    });
-  }
-
   function bindScrollProgress() {
     var bar = document.querySelector('#scroll-progress span');
     if (!bar) return;
@@ -59,7 +29,6 @@
     });
   }
 
-  bindNav();
   bindScrollProgress();
   bindDemoTabs();
 })();

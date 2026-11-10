@@ -93,6 +93,12 @@
     function setOpen(open) {
       header.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        var first = nav.querySelector('a');
+        if (first) first.focus();
+      } else {
+        btn.focus();
+      }
     }
     btn.addEventListener('click', function () { setOpen(!header.classList.contains('is-open')); });
     nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
