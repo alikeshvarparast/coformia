@@ -9,6 +9,10 @@ globs: coformia/**
 
 Public marketing site (Formulane, Qualane, CountIn) and contact form. Served from Docker on loopback `:8102`, not Cloudflare Workers for origin.
 
+## Shared agent files (hub)
+
+Cross-project docs/runbooks: **`/opt/docker/shared-agent-files`** (git `mktwix/shared-agent-files`, `integrations/INDEX.md`). Open Cursor on **`/opt/docker`** — one hub clone; do not add a copy under this stack folder.
+
 ## Module Inventory
 
 | Path | Role |
